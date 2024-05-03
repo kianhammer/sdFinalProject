@@ -26,7 +26,7 @@ def create_tables():
             BlocksUnforced real,
             TurnoversForced real,
             TurnoversUnforced real,
-            Players text,
+            Players text
         )
         """)
 
