@@ -8,7 +8,7 @@ def create_tables():
         """,
         """
         CREATE TABLE cutstats (
-            Date timestamp with timezone,
+            Date timestamp,
             Opponent text,
             Final Score text,
             Point real,
