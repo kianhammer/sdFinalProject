@@ -22,7 +22,7 @@ def create_tables():
             EndzoneNotScoredForced real,
             EndzoneNotScoredUnforced real,
             EndzoneNotScoredUnknown real,
-            BlocksForced,
+            BlocksForced real,
             BlocksUnforced real,
             TurnoversForced real,
             TurnoversUnforced real,
