@@ -52,6 +52,24 @@ def answer_query():
     for point in cornellHucks:
       totalHucksCompleted = totalHucksCompleted + point[6]
     print(totalHucksCompleted)
+
+  
+  gameOpponent = input("Enter opponent:")
+  gamePlayer = input("Enter CUT player:")
+  sql_pointsPlayedInGame = """SELECT * FROM cutstats WHERE Opponent = %s;"""
+
+  cur.execute(sql_pointsPlayedInGame, [gameOpponent])
+  gameAgainstOpponent = cur.fetchall()
+  print('Total points ' + gamePlayer + ' played against ' + gameOpponent + ':')
+  if gameAgainstOpponent == None:
+    print(gamePlayer + ' played zero points against ' + gameOpponent)
+  else:
+    totalPoints = 0
+    for point in gameAgainstOpponent:
+      if gameAgainstOpponent[18].find(gamePlayer) > -1:
+        totalPoints++
+    print(gamePlayer + ' played ' + totalPoints + ' points against ' + gameOpponent)
+    
   
     
   
