@@ -32,11 +32,27 @@ def answer_query():
   sql_FloridaPoints = """SELECT * FROM cutstats WHERE Opponent = 'Florida' ORDER BY Point DESC;"""
 
   cur.execute(sql_FloridaPoints)
-  floridaGame = cur.fetchone()
-  if floridaGame == None:
+  floridaScore = cur.fetchone()
+  print('Final score against Florida:')
+  if floridaScore == None:
     print('The opponent Florida does not exist in the database')
   else:
-    print(floridaGame[3])
+    print(floridaScore[2])
+
+  
+  sql_CornellHucksCompleted = """SELECT * FROM cutstats WHERE Opponent = 'Cornell';"""
+
+  cur.execute(sql_CornellHucksCompleted)
+  cornellHucks = cur.fetchall()
+  print(Total hucks completed against Cornell:')
+  if cornellHucks == None:
+    print('The opponent Cornell does not exist in the database')
+  else:
+    totalHucksCompleted = 0
+    for point in cornellHucks:
+      totalHucksCompleted = totalHucksCompleted + point[6]
+    print(totalHucksCompleted)
+  
     
   
 
