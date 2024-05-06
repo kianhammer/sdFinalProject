@@ -68,7 +68,7 @@ def answer_query():
     for point in gameAgainstOpponent:
       if str(gameAgainstOpponent[18]).find(gamePlayer) > -1:
         totalPoints += 1
-    print(gamePlayer + ' played ' + totalPoints + ' points against ' + gameOpponent)
+    print(gamePlayer + ' played ' + str(totalPoints) + ' points against ' + gameOpponent)
     
   
     
