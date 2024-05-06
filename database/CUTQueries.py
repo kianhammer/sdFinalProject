@@ -65,6 +65,7 @@ def answer_query():
     print(gamePlayer + ' played zero points against ' + gameOpponent)
   else:
     totalPoints = 0
+    print(str(gameAgainstOpponent[18]))
     for point in gameAgainstOpponent:
       if str(gameAgainstOpponent[18]).find(gamePlayer) > -1:
         totalPoints += 1
