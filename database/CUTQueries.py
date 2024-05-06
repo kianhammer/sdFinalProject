@@ -44,7 +44,7 @@ def answer_query():
 
   cur.execute(sql_CornellHucksCompleted)
   cornellHucks = cur.fetchall()
-  print(Total hucks completed against Cornell:')
+  print('Total hucks completed against Cornell:')
   if cornellHucks == None:
     print('The opponent Cornell does not exist in the database')
   else:
