@@ -1,8 +1,9 @@
 .title{
-    text-align: left;
+    display: flex;
+    justify-content: space-between;
 }
 
-a.link{
+.links{
     text-align: right;
 }
 
