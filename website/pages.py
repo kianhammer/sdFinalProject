@@ -23,8 +23,11 @@ def welcome():
 
     gameset = set(rows)
 
-    message = f"CUT stats web page" 
     return render_template("homepage.html", gamenumber = len(gameset))
+
+@app.route('/import/')
+def importpage():
+    return render_template("importgame.html")
 
 if __name__ == '__main__':
     my_port = 5202
