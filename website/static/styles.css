@@ -1,9 +1,11 @@
-.titles{
-    text-align: center;
-    color: blue;
-    cursor: pointer;
+.title{
+    text-align: left;
 }
-  
+
+.link{
+    text-align: right;
+}
+
 .body{
     text-align: center;
     margin-top: 20px;
