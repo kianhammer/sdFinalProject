@@ -11,25 +11,7 @@ def welcome():
 
 @app.route('/stats/players')
 def player_stats():
-    return render_template("playerStats.html", table = get_player_stats())
-
-def get_player_stats():
-    table_html = """<tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>"""
-    return table_html
+    return render_template("playerStats.html")
 
 if __name__ == '__main__':
     my_port = 5202
