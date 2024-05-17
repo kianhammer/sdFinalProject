@@ -25,13 +25,13 @@ def player_stats():
     return render_template("playerStats.html")
 
 #This fetches a table of data
-@app.route('/stats/fetch')
-def fetch_player_stats():
+@app.route('/stats/fetch/<player>')
+def fetch_player_stats(player):
     
     # cur.execute("""SELECT * FROM cutstats""")
     # all_stats = cur.fetchall()
 
-    json_answer = calc_player_stats("Daniel")
+    json_answer = calc_player_stats(player)
 
     # json_answer = {
     #     "origin": "fetch_number",
