@@ -11,7 +11,7 @@ function getPlayerStats() {
 function addPlayerToTable(playerData) {
     var table = document.getElementById("statsTable");
 
-    var row = table.insertRow(0);
+    var row = table.insertRow(1);
 
     var playerCell = row.insertCell(0);
     var pointsCell = row.insertCell(1);
@@ -20,6 +20,6 @@ function addPlayerToTable(playerData) {
     playerCell.innerHTML = playerData.player;
     pointsCell.innerHTML = playerData.points;
     holdsCell.innerHTML = playerData.holds;
-    
+
     console.log(playerData);
 }
