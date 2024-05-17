@@ -58,9 +58,12 @@ def calc_player_stats(player):
 #queries the sql database with the given command
 def query(sql):
     cur.execute(sql)
-    result = cur.fetchone()[0]
+    result = cur.fetchone()
     print(result)
-    return result
+    if result == None:
+        return result
+    else:
+        return result[0]
 
 
 if __name__ == '__main__':
