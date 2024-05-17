@@ -45,11 +45,11 @@ def fetch_player_stats():
 
 # makes a dictionary of the player's stats
 def calc_player_stats(player):
-    stats = {"Player": player}
+    stats = {"player": player}
 
-    stats["Points"] = query(f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%';")[0]
+    stats["points"] = query(f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%';")
 
-    stats["Holds"] = query(f"SELECT COUNT(*) FROM cutstats WHERE Players LIKE '%{player}%' AND SCORED LIKE 'TRUE' AND Pulled LIKE 'FALSE';")
+    stats["holds"] = query(f"SELECT COUNT(*) FROM cutstats WHERE Players LIKE '%{player}%' AND SCORED LIKE 'TRUE' AND Pulled LIKE 'FALSE';")
 
     print(stats)
 
@@ -58,7 +58,7 @@ def calc_player_stats(player):
 #queries the sql database with the given command
 def query(sql):
     cur.execute(sql)
-    result = cur.fetchone()
+    result = cur.fetchone()[0]
     print(result)
     return result
 
