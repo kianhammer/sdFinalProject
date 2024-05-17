@@ -47,7 +47,8 @@ def fetch_player_stats():
 def calc_player_stats(player):
     stats = {"Player": player}
 
-    stats["Points": query(f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%';")[0]]
+    result = query(f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%';")[0]
+    stats["Points": str(result)]
 
     stats["Holds": query(f"SELECT COUNT(*) FROM cutstats WHERE Players LIKE '%{player}%' AND Point='TRUE' AND Pulled='FALSE';")]
 
