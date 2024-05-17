@@ -41,8 +41,8 @@ def gameStats(opponent):
 
 	cur = conn.cursor()
 
-  	sql_GamePoints = """SELECT * FROM cutstats WHERE Opponent = %s ORDER BY Point DESC;"""\
-	cur.execute(sql_GamePoints)
+  	sql_GamePoints = """SELECT * FROM cutstats WHERE Opponent = %s ORDER BY Point DESC;"""
+	cur.execute(sql_GamePoints, "Cornell")
   	cornellHucks = cur.fetchall()
 	return render_template("homepage.html", someText = f"hello")
 
