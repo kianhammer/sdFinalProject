@@ -1,8 +1,19 @@
 from flask import Flask
 from flask import render_template
 import random
+import psycopg2
+import json
 
 app = Flask(__name__)
+
+conn = psycopg2.connect(
+    host="localhost",
+    port=5432,
+    database="chend2",
+    user="chend2",
+    password="plad242books")
+    
+cur = conn.cursor()
 
 @app.route('/')
 def welcome():
@@ -12,6 +23,45 @@ def welcome():
 @app.route('/stats/players')
 def player_stats():
     return render_template("playerStats.html")
+
+#This fetches a table of data
+@app.route('/stats/fetch')
+def fetch_player_stats():
+    
+    # cur.execute("""SELECT * FROM cutstats""")
+    # all_stats = cur.fetchall()
+
+    json_answer = calc_player_stats("Julian")
+
+    # json_answer = {
+    #     "origin": "fetch_number",
+    #     "name":  name,
+    #     "value":  answer
+    #     }
+
+    #json.dumps creates a json object
+    return json.dumps(json_answer)
+
+
+# makes a dictionary of the player's stats
+def calc_player_stats(player):
+    stats = {"Player": player}
+
+    stats["Points": query(f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%';")]
+
+    stats["Holds": query(f"SELECT COUNT(*) FROM cutstats WHERE Players LIKE '%{player}%' AND Point='TRUE' AND Pulled='FALSE';")]
+
+    print(stats)
+
+    return stats
+
+#queries the sql database with the given command
+def query(sql):
+    cur.execute(sql)
+    result = cur.fetchall()
+    print(result)
+    return result
+
 
 if __name__ == '__main__':
     my_port = 5202
