@@ -7,11 +7,11 @@ app = Flask(__name__)
 @app.route('/')
 def welcome():
 	conn = psycopg2.connect(
-        host="localhost",
-        port=5432,   
-        database="chend2",
-        user="chend2",
-        password="plad242books")
+	host="localhost",
+	port=5432,   
+	database="chend2",
+	user="chend2",
+	password="plad242books")
 
 	cur = conn.cursor()
 
