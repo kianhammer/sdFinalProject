@@ -31,7 +31,7 @@ def fetch_player_stats():
     # cur.execute("""SELECT * FROM cutstats""")
     # all_stats = cur.fetchall()
 
-    json_answer = calc_player_stats("Julian")
+    json_answer = calc_player_stats("Daniel")
 
     # json_answer = {
     #     "origin": "fetch_number",
@@ -47,7 +47,7 @@ def fetch_player_stats():
 def calc_player_stats(player):
     stats = {"Player": player}
 
-    stats["Points": query(f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%';")]
+    stats["Points": query(f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%';")[0]]
 
     stats["Holds": query(f"SELECT COUNT(*) FROM cutstats WHERE Players LIKE '%{player}%' AND Point='TRUE' AND Pulled='FALSE';")]
 
