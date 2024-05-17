@@ -41,10 +41,10 @@ def gameStats(opponent):
 
 	cur = conn.cursor()
 
-  	sql_GamePoints = """SELECT * FROM cutstats WHERE Opponent = %s ORDER BY Point DESC;"""\
-	cur.execute(sql_GamePoints)
-  	cornellHucks = cur.fetchall()
-	return render_template("homepage.html", someText = f"hello")
+  	sql_game_points = """SELECT * FROM cutstats WHERE Opponent = %s ORDER BY Point DESC;"""
+	cur.execute(sql_game_points, "Cornell")
+  	game_points = cur.fetchall()
+	return render_template("homepage.html", some_text = f"hello")
 
 if __name__ == '__main__':
     my_port = 5202
