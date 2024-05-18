@@ -60,9 +60,9 @@ def calc_player_stats(player):
         # holds
         f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%' AND scored LIKE 'TRUE' AND pulled LIKE 'FALSE';",
         # breaks
-        f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%' AND scored LIKE 'TRUE' AND pulled LIKE 'TRUE';"
+        f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%' AND scored LIKE 'TRUE' AND pulled LIKE 'TRUE';",
         # end zone scores
-        # f"SELECT SUM(endzonescored) FROM cutstats WHERE players LIKE '%{player}%');"
+        f"SELECT SUM(EndzoneScored) FROM cutstats WHERE players LIKE '%{player}%');"
     ]
 
     stats = [player]
