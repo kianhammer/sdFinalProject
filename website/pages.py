@@ -1,6 +1,5 @@
 from flask import Flask
 from flask import render_template
-import random
 import psycopg2
 import json
 
@@ -20,33 +19,18 @@ def welcome():
     message = f"CUT stats web page" 
     return render_template("homepage.html", someText = message)
 
+
 @app.route('/stats/players')
 def player_stats():
-    stats = fetch_player_stats()
-    print("stats = " + stats)
-    return render_template("playerStats.html", stats=stats)
+    player_stats = fetch_player_stats()
+    return render_template("playerStats.html", stats=player_stats)
 
-#This fetches a table of data
-@app.route('/stats/fetch')
+# Retrieves stats of all players from database
 def fetch_player_stats():
-    
-    # cur.execute("""SELECT * FROM cutstats""")
-    # all_stats = cur.fetchall()
+    all_player_stats = {}
 
-    players_list = get_all_players()
-    print('players = '+ str(players_list))
-
-    all_player_stats = {} # maybe add column headers?
-
-    for player in players_list:
+    for player in get_all_players():
         all_player_stats[player] = calc_player_stats(player)
-        # all_player_stats.append(calc_player_stats(player))
-
-    # data = {"data": all_player_stats}
-    # print("data: " + str(data))
-
-    # #json.dumps creates a json object
-    # return json.dumps(data)
 
     return json.dumps(all_player_stats)
 
@@ -54,35 +38,41 @@ def fetch_player_stats():
 def get_all_players():
     player_list = []
 
-    cur.execute("SELECT players FROM cutstats")
-    result = cur.fetchall()
-    for point in result:
+    for point in query_fetch_all("SELECT players FROM cutstats"):
         for player in point[0].split("|"):
             if player not in player_list:
                 player_list.append(player)
+                
     return player_list
 
 
 
-# makes a dictionary of the player's stats
+# calculate a list of the given player's stats
 def calc_player_stats(player):
 
     stats = [player]
 
-    stats.append(query(f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%';"))
+    stats.append(query_fetch_one(f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%';"))
     
-    stats.append(query(f"SELECT COUNT(*) FROM cutstats WHERE Players LIKE '%{player}%' AND SCORED LIKE 'TRUE' AND Pulled LIKE 'FALSE';"))
+    stats.append(query_fetch_one(f"SELECT COUNT(*) FROM cutstats WHERE Players LIKE '%{player}%' AND SCORED LIKE 'TRUE' AND Pulled LIKE 'FALSE';"))
 
     return stats
 
-#queries the sql database with the given command
-def query(sql):
+# Query the sql database with the given command
+# Returns only the first result
+def query_fetch_one(sql):
     cur.execute(sql)
     result = cur.fetchone()
     if result == None:
         return result
     else:
         return result[0]
+
+# Query the sql database with the given command
+# Returns all results in a list of tuples - [(result,), (result,)]
+def query_fetch_all(sql):
+    cur.execute(sql)
+    result = cur.fetchall()
 
 
 if __name__ == '__main__':

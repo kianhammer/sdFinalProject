@@ -23,33 +23,20 @@
         </tr>
     </table>
     
+    <!-- create stats table -->
     <script>
         var table = document.getElementById("statsTable");
     
-        var playerData = JSON.parse({{stats|tojson}});
-
-        console.log(playerData);
+        var playerStats = JSON.parse({{stats|tojson}});
 
         let rowIndex = 1;
-        for (const [player, stats] of Object.entries(playerData)) {
-            row = table.insertRow(rowIndex++); // skip over header
-            console.log("stats = " + stats)
+        for (const [player, stats] of Object.entries(playerStats)) {
+            let row = table.insertRow(rowIndex++); // skip over header
             for(var i = 0; i < stats.length; i++) {
                 var cell = row.insertCell(i);
-                console.log("stat = " + stats[i])
                 cell.innerHTML = stats[i]
             }
         }
-
-        // for(var i = 0; i < playerData.length; i++)
-        //     var row = table.insertRow(i+1); // skip over header
-        //     console.log("row = " + playerData[i])
-        //     for(var i = 0; i < 3; i++) {
-        //         var cell = row.insertCell(i);
-        //         console.log("playerData[i][j] = " + playerData[i][i])
-        //         cell.innerHTML = playerData[i][i]
-        //     }
-    
-        console.log(playerData);
+        console.log(playerStats);
     </script>
 </body>  
