@@ -36,10 +36,11 @@ def fetch_player_stats():
     players_list = get_all_players()
     print('players = '+ str(players_list))
 
-    all_player_stats = [] # maybe add column headers?
+    all_player_stats = {} # maybe add column headers?
 
     for player in players_list:
-        all_player_stats.append(calc_player_stats(player))
+        all_player_stats[player] = calc_player_stats(player)
+        # all_player_stats.append(calc_player_stats(player))
 
     # data = {"data": all_player_stats}
     # print("data: " + str(data))

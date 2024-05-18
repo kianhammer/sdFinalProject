@@ -27,16 +27,28 @@
         var table = document.getElementById("statsTable");
     
         var playerData = JSON.parse({{stats|tojson}});
-        // JSON.parse("{{ test }}")
+
         console.log(playerData);
-        for(var i = 0; i < playerData.length; i++)
-            var row = table.insertRow(i+1); // skip over header
-            console.log("row = " + playerData[i])
-            for(var j = 0; j < 3; j++) {
-                var cell = row.insertCell(j);
-                console.log("playerData[i][j] = " + playerData[i][j])
-                cell.innerHTML = playerData[i][j]
+
+        let rowIndex = 1;
+        for (const [player, stats] of Object.entries(playerData)) {
+            row = table.insertRow(rowIndex++); // skip over header
+            console.log("stats = " + stats)
+            for(var i = 0; i < stats.length; i++) {
+                var cell = row.insertCell(i);
+                console.log("stat = " + stats[i])
+                cell.innerHTML = stats[i]
             }
+        }
+
+        // for(var i = 0; i < playerData.length; i++)
+        //     var row = table.insertRow(i+1); // skip over header
+        //     console.log("row = " + playerData[i])
+        //     for(var i = 0; i < 3; i++) {
+        //         var cell = row.insertCell(i);
+        //         console.log("playerData[i][j] = " + playerData[i][i])
+        //         cell.innerHTML = playerData[i][i]
+        //     }
     
         console.log(playerData);
     </script>
