@@ -23,6 +23,17 @@ thead tr {
     cursor: pointer;
 }
 
+.arrow-down::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #f00;
+}
+
 th td {
     padding: 12px 15px;
 }
@@ -39,7 +50,3 @@ tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
 }
 
-/* .styled-table tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
-} */
