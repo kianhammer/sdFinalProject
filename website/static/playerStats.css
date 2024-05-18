@@ -19,6 +19,10 @@ thead tr {
     text-align: left;
 }
 
+thead th:hover {
+    cursor: pointer;
+}
+
 th td {
     padding: 12px 15px;
 }
