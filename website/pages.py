@@ -51,9 +51,8 @@ def get_all_players():
     result = cur.fetchall()
     for point in result:
         for player in point[0].split("|"):
-            print("player = " + player)
-            if player[0] not in player_list:
-                player_list.append(player[0])
+            if player not in player_list:
+                player_list.append(player)
     return player_list
 
 
@@ -63,9 +62,9 @@ def calc_player_stats(player):
 
     stats = [player]
 
-    stats[1] = query(f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%';")
-
-    stats[2] = query(f"SELECT COUNT(*) FROM cutstats WHERE Players LIKE '%{player}%' AND SCORED LIKE 'TRUE' AND Pulled LIKE 'FALSE';")
+    stats.append(query(f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%';"))
+    
+    stats.append(query(f"SELECT COUNT(*) FROM cutstats WHERE Players LIKE '%{player}%' AND SCORED LIKE 'TRUE' AND Pulled LIKE 'FALSE';"))
 
     print(stats)
 
