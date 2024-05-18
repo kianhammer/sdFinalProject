@@ -38,10 +38,12 @@ def fetch_player_stats():
 
     for player in players_list:
         all_player_stats.append(calc_player_stats(player))
-    print(all_player_stats)
+
+    data = {"data": all_player_stats}
+    print("data: " + data)
 
     #json.dumps creates a json object
-    return json.dumps(all_player_stats)
+    return json.dumps(data)
 
 
 def get_all_players():
@@ -66,15 +68,12 @@ def calc_player_stats(player):
     
     stats.append(query(f"SELECT COUNT(*) FROM cutstats WHERE Players LIKE '%{player}%' AND SCORED LIKE 'TRUE' AND Pulled LIKE 'FALSE';"))
 
-    print(stats)
-
     return stats
 
 #queries the sql database with the given command
 def query(sql):
     cur.execute(sql)
     result = cur.fetchone()
-    print(result)
     if result == None:
         return result
     else:
