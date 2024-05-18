@@ -4,7 +4,7 @@
  */
 function sortTable(n) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById("statsTable");
+  table = document.getElementById("statsTableBody");
   switching = true;
   // Set the sorting direction to ascending:
   dir = "desc";
@@ -16,7 +16,7 @@ function sortTable(n) {
     rows = table.tbody.rows;
     /* Loop through all table rows (except the
     first, which contains table headers): */
-    for (i = 1; i < (rows.length - 1); i++) {
+    for (i = 0; i < (rows.length - 1); i++) {
       // Start by saying there should be no switching:
       shouldSwitch = false;
       /* Get the two elements you want to compare,

@@ -20,20 +20,20 @@
                 <th class="clickable" onclick="sortTable(6)">EZ scores</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id ="statsTableBody">
             
         </tbody>
     </table>
     
     <!-- create stats table -->
     <script>
-        var table = document.getElementById("statsTable");
+        var tableBody = document.getElementById("statsTableBody");
     
         var playerStats = JSON.parse({{stats|tojson}});
 
         let rowIndex = 0;
         for (const [player, stats] of Object.entries(playerStats)) {
-            let row = table.tbody.insertRow(rowIndex++); // skip over header
+            let row = tableBody.tbody.insertRow(rowIndex++); // skip over header
             for(var i = 0; i < stats.length; i++) {
                 var cell = row.insertCell(i);
                 cell.innerHTML = stats[i]
