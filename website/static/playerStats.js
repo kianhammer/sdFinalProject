@@ -1,3 +1,23 @@
+sortTable(1)
+
+function updateArrow(n) {
+  var columns = document.getElementById("statsHeaderRow").getElementsByTagName("TH");
+  for (var i = 1; i <columns.length; i++) {
+    header = columns[i];
+    if (i == n) {
+      if (header.classList.contains("arrow-up") || header.classList.contains("arrow-down")) {
+        header.classList.toggle("arrow-down");
+        header.classList.toggle("arrow-up");
+      } else {
+        header.classList.add("arrow-down"); // starts descending
+      }
+    } else {
+      header.classList.remove("arrow-up");
+      header.classList.remove("arrow-down");
+    }
+  }
+}
+
 /**
  * sorting table by header click example from: https://www.w3schools.com/howto/howto_js_sort_table.asp
  * @param n the column index to sort by

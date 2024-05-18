@@ -26,12 +26,29 @@ thead tr {
 .arrow-down::before {
     content: "";
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: bottom;
     width: 0;
     height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid #f00;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid;
+    border-bottom: 3px solid transparent;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.arrow-up::before {
+    content: "";
+    display: inline-block;
+    vertical-align: top;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 8px solid;
+    border-top: 3px solid transparent;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 th td {
