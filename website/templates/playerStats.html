@@ -31,7 +31,7 @@
     
         var playerStats = JSON.parse({{stats|tojson}});
 
-        let rowIndex = 1;
+        let rowIndex = 0;
         for (const [player, stats] of Object.entries(playerStats)) {
             let row = table.insertRow(rowIndex++); // skip over header
             for(var i = 0; i < stats.length; i++) {
