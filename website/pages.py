@@ -32,7 +32,7 @@ def fetch_player_stats():
     # all_stats = cur.fetchall()
 
     players_list = get_all_players()
-    print(players_list)
+    print('players = '+ players_list)
 
     all_player_stats = [] # maybe add column headers?
 
