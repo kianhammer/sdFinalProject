@@ -19,7 +19,7 @@ thead tr {
     text-align: left;
 }
 
-thead th:hover {
+.clickable:hover {
     cursor: pointer;
 }
 
