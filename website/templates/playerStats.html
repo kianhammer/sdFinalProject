@@ -2,6 +2,27 @@
     <link rel="stylesheet" href="/static/playerStats.css">
   
     <script src="/static/playerStats.js"></script>
+</head>
+<body>
+    <h1 class="title" id="title">
+        PLAYER STATS
+    </h1>
+    
+    <table id="statsTable" class="statsTable">
+        <tr>
+            <th>Player</th>
+            <!-- <th>Games</th> -->
+            <th>Points</th>
+            <!-- <th>O</th>
+            <th>D</th>
+            <th>PPG</th>
+            <th>Hold Chances</th> -->
+            <th>Holds</th>
+            <!-- <th>Break Chances</th>
+            <th>Breaks</th> -->
+        </tr>
+    </table>
+    
     <script>
         var table = document.getElementById("statsTable");
     
@@ -18,23 +39,4 @@
     
         console.log(playerData);
     </script>
-</head>
-  
-<h1 class="title" id="title">
-    PLAYER STATS
-</h1>
-
-<table id="statsTable" class="statsTable">
-    <tr>
-        <th>Player</th>
-        <!-- <th>Games</th> -->
-        <th>Points</th>
-        <!-- <th>O</th>
-        <th>D</th>
-        <th>PPG</th>
-        <th>Hold Chances</th> -->
-        <th>Holds</th>
-        <!-- <th>Break Chances</th>
-        <th>Breaks</th> -->
-    </tr>
-</table>
+</body>  
