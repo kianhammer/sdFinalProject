@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function getPlayerStats() {
     URL = "/stats/fetch";
 
-    fetch(URL).then( response => response.json()).then( data => addDataToTable(data["data"]) );
+    //fetch(URL).then( response => response.json()).then( data => addDataToTable(data["data"]) );
 }
 
 function addDataToTable(playerData) {

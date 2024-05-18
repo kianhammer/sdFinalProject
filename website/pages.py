@@ -22,7 +22,9 @@ def welcome():
 
 @app.route('/stats/players')
 def player_stats():
-    return render_template("playerStats.html")
+    stats = fetch_player_stats()
+    print("stats = " + stats)
+    return render_template("playerStats.html", stats=stats)
 
 #This fetches a table of data
 @app.route('/stats/fetch')
@@ -39,11 +41,13 @@ def fetch_player_stats():
     for player in players_list:
         all_player_stats.append(calc_player_stats(player))
 
-    data = {"data": all_player_stats}
-    print("data: " + str(data))
+    # data = {"data": all_player_stats}
+    # print("data: " + str(data))
 
-    #json.dumps creates a json object
-    return json.dumps(data)
+    # #json.dumps creates a json object
+    # return json.dumps(data)
+
+    return json.dumps(all_player_stats)
 
 
 def get_all_players():

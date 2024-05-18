@@ -2,6 +2,22 @@
     <link rel="stylesheet" href="/static/playerStats.css">
   
     <script src="/static/playerStats.js"></script>
+    <script>
+        var table = document.getElementById("statsTable");
+    
+        var playerData = {{stats|tojson}};
+        console.log(playerData);
+        for(var i = 0; i < playerData.length; i++)
+            var row = table.insertRow(i+1); // skip over header
+            console.log("row = " + playerData[i])
+            for(var j = 0; j < 3; j++) {
+                var cell = row.insertCell(j);
+                console.log("playerData[i][j] = " + playerData[i][j])
+                cell.innerHTML = playerData[i][j]
+            }
+    
+        console.log(playerData);
+    </script>
 </head>
   
 <h1 class="title" id="title">
