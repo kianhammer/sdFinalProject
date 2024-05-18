@@ -40,7 +40,7 @@ def fetch_player_stats():
         all_player_stats.append(calc_player_stats(player))
 
     data = {"data": all_player_stats}
-    print("data: " + data)
+    print("data: " + str(data))
 
     #json.dumps creates a json object
     return json.dumps(data)
