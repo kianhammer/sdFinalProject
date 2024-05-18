@@ -13,8 +13,10 @@ function addDataToTable(playerData) {
     
     console.log(playerData);
 
+    console.log("length =" + playerData.length)
     for(var i = 0; i < playerData.length; i++)
         var row = table.insertRow(i+1); // skip over header
+        console.log("row = " + playerData[i])
         for(var j = 0; j < playerData[i].length; j++) {
             var cell = row.insertCell(j);
             cell.innerHTML = playerData[i][j]
