@@ -50,11 +50,25 @@ def get_all_players():
 # calculate a list of the given player's stats
 def calc_player_stats(player):
 
+    player_stats_queries = [
+        # points played
+        f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%';",
+        # o points
+        f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%' AND pulled LIKE 'FALSE';",
+        # d points
+        f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%' AND pulled LIKE 'TRUE';",
+        # holds
+        f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%' AND scored LIKE 'TRUE' AND pulled LIKE 'FALSE';",
+        # breaks
+        f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%' AND scored LIKE 'TRUE' AND pulled LIKE 'TRUE';",
+        # end zone scores
+        f"SELECT SUM(endzonescored) FROM cutstats WHERE players LIKE '%{player}%');",
+    ]
+
     stats = [player]
 
-    stats.append(query_fetch_one(f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%';"))
-    
-    stats.append(query_fetch_one(f"SELECT COUNT(*) FROM cutstats WHERE Players LIKE '%{player}%' AND SCORED LIKE 'TRUE' AND Pulled LIKE 'FALSE';"))
+    for query in player_stats_queries:
+        stats.append(query_fetch_one(query))
 
     return stats
 
