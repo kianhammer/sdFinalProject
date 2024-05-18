@@ -20,14 +20,14 @@
                 <th onclick="sortTable(6)">EZ scores</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="statsTableBody">
             
         </tbody>
     </table>
     
     <!-- create stats table -->
     <script>
-        var table = document.getElementById("statsTable");
+        var table = document.getElementById("statsTableBody");
     
         var playerStats = JSON.parse({{stats|tojson}});
 
