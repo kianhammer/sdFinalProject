@@ -12,7 +12,7 @@
         <table id="statsTable">
             <thead>
                 <tr id="statsHeaderRow">
-                    <th >Player</th>
+                    <!-- <th >Player</th>
                     <th class="clickable" onclick="sortTable(1)">Points</th>
                     <th class="clickable" onclick="sortTable(2)">O Points</th>
                     <th class="clickable" onclick="sortTable(3)">D Points</th>
@@ -21,12 +21,39 @@
                     <th class="clickable" onclick="sortTable(6)">EZ Chances</th>
                     <th class="clickable" onclick="sortTable(7)">EZ Scores</th>
                     <th class="clickable" onclick="sortTable(8)">Turnovers</th>
-                    <th class="clickable" onclick="sortTable(9)">Blocks</th>
+                    <th class="clickable" onclick="sortTable(9)">Blocks</th> -->
                 </tr>
             </thead>
             <tbody id ="statsTableBody"></tbody>
         </table>
     </div>
+
+    <script>
+        // populate header
+        var tableHeaderRow = document.getElementById("statsHeaderRow");
+
+        var values = [
+            "Points",
+            "O Points",
+            "D Points",
+            "Holds",
+            "Breaks",
+            "EZ Chances",
+            "EZ Scores",
+            "Turnovers",
+            "Blocks"
+        ];
+
+        for (var i=0; i<values.length; i++) {
+            th = document.createElement("th");
+            th.innerHTML = values[i];
+            th.class="clickable";
+            if (i>0) {
+                th.onclick = "sortTable(" + i + ")"
+            }
+            tableHeaderRow.appendChild(th);
+        }
+    </script>
     
     <script>
         // create stats table
