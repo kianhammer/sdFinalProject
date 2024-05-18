@@ -73,6 +73,7 @@ def query_fetch_one(sql):
 def query_fetch_all(sql):
     cur.execute(sql)
     result = cur.fetchall()
+    return result
 
 
 if __name__ == '__main__':
