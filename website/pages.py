@@ -61,8 +61,14 @@ def calc_player_stats(player):
         f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%' AND scored LIKE 'TRUE' AND pulled LIKE 'FALSE';",
         # breaks
         f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%' AND scored LIKE 'TRUE' AND pulled LIKE 'TRUE';",
+        # end zone chances
+        f"SELECT SUM(EndzoneScored) + SUM(EndzoneNotScoredForced) + SUM(EndzoneNotScoredUnforced) + SUM(EndzoneNotScoredUnknown) FROM cutstats WHERE players LIKE '%{player}%';",
         # end zone scores
-        f"SELECT SUM(EndzoneScored) FROM cutstats WHERE players LIKE '%{player}%';"
+        f"SELECT SUM(EndzoneScored) FROM cutstats WHERE players LIKE '%{player}%';",
+        # turnovers
+        f"SELECT SUM(TurnoversForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%{player}%';",
+        # blocks
+        f"SELECT SUM(BlocksForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%{player}%';",
     ]
 
     stats = [player]
