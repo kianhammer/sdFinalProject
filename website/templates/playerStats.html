@@ -8,22 +8,22 @@
         PLAYER STATS
     </h1>
     
-    <table id="statsTable">
-        <thead>
-            <tr id="statsHeaderRow">
-                <th >Player</th>
-                <th class="clickable arrow-down" onclick="sortTable(1)">Points</th>
-                <th class="clickable" onclick="sortTable(2)">O Points</th>
-                <th class="clickable" onclick="sortTable(3)">D Points</th>
-                <th class="clickable" onclick="sortTable(4)">Holds</th>
-                <th class="clickable" onclick="sortTable(5)">Breaks</th>
-                <th class="clickable" onclick="sortTable(6)">EZ scores</th>
-            </tr>
-        </thead>
-        <tbody id ="statsTableBody">
-            
-        </tbody>
-    </table>
+    <div style="overflow-x:auto;">
+        <table id="statsTable">
+            <thead>
+                <tr id="statsHeaderRow">
+                    <th >Player</th>
+                    <th class="clickable arrow-down" onclick="sortTable(1)">Points</th>
+                    <th class="clickable" onclick="sortTable(2)">O Points</th>
+                    <th class="clickable" onclick="sortTable(3)">D Points</th>
+                    <th class="clickable" onclick="sortTable(4)">Holds</th>
+                    <th class="clickable" onclick="sortTable(5)">Breaks</th>
+                    <th class="clickable" onclick="sortTable(6)">EZ scores</th>
+                </tr>
+            </thead>
+            <tbody id ="statsTableBody"></tbody>
+        </table>
+    </div>
     
     <!-- create stats table -->
     <script>
