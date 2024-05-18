@@ -29,7 +29,7 @@ def welcome():
 def importpage():
 	return render_template("importgame.html")
 
-@app.route('stats/game')
+@app.route('/stats/game')
 def gameStats():
 	return render_template("gamestats.html")
 
