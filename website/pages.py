@@ -50,7 +50,7 @@ def get_all_players():
     cur.execute("SELECT players FROM cutstats")
     result = cur.fetchall()
     for point in result:
-        for player in point.split():
+        for player in point[0].split():
             print("player = " + player)
             if player[0] not in player_list:
                 player_list.append(player[0])
