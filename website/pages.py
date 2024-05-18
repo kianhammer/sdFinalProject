@@ -25,31 +25,47 @@ def player_stats():
     return render_template("playerStats.html")
 
 #This fetches a table of data
-@app.route('/stats/fetch/<player>')
-def fetch_player_stats(player):
+@app.route('/stats/fetch')
+def fetch_player_stats():
     
     # cur.execute("""SELECT * FROM cutstats""")
     # all_stats = cur.fetchall()
 
-    json_answer = calc_player_stats(player)
+    players_list = get_all_players()
+    print(players_list)
 
-    # json_answer = {
-    #     "origin": "fetch_number",
-    #     "name":  name,
-    #     "value":  answer
-    #     }
+    all_player_stats = [] # maybe add column headers?
+
+    for player in players_list:
+        all_player_stats.append(calc_player_stats(player))
+    print(all_player_stats)
 
     #json.dumps creates a json object
-    return json.dumps(json_answer)
+    return json.dumps(all_player_stats)
+
+
+def get_all_players():
+    player_list = []
+
+    cur.execute("SELECT players FROM cutstats")
+    result = cur.fetchall()
+    for point in result:
+        for player in point.split():
+            print("player = " + player)
+            if player[0] not in player_list:
+                player_list.append(player[0])
+    return player_list
+
 
 
 # makes a dictionary of the player's stats
 def calc_player_stats(player):
-    stats = {"player": player}
 
-    stats["points"] = query(f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%';")
+    stats = [player]
 
-    stats["holds"] = query(f"SELECT COUNT(*) FROM cutstats WHERE Players LIKE '%{player}%' AND SCORED LIKE 'TRUE' AND Pulled LIKE 'FALSE';")
+    stats[1] = query(f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%';")
+
+    stats[2] = query(f"SELECT COUNT(*) FROM cutstats WHERE Players LIKE '%{player}%' AND SCORED LIKE 'TRUE' AND Pulled LIKE 'FALSE';")
 
     print(stats)
 
