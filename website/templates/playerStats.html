@@ -26,7 +26,8 @@
     <script>
         var table = document.getElementById("statsTable");
     
-        var playerData = {{stats|tojson}};
+        var playerData = JSON.parse{{stats|tojson}};
+        // JSON.parse("{{ test }}")
         console.log(playerData);
         for(var i = 0; i < playerData.length; i++)
             var row = table.insertRow(i+1); // skip over header
