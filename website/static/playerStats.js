@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", function() {
+  sortTable(1);
+});
+
 function updateArrow(n) {
   var columns = document.getElementById("statsHeaderRow").getElementsByTagName("TH");
   for (var i = 1; i <columns.length; i++) {
