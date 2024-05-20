@@ -15,15 +15,15 @@ conn = psycopg2.connect(
 cur = conn.cursor()
 
 PLAYER_STATS_QUERIES = {
-    "Points": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{}%';",
-    "O Points": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{}%' AND pulled LIKE 'FALSE';",
-    "D Points": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{}%' AND pulled LIKE 'TRUE';",
-    "Holds": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{}%' AND scored LIKE 'TRUE' AND pulled LIKE 'FALSE';",
-    "Breaks": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{}%' AND scored LIKE 'TRUE' AND pulled LIKE 'TRUE';",
+    "Points": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%';",
+    "O Points": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'FALSE';",
+    "D Points": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'TRUE';",
+    "Holds": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND scored LIKE 'TRUE' AND pulled LIKE 'FALSE';",
+    "Breaks": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND scored LIKE 'TRUE' AND pulled LIKE 'TRUE';",
     "EZ Chances": "SELECT SUM(EndzoneScored) + SUM(EndzoneNotScoredForced) + SUM(EndzoneNotScoredUnforced) + SUM(EndzoneNotScoredUnknown) FROM cutstats WHERE players LIKE '%{player}%';",
-    "EZ Scores": "SELECT SUM(EndzoneScored) FROM cutstats WHERE players LIKE '%{}%';",
-    "Turnovers": "SELECT SUM(TurnoversForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%{}%';",
-    "Blocks": "SELECT SUM(BlocksForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%{}%';",
+    "EZ Scores": "SELECT SUM(EndzoneScored) FROM cutstats WHERE players LIKE '%player%';",
+    "Turnovers": "SELECT SUM(TurnoversForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%player%';",
+    "Blocks": "SELECT SUM(BlocksForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%player%';",
 }
 
 @app.route('/')
@@ -78,7 +78,7 @@ def player_stats():
 
 # Retrieves stats of all players from database
 def fetch_player_stats():
-    all_player_stats = {}
+    all_player_stats = player
 
     for player in get_all_players():
         all_player_stats[player] = calc_player_stats(player)
@@ -104,7 +104,7 @@ def calc_player_stats(player):
     stats = [player]
 
     for category in PLAYER_STATS_QUERIES:
-        stats.append(query_fetch_one(PLAYER_STATS_QUERIES[category].format(player)))
+        stats.append(query_fetch_one(PLAYER_STATS_QUERIES[category].replace("player", player)))
 
     return stats
 
