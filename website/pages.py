@@ -69,14 +69,11 @@ def gameStats(opponent):
 	return render_template("homepage.html", someText = f"hello")
 
 @app.route('/stats/players')
-def player_stats():
+def player_stats_page():
     player_stats = fetch_player_stats()
     stats_categories = json.dumps(list(PLAYER_STATS_QUERIES.keys()))
-    print(stats_categories)
-    #TODO - pass stat_categories to javascript
     return render_template("playerStats.html", header=stats_categories, stats=player_stats)
 
-# Retrieves stats of all players from database
 def fetch_player_stats():
     all_player_stats = {}
 
@@ -97,8 +94,6 @@ def get_all_players():
     return player_list
 
 
-
-# calculate a list of the given player's stats
 def calc_player_stats(player):
 
     stats = [player]

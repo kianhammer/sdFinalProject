@@ -1,7 +1,12 @@
 <head>
     <link rel="stylesheet" href="/static/playerStats.css">
-  
     <script src="/static/playerStats.js"></script>
+    <script>
+        // Initialize player stats page
+        populateStatsTableHeader(JSON.parse({{header|tojson}}));
+        createStatsTable(JSON.parse({{stats|tojson}}));
+        sortTable(1);
+    </script>
 </head>
 <body>
     <h1 class="title" id="title">
@@ -18,11 +23,4 @@
             <tbody id ="statsTableBody"></tbody>
         </table>
     </div>
-    
-    <script>
-        // initial function calls
-        populateStatsTableHeader(JSON.parse({{header|tojson}}));
-        createStatsTable(JSON.parse({{stats|tojson}}));
-        sortTable(1);
-    </script>
 </body>  

@@ -1,16 +1,3 @@
-const HEADER_ROW_VALUES = [
-  "Player",
-  "Points",
-  "O Points",
-  "D Points",
-  "Holds",
-  "Breaks",
-  "EZ Chances",
-  "EZ Scores",
-  "Turnovers",
-  "Blocks"
-];
-
 function populateStatsTableHeader(statCategories) {
   var tableHeaderRow = document.getElementById("statsHeaderRow");
   for (var i=0; i<statCategories.length; i++) {
@@ -35,27 +22,9 @@ function createStatsTable(playerStats) {
   console.log(playerStats);
 }
 
-function updateSortedColumnArrow(n) {
-  var columns = document.getElementById("statsHeaderRow").getElementsByTagName("TH");
-  for (var i = 1; i <columns.length; i++) {
-    header = columns[i];
-    if (i == n) {
-      if (header.classList.contains("arrow-down")) {
-        header.classList.remove("arrow-down");
-        header.classList.add("arrow-up");
-      } else {
-        header.classList.remove("arrow-up");
-        header.classList.add("arrow-down");
-      }
-    } else {
-      header.classList.remove("arrow-up");
-      header.classList.remove("arrow-down");
-    }
-  }
-}
-
 /**
- * sorting table by header click example from: https://www.w3schools.com/howto/howto_js_sort_table.asp
+ * sorting table by header click 
+ * example from: https://www.w3schools.com/howto/howto_js_sort_table.asp
  * @param n the column index to sort by
  */
 function sortTable(n) {
@@ -112,4 +81,23 @@ function sortTable(n) {
     }
   }
   updateSortedColumnArrow(n);
+}
+
+function updateSortedColumnArrow(sortedColumn) {
+  var columnHeaders = document.getElementById("statsHeaderRow").getElementsByTagName("TH");
+  for (var i = 1; i < columnHeaders.length; i++) {
+    header = columnHeaders[i];
+    if (i == sortedColumn) {
+      if (header.classList.contains("arrow-down")) {
+        header.classList.remove("arrow-down");
+        header.classList.add("arrow-up");
+      } else {
+        header.classList.remove("arrow-up");
+        header.classList.add("arrow-down");
+      }
+    } else {
+      header.classList.remove("arrow-up");
+      header.classList.remove("arrow-down");
+    }
+  }
 }
