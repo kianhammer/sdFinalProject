@@ -46,7 +46,7 @@ function updateArrow(n) {
         header.classList.remove("arrow-down");
         header.classList.add("arrow-up");
       } else {
-        // header.classList.remove("arrow-up");
+        header.classList.remove("arrow-up");
         header.classList.add("arrow-down");
       }
     } else {
