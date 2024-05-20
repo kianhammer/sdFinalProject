@@ -19,7 +19,7 @@
     
     <script>
         populateHeader();
-        createStatsTable(JSON.parse({{stats}})); //stats|tojson
+        createStatsTable({{stats}}); //JSON.parse({{stats|tojson}})
         sortTable(1);
     </script>
 </body>  
