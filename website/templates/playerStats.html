@@ -18,8 +18,9 @@
     </div>
     
     <script>
+        // initial function calls
         populateHeader();
-        createStatsTable(JSON.parse("{{stats|tojson}}"));
+        createStatsTable(JSON.parse({{stats|tojson}}));
         sortTable(1);
     </script>
 </body>  

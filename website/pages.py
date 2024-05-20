@@ -56,7 +56,6 @@ def gameStats(opponent):
 	cornellHucks = cur.fetchall()
 	return render_template("homepage.html", someText = f"hello")
 
-
 @app.route('/stats/players')
 def player_stats():
     player_stats = fetch_player_stats()
