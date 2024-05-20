@@ -67,7 +67,7 @@ def gameStats():
 @app.route('/stats/game/<opponent>')
 def gameStatsOpponent(opponent):
 
-	if opponent = "Select A Game:":
+	if opponent == "Select A Game:":
 		return
 
 	
