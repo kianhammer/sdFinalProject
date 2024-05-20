@@ -78,7 +78,7 @@ def player_stats():
 
 # Retrieves stats of all players from database
 def fetch_player_stats():
-    all_player_stats = player
+    all_player_stats = {}
 
     for player in get_all_players():
         all_player_stats[player] = calc_player_stats(player)
