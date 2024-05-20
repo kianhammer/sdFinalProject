@@ -15,15 +15,15 @@ conn = psycopg2.connect(
 cur = conn.cursor()
 
 PLAYER_STATS_QUERIES = {
-    "Points": f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{}%';",
-    "O Points": f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{}%' AND pulled LIKE 'FALSE';",
-    "D Points": f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{}%' AND pulled LIKE 'TRUE';",
-    "Holds": f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{}%' AND scored LIKE 'TRUE' AND pulled LIKE 'FALSE';",
-    "Breaks": f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{}%' AND scored LIKE 'TRUE' AND pulled LIKE 'TRUE';",
-    "EZ Chances": f"SELECT SUM(EndzoneScored) + SUM(EndzoneNotScoredForced) + SUM(EndzoneNotScoredUnforced) + SUM(EndzoneNotScoredUnknown) FROM cutstats WHERE players LIKE '%{player}%';",
-    "EZ Scores": f"SELECT SUM(EndzoneScored) FROM cutstats WHERE players LIKE '%{}%';",
-    "Turnovers": f"SELECT SUM(TurnoversForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%{}%';",
-    "Blocks": f"SELECT SUM(BlocksForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%{}%';",
+    "Points": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{}%';",
+    "O Points": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{}%' AND pulled LIKE 'FALSE';",
+    "D Points": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{}%' AND pulled LIKE 'TRUE';",
+    "Holds": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{}%' AND scored LIKE 'TRUE' AND pulled LIKE 'FALSE';",
+    "Breaks": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{}%' AND scored LIKE 'TRUE' AND pulled LIKE 'TRUE';",
+    "EZ Chances": "SELECT SUM(EndzoneScored) + SUM(EndzoneNotScoredForced) + SUM(EndzoneNotScoredUnforced) + SUM(EndzoneNotScoredUnknown) FROM cutstats WHERE players LIKE '%{player}%';",
+    "EZ Scores": "SELECT SUM(EndzoneScored) FROM cutstats WHERE players LIKE '%{}%';",
+    "Turnovers": "SELECT SUM(TurnoversForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%{}%';",
+    "Blocks": "SELECT SUM(BlocksForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%{}%';",
 }
 
 @app.route('/')
