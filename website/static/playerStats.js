@@ -11,7 +11,7 @@ const HEADER_ROW_VALUES = [
   "Blocks"
 ];
 
-function populateHeader() {
+function populateStatsTableHeader() {
   var tableHeaderRow = document.getElementById("statsHeaderRow");
   for (var i=0; i<HEADER_ROW_VALUES.length; i++) {
     th = document.createElement("th");
@@ -37,7 +37,7 @@ function createStatsTable(playerStats) {
   console.log(playerStats);
 }
 
-function updateArrow(n) {
+function updateSortedColumnArrow(n) {
   var columns = document.getElementById("statsHeaderRow").getElementsByTagName("TH");
   for (var i = 1; i <columns.length; i++) {
     header = columns[i];
@@ -113,5 +113,5 @@ function sortTable(n) {
       }
     }
   }
-  updateArrow(n);
+  updateSortedColumnArrow(n);
 }
