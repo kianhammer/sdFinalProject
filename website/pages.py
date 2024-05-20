@@ -47,7 +47,7 @@ def gameStats():
 
 	opponents = []
 	all_opponents_html = ""
-	for point in game_points:
+	for point in all_opponents:
 		checkOpponent = point[1]
 		
 		for opponent in opponents:
