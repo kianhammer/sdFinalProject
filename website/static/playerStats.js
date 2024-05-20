@@ -37,7 +37,7 @@ function createStatsTable(playerStats) {
 
 function updateSortedColumnArrow(n) {
   var columns = document.getElementById("statsHeaderRow").getElementsByTagName("TH");
-  for (var i = 1; i <columns.length; i++) {
+  for (var i = 0; i <columns.length; i++) {
     header = columns[i];
     if (i == n) {
       if (header.classList.contains("arrow-down")) {
