@@ -16,9 +16,9 @@ function populateHeader() {
   for (var i=0; i<HEADER_ROW_VALUES.length; i++) {
     th = document.createElement("th");
     th.innerHTML = HEADER_ROW_VALUES[i];
-    th.setAttribute("class", "clickable");
-    if (i>0) {
-        th.setAttribute('onclick', "sortTable(" + i + ")");
+    if (i>0) {  
+      th.setAttribute("class", "clickable");
+      th.setAttribute('onclick', "sortTable(" + i + ")");
     }
     tableHeaderRow.appendChild(th);
   }
@@ -28,11 +28,11 @@ function createStatsTable(playerStats) {
   var tableBody = document.getElementById("statsTableBody");
   let rowIndex = 0;
   for (const [player, stats] of Object.entries(playerStats)) {
-      let row = tableBody.insertRow(rowIndex++);
-      for(var i = 0; i < stats.length; i++) {
-          var cell = row.insertCell(i);
-          cell.innerHTML = stats[i]
-      }
+    let row = tableBody.insertRow(rowIndex++);
+    for(var i = 0; i < stats.length; i++) {
+        var cell = row.insertCell(i);
+        cell.innerHTML = stats[i]
+    }
   }
   console.log(playerStats);
 }
@@ -42,11 +42,12 @@ function updateArrow(n) {
   for (var i = 1; i <columns.length; i++) {
     header = columns[i];
     if (i == n) {
-      if (header.classList.contains("arrow-up") || header.classList.contains("arrow-down")) {
-        header.classList.toggle("arrow-down");
-        header.classList.toggle("arrow-up");
+      if (header.classList.contains("arrow-down")) {
+        header.classList.remove("arrow-down");
+        header.classList.add("arrow-up");
       } else {
-        header.classList.add("arrow-down"); // starts descending
+        // header.classList.remove("arrow-up");
+        header.classList.add("arrow-down");
       }
     } else {
       header.classList.remove("arrow-up");
