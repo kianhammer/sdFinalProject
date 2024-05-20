@@ -52,9 +52,9 @@ def gameStats():
 		
 		for opponent in opponents:
 			if checkOpponent == opponent:
-				checkOpponent = null
+				checkOpponent = "null"
 		
-		if checkOpponent != null:
+		if checkOpponent != "null":
 			opponents.append(checkOpponent)
 			all_opponents_html = all_opponents_html + f'<option value="{checkOpponent}">{checkOpponent}</option>'
 			all_opponents_html = all_opponents_html + '/n'
