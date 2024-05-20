@@ -17,7 +17,7 @@ function populateStatsTableHeader(statCategories) {
     th = document.createElement("th");
     th.innerHTML = statCategories[i];
     th.setAttribute("class", "clickable");
-    th.setAttribute('onclick', "sortTable(" + i + ")");
+    th.setAttribute('onclick', "sortTable(" + (i+1) + ")");
     tableHeaderRow.appendChild(th);
   }
 }
@@ -37,7 +37,7 @@ function createStatsTable(playerStats) {
 
 function updateSortedColumnArrow(n) {
   var columns = document.getElementById("statsHeaderRow").getElementsByTagName("TH");
-  for (var i = 0; i <columns.length; i++) {
+  for (var i = 1; i <columns.length; i++) {
     header = columns[i];
     if (i == n) {
       if (header.classList.contains("arrow-down")) {
