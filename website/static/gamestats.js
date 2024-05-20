@@ -9,7 +9,7 @@ function updateGame(data) {
 }
 
 function fetchGame() {
-    the_game = document.getElementById("game_input").value;
+    the_game = document.getElementById("change_game_input").value;
 
     URL = "/stats/game/" + the_game;
 
