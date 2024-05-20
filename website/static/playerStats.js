@@ -11,11 +11,11 @@ const HEADER_ROW_VALUES = [
   "Blocks"
 ];
 
-function populateStatsTableHeader() {
+function populateStatsTableHeader(statCategories) {
   var tableHeaderRow = document.getElementById("statsHeaderRow");
-  for (var i=0; i<HEADER_ROW_VALUES.length; i++) {
+  for (var i=0; i<statCategories.length; i++) {
     th = document.createElement("th");
-    th.innerHTML = HEADER_ROW_VALUES[i];
+    th.innerHTML = statCategories[i];
     if (i>0) {  
       th.setAttribute("class", "clickable");
       th.setAttribute('onclick', "sortTable(" + i + ")");

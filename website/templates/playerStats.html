@@ -11,7 +11,9 @@
     <div style="overflow-x:auto;">
         <table id="statsTable">
             <thead>
-                <tr id="statsHeaderRow"></tr>
+                <tr id="statsHeaderRow">
+                    <th>Player</th>
+                </tr>
             </thead>
             <tbody id ="statsTableBody"></tbody>
         </table>
@@ -19,7 +21,7 @@
     
     <script>
         // initial function calls
-        populateHeader();
+        populateStatsTableHeader(JSON.parse({{header|tojson}}));
         createStatsTable(JSON.parse({{stats|tojson}}));
         sortTable(1);
     </script>
