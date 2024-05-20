@@ -47,11 +47,11 @@ def gameStatsOpponent(opponent):
 
 	sql_game_points = """SELECT * FROM cutstats WHERE Opponent = %s ORDER BY Point DESC;"""
 	cur.execute(sql_game_points, [opponent])
-	game_points = cur.fetchall()
+	game_points = cur.fetchone()
 
-	score = "";
-	for point in game_points:
-    		score = point[2]
+	score = "" + game_points[2]
+	#for point in game_points:
+    	#	score = point[2]
 
 	json_answer = {
         	"score": score
