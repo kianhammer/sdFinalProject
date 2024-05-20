@@ -1,6 +1,41 @@
-document.addEventListener("DOMContentLoaded", function() {
-  sortTable(1);
-});
+const HEADER_ROW_VALUES = [
+  "Player",
+  "Points",
+  "O Points",
+  "D Points",
+  "Holds",
+  "Breaks",
+  "EZ Chances",
+  "EZ Scores",
+  "Turnovers",
+  "Blocks"
+];
+
+function populateHeader() {
+  var tableHeaderRow = document.getElementById("statsHeaderRow");
+  for (var i=0; i<HEADER_ROW_VALUES.length; i++) {
+    th = document.createElement("th");
+    th.innerHTML = HEADER_ROW_VALUES[i];
+    th.class="clickable";
+    if (i>0) {
+        th.onclick = "sortTable(" + i + ")"
+    }
+    tableHeaderRow.appendChild(th);
+  }
+}
+
+function createStatsTable(playerStats) {
+  var tableBody = document.getElementById("statsTableBody");
+  let rowIndex = 0;
+  for (const [player, stats] of Object.entries(playerStats)) {
+      let row = tableBody.insertRow(rowIndex++);
+      for(var i = 0; i < stats.length; i++) {
+          var cell = row.insertCell(i);
+          cell.innerHTML = stats[i]
+      }
+  }
+  console.log(playerStats);
+}
 
 function updateArrow(n) {
   var columns = document.getElementById("statsHeaderRow").getElementsByTagName("TH");
