@@ -48,7 +48,7 @@ def gameStatsOpponent(opponent):
 
 	sql_game_points = """SELECT * FROM cutstats WHERE Opponent = %s ORDER BY Point DESC;"""
 	cur.execute(sql_game_points, [opponent])
-	game_points = cur.fetall()
+	game_points = cur.fetchall()
 
 	score = ""
 	for point in game_points:
