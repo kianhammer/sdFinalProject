@@ -2,7 +2,6 @@ function updateGame(data) {
     the_json = data;
 
     score = the_json['score'];
-    console.log("hello");
     
     the_answer = document.getElementById("game_stats_display");
     the_answer.innerHTML = "The game score: " + score; 
@@ -16,7 +15,7 @@ function fetchGame() {
 
     fetch(URL).then( response => response.json()).then( data => updateGame(data) );
 
-
+    console.log("hello");
     
     console.log(URL);
    
