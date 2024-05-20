@@ -11,7 +11,7 @@ function updateGame(data) {
 function fetchGame() {
     the_game = document.getElementById("game_input").value;
 
-    URL = "/game/stats/" + the_game;
+    URL = "/stats/game/" + the_game;
 
     fetch(URL).then( response => response.json()).then( data => updateGame(data) );
 
