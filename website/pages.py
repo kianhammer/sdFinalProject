@@ -41,7 +41,7 @@ def gameStats():
 
 	cur = conn.cursor()
 
-	sql_all_points = """SELECT Opponent FROM cutstats ORDER BY Date DESC;"""
+	sql_all_points = """SELECT * FROM cutstats ORDER BY Date DESC;"""
 	cur.execute(sql_all_points)
 	all_opponents = cur.fetchall()
 
