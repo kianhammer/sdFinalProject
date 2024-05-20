@@ -71,7 +71,7 @@ def gameStats(opponent):
 @app.route('/stats/players')
 def player_stats():
     player_stats = fetch_player_stats()
-    stats_categories = json.dumps(PLAYER_STATS_QUERIES.keys())
+    stats_categories = json.dumps(list(PLAYER_STATS_QUERIES.keys()))
     print(stats_categories)
     #TODO - pass stat_categories to javascript
     return render_template("playerStats.html", header=stats_categories, stats=player_stats)
