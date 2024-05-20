@@ -16,10 +16,8 @@ function populateStatsTableHeader(statCategories) {
   for (var i=0; i<statCategories.length; i++) {
     th = document.createElement("th");
     th.innerHTML = statCategories[i];
-    if (i>0) {  
-      th.setAttribute("class", "clickable");
-      th.setAttribute('onclick', "sortTable(" + i + ")");
-    }
+    th.setAttribute("class", "clickable");
+    th.setAttribute('onclick', "sortTable(" + i + ")");
     tableHeaderRow.appendChild(th);
   }
 }
