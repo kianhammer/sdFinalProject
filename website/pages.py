@@ -32,7 +32,35 @@ def importpage():
 
 @app.route('/stats/game')
 def gameStats():
-	return render_template("gamestats.html")
+	conn = psycopg2.connect(
+		host="localhost",
+		port=5432,
+		database="chend2",
+		user="chend2",
+		password="plad242books")
+
+	cur = conn.cursor()
+
+	sql_all_points = """SELECT Opponent FROM cutstats ORDER BY Date DESC;"""
+	cur.execute(sql_all_points)
+	all_opponents = cur.fetchall()
+
+	opponents = []
+	all_opponents_html = ""
+	for point in game_points:
+		checkOpponent = point[1]
+		
+		for opponent in opponents:
+			if checkOpponent == opponent:
+				checkOpponent = null
+
+		if checkOpponent != null:
+    			opponents.append(checkOpponent)
+			all_opponents_html = all_opponents_html + f'<option value="{checkOpponent}">{checkOpponent}</option>'
+			all_opponents_html = all_opponents_html + '/n'
+	
+	
+	return render_template("gamestats.html", DropdownOptions = all_opponents_html)
 
 @app.route('/stats/game/<opponent>')
 def gameStatsOpponent(opponent):
@@ -52,7 +80,8 @@ def gameStatsOpponent(opponent):
 
 	score = ""
 	for point in game_points:
-    		score = point[2]
+		score = point[2]
+
 
 	json_answer = {
         	"score": score
