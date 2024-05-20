@@ -47,6 +47,8 @@ def gameStats():
 
 	opponents = []
 	all_opponents_html = ""
+	all_opponents_html = all_opponents_html + f'<option value="Select A Game:">Select A Game:</option>'
+	all_opponents_html = all_opponents_html + '/n'
 	for point in all_opponents:
 		checkOpponent = point[1]
 		
@@ -65,6 +67,10 @@ def gameStats():
 @app.route('/stats/game/<opponent>')
 def gameStatsOpponent(opponent):
 
+	if opponent = "Select A Game:":
+		return
+
+	
 	conn = psycopg2.connect(
 	host="localhost",
 	port=5432,
