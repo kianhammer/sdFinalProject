@@ -16,9 +16,9 @@ function populateHeader() {
   for (var i=0; i<HEADER_ROW_VALUES.length; i++) {
     th = document.createElement("th");
     th.innerHTML = HEADER_ROW_VALUES[i];
-    th.class="clickable";
+    th.setAttribute("class", "clickable");
     if (i>0) {
-        th.onclick = "sortTable(" + i + ")"
+        th.setAttribute('onclick', "sortTable(" + i + ")");
     }
     tableHeaderRow.appendChild(th);
   }
