@@ -104,7 +104,7 @@ def calc_player_stats(player):
     stats = [player]
 
     for category in PLAYER_STATS_QUERIES:
-        stats.append(query_fetch_one(PLAYER_STATS_QUERIES[category].replace("player", player)))
+        stats.append(query_fetch_one(PLAYER_STATS_QUERIES[category].replace("%player%", f"%{player}%")))
 
     return stats
 
