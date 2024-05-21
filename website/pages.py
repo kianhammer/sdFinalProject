@@ -45,6 +45,11 @@ def gameStats():
 	cur.execute(sql_all_points)
 	all_opponents = cur.fetchall()
 
+	all_opponents_html = gameStatsGenerateDropdown(all_opponents)
+	
+	return render_template("gamestats.html", DropdownOptions = all_opponents_html)
+
+def gameStatsGenerateDropdown(all_opponents):
 	opponents = []
 	all_opponents_html = ""
 	all_opponents_html = all_opponents_html + f'<option value="Select A Game:">Select A Game:</option>'
@@ -61,8 +66,6 @@ def gameStats():
 			all_opponents_html = all_opponents_html + f'<option value="{checkOpponent}">{checkOpponent}</option>'
 			all_opponents_html = all_opponents_html + '/n'
 	
-	
-	return render_template("gamestats.html", DropdownOptions = all_opponents_html)
 
 @app.route('/stats/game/<opponent>')
 def gameStatsOpponent(opponent):
