@@ -106,17 +106,25 @@ function highlight_column(columnIndex) {
   var tableBody = document.getElementById("statsTableBody");
   var tds = tableBody.querySelectorAll("td");
 
-  for (var i = 0; i < tds.length; i++) {
-    var cell = tds[i];
-    console.log("i = " + i + ", cell value =" + cell.innerHTML);
+  const columns = document.querySelectorAll(`td:nth-child(${columnIndex + 1})`);
+  columns.forEach(col => {
+    console.log("cell value: " + col.innerHTML)
+    if (col.classList.contains('selected'))
+      col.classList.remove('selected');
+    else
+      col.classList.add('selected');
+  });
+  
+  // for (var i = 0; i < tds.length; i++) {
+  //   var cell = tds[i];
 
-    const columns = document.querySelectorAll(`td:nth-child(${columnIndex})`);
-      columns.forEach(col => {
-        console.log("cell value: " + col.innerHTML)
-        if (col.classList.contains('selected'))
-          col.classList.remove('selected');
-        else
-          col.classList.add('selected');
-      });
-  }
+  //   const columns = document.querySelectorAll(`td:nth-child(${columnIndex + 1})`);
+  //     columns.forEach(col => {
+  //       console.log("cell value: " + col.innerHTML)
+  //       if (col.classList.contains('selected'))
+  //         col.classList.remove('selected');
+  //       else
+  //         col.classList.add('selected');
+  //     });
+  // }
 }
