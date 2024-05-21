@@ -19,15 +19,14 @@ function createStatsTable(playerStats) {
         cell.innerHTML = stats[i]
     }
   }
-  console.log(playerStats);
 }
 
 /**
  * sorting table by header click 
  * example from: https://www.w3schools.com/howto/howto_js_sort_table.asp
- * @param n the column index to sort by
+ * @param columnIndex the column index to sort by
  */
-function sortTable(n) {
+function sortTable(columnIndex) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
   table = document.getElementById("statsTableBody");
   switching = true;
@@ -46,8 +45,8 @@ function sortTable(n) {
       shouldSwitch = false;
       /* Get the two elements you want to compare,
       one from current row and one from the next: */
-      x = rows[i].getElementsByTagName("TD")[n];
-      y = rows[i + 1].getElementsByTagName("TD")[n];
+      x = rows[i].getElementsByTagName("TD")[columnIndex];
+      y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
       /* Check if the two rows should switch place,
       based on the direction, asc or desc: */
       if (dir == "asc") {
@@ -80,14 +79,15 @@ function sortTable(n) {
       }
     }
   }
-  updateSortedColumnArrow(n);
+  updateSortedColumnArrow(columnIndex);
+  highlight_column(columnIndex);
 }
 
-function updateSortedColumnArrow(sortedColumn) {
+function updateSortedColumnArrow(columnIndex) {
   var columnHeaders = document.getElementById("statsHeaderRow").getElementsByTagName("TH");
   for (var i = 1; i < columnHeaders.length; i++) {
     header = columnHeaders[i];
-    if (i == sortedColumn) {
+    if (i == columnIndex) {
       if (header.classList.contains("arrow-down")) {
         header.classList.remove("arrow-down");
         header.classList.add("arrow-up");
@@ -100,4 +100,23 @@ function updateSortedColumnArrow(sortedColumn) {
       header.classList.remove("arrow-down");
     }
   }
+}
+
+function highlight_column(columnIndex) {
+  var tableBody = document.getElementById("statsTableBody");
+  var tds = tableBody.querySelectorAll("td");
+  console.log("tds: "+ tds);
+
+  // for (var i = 0; i < tds.length; i++) {
+  //   var cell = tds[i];
+  //   cell.onclick = function() {
+  //     const columns = document.querySelectorAll(`td:nth-child(${columnIndex})`);
+  //     columns.forEach(col => {
+  //       if (col.classList.contains('selected'))
+  //         col.classList.remove('selected');
+  //       else
+  //         col.classList.add('selected');
+  //     });
+  //   }
+  // }
 }

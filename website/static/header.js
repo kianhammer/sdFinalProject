@@ -1,4 +1,9 @@
-// info on reusable headers and footers https://www.freecodecamp.org/news/reusable-html-components-how-to-reuse-a-header-and-footer-on-a-website/
+/**
+ * Info on reusable headers and footers https://www.freecodecamp.org/news/reusable-html-components-how-to-reuse-a-header-and-footer-on-a-website/
+ * This is where I got this framework
+ * 
+ * has useful info if we also add footer (and want different styles)
+ */
 
 class Header extends HTMLElement {
     constructor() {
