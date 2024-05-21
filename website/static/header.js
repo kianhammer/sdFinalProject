@@ -8,38 +8,38 @@ class Header extends HTMLElement {
     connectedCallback() {
       this.innerHTML = `
         <style>
-          nav {
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color:  #0a0a23;
-          }
-  
           ul {
+            list-style-type: none;
+            margin: 0;
             padding: 0;
+            overflow: hidden;
+            background-color: #333;
           }
           
-          a {
-            font-weight: 700;
-            margin: 0 25px;
-            color: #fff;
+          li {
+            float: left;
+          }
+          
+          li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
             text-decoration: none;
           }
           
-          a:hover {
-            padding-bottom: 5px;
-            box-shadow: inset 0 -2px 0 0 #fff;
+          /* Change the link color to #111 (black) on hover */
+          li a:hover {
+            background-color: #111;
           }
         </style>
         <header>
-          <nav>
-            <ul>
-              <li><a href="about.html">About</a></li>
-              <li><a href="work.html">Work</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-          </nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/stats/players">Player Stats</a></li>
+            <li><a href="/stats/game/Cornell">Cornell Game Stats</a></li>
+            <li><a href="/import/">Import</a></li>
+          </ul>
         </header>
       `;
     }
