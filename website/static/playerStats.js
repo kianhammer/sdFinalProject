@@ -103,28 +103,21 @@ function updateSortedColumnArrow(columnIndex) {
 }
 
 function highlight_column(columnIndex) {
-  var tableBody = document.getElementById("statsTableBody");
-  var tds = tableBody.querySelectorAll("td");
 
-  const columns = document.querySelectorAll(`td:nth-child(${columnIndex + 1})`);
-  columns.forEach(col => {
-    console.log("cell value: " + col.innerHTML)
-    if (col.classList.contains('selected'))
-      col.classList.remove('selected');
-    else
-      col.classList.add('selected');
-  });
-  
-  // for (var i = 0; i < tds.length; i++) {
-  //   var cell = tds[i];
-
-  //   const columns = document.querySelectorAll(`td:nth-child(${columnIndex + 1})`);
-  //     columns.forEach(col => {
-  //       console.log("cell value: " + col.innerHTML)
-  //       if (col.classList.contains('selected'))
-  //         col.classList.remove('selected');
-  //       else
-  //         col.classList.add('selected');
-  //     });
-  // }
+  var columnHeaders = document.getElementById("statsHeaderRow").getElementsByTagName("TH");
+  for (var i = 1; i < columnHeaders.length; i++) {
+    const columns = document.querySelectorAll(`td:nth-child(${columnIndex + 1})`);
+    if (i == columnIndex) {
+      columns.forEach(col => {
+        if (col.classList.contains('selected'))
+          col.classList.remove('selected');
+        else
+          col.classList.add('selected');
+      });
+    } else {
+      columns.forEach(col => {
+        col.classList.remove('selected');
+        });
+    }
+  }
 }
