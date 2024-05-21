@@ -60,6 +60,10 @@ tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
 }
 
-.selected {
-    background-color: red;
+.selected td {
+    background-color: #cccccc;
+}
+
+.selected th {
+    background-color: #005947;
 }
