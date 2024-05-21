@@ -117,6 +117,6 @@ function highlight_column(columnIndex) {
     //     else
     //       col.classList.add('selected');
     //   });
-    }
+    // }
   }
 }
