@@ -104,7 +104,7 @@ function updateSortedColumnArrow(columnIndex) {
 
 function highlight_column(columnIndex) {
 
-  var table = document.getElementById("statsTableBody");
+  var table = document.getElementById("statsTable");
   var tdsth = table.querySelectorAll("th, td");
 
   for (var i = 0; i < tdsth.length; i++) {
