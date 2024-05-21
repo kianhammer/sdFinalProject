@@ -61,9 +61,9 @@ tbody tr:last-of-type {
 }
 
 .selected-td {
-    background-color: #dddddd;
+    background-color: #ededed;
 }
 
 .selected-th {
-    background-color: #005947;
+    background-color: #039d7e;
 }
