@@ -8,13 +8,17 @@ table {
     width: 100%;
 }
 
+th td {
+    padding: 12px 15px;
+}
+
 thead tr {
     background-color: #009879;
     color: #ffffff;
     text-align: left;
 }
 
-/* This is a placeholder for an arrow */
+/* This is a placeholder for an arrow*/
 thead th::before {
     content: "";
     display: inline-block;
@@ -30,27 +34,23 @@ thead th::before {
 }
 
 .arrow-down::before {
+    vertical-align: bottom;
     border-top: 8px solid;
     border-bottom: 3px solid transparent;
 }
 
 .arrow-up::before {
+    vertical-align: top;
     border-bottom: 8px solid;
     border-top: 3px solid transparent;
 }
 
-.clickable:hover {
-    cursor: pointer;
-}
-
-th td {
-    padding: 12px 15px;
-}
-
-tbody tr:hover {background-color: #f3f3f3;}
-
 tbody tr {
     border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:hover {
+    background-color: #f3f3f3;
 }
 
 tbody tr:last-of-type {
@@ -63,4 +63,8 @@ tbody tr:last-of-type {
 
 .selected-th {
     background-color: #02755e;
+}
+
+.clickable:hover {
+    cursor: pointer;
 }
