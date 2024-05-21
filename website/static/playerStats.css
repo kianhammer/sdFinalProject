@@ -1,6 +1,5 @@
 table {
-    border-collapse: separate;
-    border-spacing: 10px 0;
+    border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
     font-family: sans-serif;
@@ -12,7 +11,7 @@ table {
 thead tr {
     background-color: #009879;
     color: #ffffff;
-    text-align: left;
+    text-align: center;
 }
 
 .clickable:hover {
