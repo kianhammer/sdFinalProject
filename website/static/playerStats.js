@@ -109,14 +109,14 @@ function highlight_column(columnIndex) {
   for (var i = 0; i < tds.length; i++) {
     var cell = tds[i];
     console.log("i = " + i + ", cell value =" + cell.innerHTML);
-    // cell.onclick = function() {
-    //   const columns = document.querySelectorAll(`td:nth-child(${columnIndex})`);
-    //   columns.forEach(col => {
-    //     if (col.classList.contains('selected'))
-    //       col.classList.remove('selected');
-    //     else
-    //       col.classList.add('selected');
-    //   });
-    // }
+
+    const columns = document.querySelectorAll(`td:nth-child(${columnIndex})`);
+      columns.forEach(col => {
+        console.log("cell value: " + col.innerHTML)
+        if (col.classList.contains('selected'))
+          col.classList.remove('selected');
+        else
+          col.classList.add('selected');
+      });
   }
 }
