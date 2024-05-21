@@ -14,6 +14,18 @@ conn = psycopg2.connect(
     
 cur = conn.cursor()
 
+PLAYER_STATS_QUERIES = {
+    "Points": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%';",
+    "O Points": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'FALSE';",
+    "D Points": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'TRUE';",
+    "Holds": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND scored LIKE 'TRUE' AND pulled LIKE 'FALSE';",
+    "Breaks": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND scored LIKE 'TRUE' AND pulled LIKE 'TRUE';",
+    "EZ Chances": "SELECT SUM(EndzoneScored) + SUM(EndzoneNotScoredForced) + SUM(EndzoneNotScoredUnforced) + SUM(EndzoneNotScoredUnknown) FROM cutstats WHERE players LIKE '%player%';",
+    "EZ Scores": "SELECT SUM(EndzoneScored) FROM cutstats WHERE players LIKE '%player%';",
+    "Turnovers": "SELECT SUM(TurnoversForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%player%';",
+    "Blocks": "SELECT SUM(BlocksForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%player%';",
+}
+
 @app.route('/')
 def welcome():
 	conn = psycopg2.connect(
@@ -56,13 +68,12 @@ def gameStats(opponent):
 	cornellHucks = cur.fetchall()
 	return render_template("homepage.html", someText = f"hello")
 
-
 @app.route('/stats/players')
-def player_stats():
+def player_stats_page():
     player_stats = fetch_player_stats()
-    return render_template("playerStats.html", stats=player_stats)
+    stats_categories = json.dumps(list(PLAYER_STATS_QUERIES.keys()))
+    return render_template("playerStats.html", header=stats_categories, stats=player_stats)
 
-# Retrieves stats of all players from database
 def fetch_player_stats():
     all_player_stats = {}
 
@@ -83,35 +94,12 @@ def get_all_players():
     return player_list
 
 
-
-# calculate a list of the given player's stats
 def calc_player_stats(player):
-
-    player_stats_queries = [
-        # points played
-        f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%';",
-        # o points
-        f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%' AND pulled LIKE 'FALSE';",
-        # d points
-        f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%' AND pulled LIKE 'TRUE';",
-        # holds
-        f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%' AND scored LIKE 'TRUE' AND pulled LIKE 'FALSE';",
-        # breaks
-        f"SELECT COUNT(*) FROM cutstats WHERE players LIKE '%{player}%' AND scored LIKE 'TRUE' AND pulled LIKE 'TRUE';",
-        # end zone chances
-        f"SELECT SUM(EndzoneScored) + SUM(EndzoneNotScoredForced) + SUM(EndzoneNotScoredUnforced) + SUM(EndzoneNotScoredUnknown) FROM cutstats WHERE players LIKE '%{player}%';",
-        # end zone scores
-        f"SELECT SUM(EndzoneScored) FROM cutstats WHERE players LIKE '%{player}%';",
-        # turnovers
-        f"SELECT SUM(TurnoversForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%{player}%';",
-        # blocks
-        f"SELECT SUM(BlocksForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%{player}%';",
-    ]
 
     stats = [player]
 
-    for query in player_stats_queries:
-        stats.append(query_fetch_one(query))
+    for category in PLAYER_STATS_QUERIES:
+        stats.append(query_fetch_one(PLAYER_STATS_QUERIES[category].replace("%player%", f"%{player}%")))
 
     return stats
 

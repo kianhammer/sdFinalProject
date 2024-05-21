@@ -1,30 +1,32 @@
-document.addEventListener("DOMContentLoaded", function() {
-  sortTable(1);
-});
+function populateStatsTableHeader(statCategories) {
+  var tableHeaderRow = document.getElementById("statsHeaderRow");
+  for (var i=0; i<statCategories.length; i++) {
+    var th = document.createElement("th");
+    th.innerHTML = statCategories[i];
+    th.setAttribute("class", "clickable");
+    th.setAttribute('onclick', "sortTable(" + (i+1) + ")");
+    tableHeaderRow.appendChild(th);
+  }
+}
 
-function updateArrow(n) {
-  var columns = document.getElementById("statsHeaderRow").getElementsByTagName("TH");
-  for (var i = 1; i <columns.length; i++) {
-    header = columns[i];
-    if (i == n) {
-      if (header.classList.contains("arrow-up") || header.classList.contains("arrow-down")) {
-        header.classList.toggle("arrow-down");
-        header.classList.toggle("arrow-up");
-      } else {
-        header.classList.add("arrow-down"); // starts descending
-      }
-    } else {
-      header.classList.remove("arrow-up");
-      header.classList.remove("arrow-down");
+function createStatsTable(playerStats) {
+  var tableBody = document.getElementById("statsTableBody");
+  let rowIndex = 0;
+  for (const [player, stats] of Object.entries(playerStats)) {
+    let row = tableBody.insertRow(rowIndex++);
+    for(var i = 0; i < stats.length; i++) {
+        var cell = row.insertCell(i);
+        cell.innerHTML = stats[i]
     }
   }
 }
 
 /**
- * sorting table by header click example from: https://www.w3schools.com/howto/howto_js_sort_table.asp
- * @param n the column index to sort by
+ * sorting table by header click 
+ * example from: https://www.w3schools.com/howto/howto_js_sort_table.asp
+ * @param columnIndex the column index to sort by
  */
-function sortTable(n) {
+function sortTable(columnIndex) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
   table = document.getElementById("statsTableBody");
   switching = true;
@@ -43,8 +45,8 @@ function sortTable(n) {
       shouldSwitch = false;
       /* Get the two elements you want to compare,
       one from current row and one from the next: */
-      x = rows[i].getElementsByTagName("TD")[n];
-      y = rows[i + 1].getElementsByTagName("TD")[n];
+      x = rows[i].getElementsByTagName("TD")[columnIndex];
+      y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
       /* Check if the two rows should switch place,
       based on the direction, asc or desc: */
       if (dir == "asc") {
@@ -77,5 +79,46 @@ function sortTable(n) {
       }
     }
   }
-  updateArrow(n);
+  updateSortedColumnArrow(columnIndex);
+  highlight_column(columnIndex);
+}
+
+function updateSortedColumnArrow(columnIndex) {
+  var columnHeaders = document.getElementById("statsHeaderRow").getElementsByTagName("TH");
+  for (var i = 1; i < columnHeaders.length; i++) {
+    header = columnHeaders[i];
+    if (i == columnIndex) {
+      if (header.classList.contains("arrow-down")) {
+        header.classList.remove("arrow-down");
+        header.classList.add("arrow-up");
+      } else {
+        header.classList.remove("arrow-up");
+        header.classList.add("arrow-down");
+      }
+    } else {
+      header.classList.remove("arrow-up");
+      header.classList.remove("arrow-down");
+    }
+  }
+}
+
+function highlight_column(columnIndex) {
+
+  var table = document.getElementById("statsTable");
+  var tdsth = table.querySelectorAll("th, td");
+
+  for (var i = 0; i < tdsth.length; i++) {
+    var cell = tdsth[i];
+    cell.classList.remove('selected-th');
+    cell.classList.remove('selected-td');
+  }
+
+  const columns = document.querySelectorAll(`td:nth-child(${columnIndex + 1}), th:nth-child(${columnIndex + 1})`);
+  columns.forEach(col => {
+    if (col.nodeName == 'TH') {
+      col.classList.add('selected-th');
+    } else {
+      col.classList.add('selected-td');
+    }
+  });
 }
