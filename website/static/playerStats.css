@@ -61,7 +61,7 @@ tbody tr:last-of-type {
 }
 
 .selected {
-    background-color: #cccccc; /*TODO find way to change header color diferently #005947*/
+    background-color: #dddddd; /*TODO find way to change header color diferently #005947*/
 }
 
 /* .selected th {
