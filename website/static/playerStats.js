@@ -105,18 +105,18 @@ function updateSortedColumnArrow(columnIndex) {
 function highlight_column(columnIndex) {
   var tableBody = document.getElementById("statsTableBody");
   var tds = tableBody.querySelectorAll("td");
-  console.log("tds: "+ tds);
 
-  // for (var i = 0; i < tds.length; i++) {
-  //   var cell = tds[i];
-  //   cell.onclick = function() {
-  //     const columns = document.querySelectorAll(`td:nth-child(${columnIndex})`);
-  //     columns.forEach(col => {
-  //       if (col.classList.contains('selected'))
-  //         col.classList.remove('selected');
-  //       else
-  //         col.classList.add('selected');
-  //     });
-  //   }
-  // }
+  for (var i = 0; i < tds.length; i++) {
+    var cell = tds[i];
+    console.log("i = " + i + ", cell value =" + cell.innerHTML);
+    // cell.onclick = function() {
+    //   const columns = document.querySelectorAll(`td:nth-child(${columnIndex})`);
+    //   columns.forEach(col => {
+    //     if (col.classList.contains('selected'))
+    //       col.classList.remove('selected');
+    //     else
+    //       col.classList.add('selected');
+    //   });
+    }
+  }
 }
