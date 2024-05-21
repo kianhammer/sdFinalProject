@@ -14,7 +14,7 @@ thead tr {
     text-align: left;
 }
 
-/* This is a placeholder for an arrow. TODO - Should look for solution with less duplicate code */
+/* This is a placeholder for an arrow */
 thead th::before {
     content: "";
     display: inline-block;
@@ -29,16 +29,18 @@ thead th::before {
     margin-right: 5px;
 }
 
-.clickable:hover {
-    cursor: pointer;
-}
-
 .arrow-down::before {
     border-top: 8px solid;
+    border-bottom: 3px solid transparent;
 }
 
 .arrow-up::before {
     border-bottom: 8px solid;
+    border-top: 3px solid transparent;
+}
+
+.clickable:hover {
+    cursor: pointer;
 }
 
 th td {
