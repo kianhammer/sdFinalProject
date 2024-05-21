@@ -40,7 +40,7 @@ class Header extends HTMLElement {
         </style>
         <header>
           <ul>
-            <li><a href="/">Home</a></li>
+            <li><a href="/">CUTRULES</a></li>
             <li><a href="/stats/players">Player Stats</a></li>
             <li><a href="/stats/game">Game Stats</a></li>
             <li><a href="/import/">Import</a></li>
