@@ -1,7 +1,7 @@
 function populateStatsTableHeader(statCategories) {
   var tableHeaderRow = document.getElementById("statsHeaderRow");
   for (var i=0; i<statCategories.length; i++) {
-    th = document.createElement("th");
+    var th = document.createElement("th");
     th.innerHTML = statCategories[i];
     th.setAttribute("class", "clickable");
     th.setAttribute('onclick', "sortTable(" + (i+1) + ")");

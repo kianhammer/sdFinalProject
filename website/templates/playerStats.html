@@ -1,23 +1,23 @@
 <head>
     <link rel="stylesheet" href="/static/playerStats.css">
     <script src="/static/playerStats.js"></script>
+    <script src="/static/header.js" type="text/javascript" defer></script>
 </head>
 <body>
-    <h1 class="title" id="title">
-        PLAYER STATS
-    </h1>
-    
-    <div style="overflow-x:auto;">
-        <table id="statsTable">
-            <thead>
-                <tr id="statsHeaderRow">
-                    <th>Player</th>
-                </tr>
-            </thead>
-            <tbody id ="statsTableBody">
-            </tbody>
-        </table>
-    </div>
+    <header-component></header-component>
+    <main>
+        <div style="overflow-x:auto;">
+            <table id="statsTable">
+                <thead>
+                    <tr id="statsHeaderRow">
+                        <th>Player</th>
+                    </tr>
+                </thead>
+                <tbody id="statsTableBody">
+                </tbody>
+            </table>
+        </div>
+    </main>
 </body>
 <script>
     // Initialize player stats page
