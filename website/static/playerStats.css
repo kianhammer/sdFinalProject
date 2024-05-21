@@ -15,7 +15,7 @@ thead tr {
 }
 
 /* This is a placeholder for an arrow. TODO - Should look for solution with less duplicate code */
-thead tr::before {
+thead th::before {
     content: "";
     display: inline-block;
     vertical-align: bottom;
