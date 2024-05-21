@@ -104,14 +104,14 @@ function updateSortedColumnArrow(columnIndex) {
 
 function highlight_column(columnIndex) {
 
-  // var table = document.getElementById("statsTableBody");
-  // var tdsth = table.querySelectorAll("th, td");
+  var table = document.getElementById("statsTableBody");
+  var tdsth = table.querySelectorAll("th, td");
 
-  // for (var i = 0; i < tdsth.length; i++) {
-  //   var cell = tdsth[i];
-  //   cell.classList.remove('selected');
-  // }
+  for (var i = 0; i < tdsth.length; i++) {
+    var cell = tdsth[i];
+    cell.classList.remove('selected');
+  }
 
-  const columns = document.querySelectorAll(`td:nth-child(${clickedThIndex + 1}), th:nth-child(${clickedThIndex + 1})`);
+  const columns = document.querySelectorAll(`td:nth-child(${columnIndex + 1}), th:nth-child(${columnIndex + 1})`);
   columns.forEach(col => col.classList.add('selected'));
 }
