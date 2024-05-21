@@ -24,6 +24,8 @@ PLAYER_STATS_QUERIES = {
     "EZ Scores": "SELECT SUM(EndzoneScored) FROM cutstats WHERE players LIKE '%player%';",
     "Turnovers": "SELECT SUM(TurnoversForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%player%';",
     "Blocks": "SELECT SUM(BlocksForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%player%';",
+    "Huck Attempts": "SELECT SUM(HucksCompleted) + SUM(HucksIncompleteForced) + SUM(HucksIncompleteUnforced) + SUM(HucksIncompleteUnknown) FROM cutstats WHERE players LIKE '%player%';",
+    "Huck Completed": "SELECT SUM(HucksCompleted) FROM cutstats WHERE players LIKE '%player%';",
 }
 
 @app.route('/')
