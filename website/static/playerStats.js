@@ -109,9 +109,16 @@ function highlight_column(columnIndex) {
 
   for (var i = 0; i < tdsth.length; i++) {
     var cell = tdsth[i];
-    cell.classList.remove('selected');
+    cell.classList.remove('selected-th');
+    cell.classList.remove('selected-td');
   }
 
   const columns = document.querySelectorAll(`td:nth-child(${columnIndex + 1}), th:nth-child(${columnIndex + 1})`);
-  columns.forEach(col => col.classList.add('selected'));
+  columns.forEach(col => {
+    if (col.nodeName == 'TH') {
+      col.classList.add('selected-th');
+    } else {
+      col.classList.add('selected-td');
+    }
+  });
 }

@@ -60,10 +60,10 @@ tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
 }
 
-.selected {
-    background-color: #dddddd; /*TODO find way to change header color diferently #005947*/
+.selected-td {
+    background-color: #dddddd;
 }
 
-/* .selected th {
+.selected-th {
     background-color: #005947;
-} */
+}
