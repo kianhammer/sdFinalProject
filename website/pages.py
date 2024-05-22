@@ -57,19 +57,24 @@ def gameStatsGenerateDropdown(all_opponents):
 	
 	for point in all_opponents:
 
-		#point[1] is the opponent of that point
-		checkOpponent = point[1]
+		#point[1] is the opponent of that point, point[0] is the timestamp of that point
+		check_opponent = point[1]
+		check_date = returnDateFromTimestamp(point[0])
+		game_description = check_opponent + " - " + check_date
 		
 		for opponent in opponents:
-			if checkOpponent == opponent:
-				checkOpponent = "null"
+			if game_description == opponent:
+				game_description = "null"
 		
-		if checkOpponent != "null":
-			opponents.append(checkOpponent)
-			all_opponents_html = all_opponents_html + f'<option value="{checkOpponent}">{checkOpponent}</option>'
+		if game_description != "null":
+			opponents.append(game_description)
+			all_opponents_html = all_opponents_html + f'<option value="{game_description}">{game_description}</option>'
 			all_opponents_html = all_opponents_html + '/n'
 	
 	return all_opponents_html
+
+def returnDateFromTimestamp(timestamp_input):
+	return str(timestamp_input)[0:10]
 	
 
 @app.route('/stats/game/<opponent>')
