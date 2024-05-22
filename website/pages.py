@@ -68,7 +68,7 @@ def gameStatsGenerateDropdown(all_opponents):
 		
 		if game_description != "null":
 			opponents.append(game_description)
-			all_opponents_html = all_opponents_html + f'<option value="{game_description}">{game_description}</option>'
+			all_opponents_html = all_opponents_html + f'<option value="check_opponent}">{game_description}</option>'
 			all_opponents_html = all_opponents_html + '/n'
 	
 	return all_opponents_html
@@ -83,7 +83,6 @@ def gameStatsOpponent(opponent):
 	if opponent == "Select A Game:":
 		return
 
-	
 	conn = psycopg2.connect(
 	host="localhost",
 	port=5432,
