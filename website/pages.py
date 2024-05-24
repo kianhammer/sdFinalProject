@@ -76,19 +76,22 @@ def separate_games(all_points):
 			else:
 				all_cut_games.append(game)
 				game = []
-				
 		previous_point = point
-		
+	
+	#appends the points of the most recent game listed in the database	
+	all_cut_games.append(game)
+
 def get_timestamp_date(timestamp):
 	return str(timestamp)[0:10]
 			
 def game_stats_generate_dropdown():
 	all_opponents_html = ""
 	all_opponents_html = all_opponents_html + f'<option value="Select A Game:">Select A Game:</option>' + '/n'
-
+	
+	#index i put in the value of the dropdown menu, so that the index of the game can be accessed easily later
 	i = 0
 	for game in all_cut_games:
-		opponent = game[0][1]		
+		opponent = game[0][1]
 		all_opponents_html = all_opponents_html + f'<option value="{i} {opponent}">{opponent}</option>' + '/n'
 		i += 1
 		
