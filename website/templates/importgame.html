@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" href="/static/styles.css">
   
-    <script src="/static/script.js"></script>
+    <script src="/static/import.js"></script>
 </head>
   
 <h1 class="title" id="title">
@@ -9,12 +9,17 @@
         CUTRULES
     </a>
     <div class="links">
+        <a href="/stats/players">
+            Player Stats
+        </a>
         <a href="/import">
             Import
         </a>
     </div>
 </h1>
 
-<p class="body">
-    import games here
-</p>
+<form action="/api" method="post" enctype="multipart/form-data">
+    <label for="file">File</label>
+    <input id="file" name="file" type="file" />
+    <button>Upload</button>
+</form>

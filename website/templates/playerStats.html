@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="/static/playerStats.css">
+    <script src="/static/playerStats.js"></script>
+    <script src="/static/header.js" type="text/javascript" defer></script>
+</head>
+<body>
+    <header-component></header-component>
+    <main>
+        <div style="overflow-x:auto;">
+            <table id="statsTable">
+                <thead>
+                    <tr id="statsHeaderRow">
+                        <th>Player</th>
+                    </tr>
+                </thead>
+                <tbody id="statsTableBody">
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+<script>
+    // Initialize player stats page
+    populateStatsTableHeader(JSON.parse({{header|tojson}}));
+    createStatsTable(JSON.parse({{stats|tojson}}));
+    sortTable(1);
+</script>
