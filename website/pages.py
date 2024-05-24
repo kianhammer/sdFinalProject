@@ -14,6 +14,8 @@ conn = psycopg2.connect(
     
 cur = conn.cursor()
 
+all_cut_games = []
+
 PLAYER_STATS_QUERIES = {
     "Points": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%';",
     "O Points": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'FALSE';",
@@ -53,44 +55,44 @@ def importpage():
 
 @app.route('/stats/game')
 def gameStats():
-	conn = psycopg2.connect(
-		host="localhost",
-		port=5432,
-		database="chend2",
-		user="chend2",
-		password="plad242books")
-
-	cur = conn.cursor()
-
-	sql_all_points = """SELECT * FROM cutstats ORDER BY Date DESC;"""
-	cur.execute(sql_all_points)
-	all_opponents = cur.fetchall()
-
-	all_opponents_html = gameStatsGenerateDropdown(all_opponents)
+	all_points = query_fetch_all("""SELECT * FROM cutstats ORDER BY Date DESC;""")
+	separate_games(all_points)
+	all_opponents_html = game_stats_generate_dropdown()
 	
 	return render_template("gamestats.html", DropdownOptions = all_opponents_html)
 
+def separate_games(all_points):
 
-def gameStatsGenerateDropdown(all_opponents):
-	opponents = []
+	game = []
+	previous_point = []
+	
+	for point in all_points:
+		
+		if not game:
+			game.append(point)
+		else:
+			#check if each sequential point is of the same game as the previous point
+			if previous_point[1] == point[1] and get_timestamp_date(previous_point[0]) == get_timestamp_date(point[0]):
+				game.append(point)
+			else:
+				all_cut_games.append(game)
+				game = []
+
+		previous_point = point
+		
+def get_timestamp_date(timestamp):
+	return timestamp[0:10]
+			
+def game_stats_generate_dropdown():
 	all_opponents_html = ""
-	all_opponents_html = all_opponents_html + f'<option value="Select A Game:">Select A Game:</option>'
-	all_opponents_html = all_opponents_html + '/n'
-	
-	for point in all_opponents:
+	all_opponents_html = all_opponents_html + f'<option value="Select A Game:">Select A Game:</option>' + '/n'
 
-		#point[1] is the opponent of that point, point[0] is the timestamp of that point
-		check_opponent = point[1]
+	i = 0
+	for game in all_cut_games:
+		opponent = game[0][1]		
+		all_opponents_html = all_opponents_html + f'<option value="{opponent}">i {opponent}</option>' + '/n'
+		i += 1
 		
-		for opponent in opponents:
-			if check_opponent == opponent:
-				check_opponent = "null"
-		
-		if check_opponent != "null":
-			opponents.append(check_opponent)
-			all_opponents_html = all_opponents_html + f'<option value="{check_opponent}">{check_opponent}</option>'
-			all_opponents_html = all_opponents_html + '/n'
-	
 	return all_opponents_html
 	
 
@@ -100,19 +102,8 @@ def gameStatsOpponent(opponent):
 	if opponent == "Select A Game:":
 		return
 
-	conn = psycopg2.connect(
-	host="localhost",
-	port=5432,
-	database="chend2",
-	user="chend2",
-	password="plad242books")
-
-	cur = conn.cursor()
-
-	sql_game_points = """SELECT * FROM cutstats WHERE Opponent = %s ORDER BY Point DESC;"""
-
-	cur.execute(sql_game_points, [opponent])
-	game_points = cur.fetchall()
+	opponent_index = int(opponent[0:1])
+	game_points = all_cut_games[opponent_index]
 
 	score = ""
 	for point in game_points:
