@@ -81,7 +81,7 @@ def separate_games(all_points):
 		previous_point = point
 		
 def get_timestamp_date(timestamp):
-	return timestamp[0:10]
+	return string(timestamp)[0:10]
 			
 def game_stats_generate_dropdown():
 	all_opponents_html = ""
