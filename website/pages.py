@@ -54,20 +54,19 @@ def importpage():
 	return render_template("importgame.html")
 
 @app.route('/stats/game')
-def gameStats():
+def game_stats():
 	all_points = query_fetch_all("""SELECT * FROM cutstats ORDER BY Date DESC;""")
 	separate_games(all_points)
 	all_opponents_html = game_stats_generate_dropdown()
 	
 	return render_template("gamestats.html", DropdownOptions = all_opponents_html)
 
+#makes a separate list entry in all_cut_games of every game, each game entry consists of a list of the points of that game
 def separate_games(all_points):
-
 	game = []
 	previous_point = []
 	
-	for point in all_points:
-		
+	for point in all_points:	
 		if not game:
 			game.append(point)
 		else:
@@ -77,7 +76,7 @@ def separate_games(all_points):
 			else:
 				all_cut_games.append(game)
 				game = []
-
+				
 		previous_point = point
 		
 def get_timestamp_date(timestamp):
@@ -97,11 +96,12 @@ def game_stats_generate_dropdown():
 	
 
 @app.route('/stats/game/<opponent>')
-def gameStatsOpponent(opponent):
+def game_stats_opponent(opponent):
 
 	if opponent == "Select A Game:":
 		return
 
+	#retrieves the points of the game selected by the user
 	opponent_index = int(opponent[0:1])
 	game_points = all_cut_games[opponent_index]
 
