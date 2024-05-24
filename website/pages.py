@@ -90,7 +90,7 @@ def game_stats_generate_dropdown():
 	i = 0
 	for game in all_cut_games:
 		opponent = game[0][1]		
-		all_opponents_html = all_opponents_html + f'<option value="{opponent}">i {opponent}</option>' + '/n'
+		all_opponents_html = all_opponents_html + f'<option value="{opponent}">{i} {opponent}</option>' + '/n'
 		i += 1
 		
 	return all_opponents_html
