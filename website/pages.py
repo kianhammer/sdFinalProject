@@ -51,9 +51,55 @@ def welcome():
 def importpage():
 	return render_template("importgame.html")
 
-@app.route('/stats/game/<opponent>')
-def gameStats(opponent):
+@app.route('/stats/game')
+def gameStats():
+	conn = psycopg2.connect(
+		host="localhost",
+		port=5432,
+		database="chend2",
+		user="chend2",
+		password="plad242books")
+
+	cur = conn.cursor()
+
+	sql_all_points = """SELECT * FROM cutstats ORDER BY Date DESC;"""
+	cur.execute(sql_all_points)
+	all_opponents = cur.fetchall()
+
+	all_opponents_html = gameStatsGenerateDropdown(all_opponents)
 	
+	return render_template("gamestats.html", DropdownOptions = all_opponents_html)
+
+
+def gameStatsGenerateDropdown(all_opponents):
+	opponents = []
+	all_opponents_html = ""
+	all_opponents_html = all_opponents_html + f'<option value="Select A Game:">Select A Game:</option>'
+	all_opponents_html = all_opponents_html + '/n'
+	
+	for point in all_opponents:
+
+		#point[1] is the opponent of that point, point[0] is the timestamp of that point
+		check_opponent = point[1]
+		
+		for opponent in opponents:
+			if check_opponent == opponent:
+				check_opponent = "null"
+		
+		if check_opponent != "null":
+			opponents.append(check_opponent)
+			all_opponents_html = all_opponents_html + f'<option value="{check_opponent}">{check_opponent}</option>'
+			all_opponents_html = all_opponents_html + '/n'
+	
+	return all_opponents_html
+	
+
+@app.route('/stats/game/<opponent>')
+def gameStatsOpponent(opponent):
+
+	if opponent == "Select A Game:":
+		return
+
 	conn = psycopg2.connect(
 	host="localhost",
 	port=5432,
@@ -64,9 +110,19 @@ def gameStats(opponent):
 	cur = conn.cursor()
 
 	sql_game_points = """SELECT * FROM cutstats WHERE Opponent = %s ORDER BY Point DESC;"""
-	cur.execute(sql_game_points, opponent)
-	cornellHucks = cur.fetchall()
-	return render_template("homepage.html", someText = f"hello")
+
+	cur.execute(sql_game_points, [opponent])
+	game_points = cur.fetchall()
+
+	score = ""
+	for point in game_points:
+		score = point[2]
+
+	json_answer = {
+        	"score": score
+        }
+	return json.dumps(json_answer)
+
 
 @app.route('/stats/players')
 def player_stats_page():

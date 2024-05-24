@@ -1,0 +1,24 @@
+<head>
+    <link rel="stylesheet" href="/static/gamestats.css">
+  
+    <script src="/static/gamestats.js"></script>
+</head>
+  
+<h1 class="title" id="title">
+    <a href="/">
+        CUT Game Stats!
+    </a>
+</h1>
+
+<p class="input-game">
+    <br> <br> <br>
+    <select id="change_game_input" onchange="fetchGame()">
+        {{DropdownOptions|safe}} 
+    </select>
+    &nbsp &nbsp &nbsp &nbsp &nbsp
+</p>
+
+<p class="game-stats-display", id="game_stats_display">
+    <br> <br> <br>
+    Some game stats will display here
+</p>
