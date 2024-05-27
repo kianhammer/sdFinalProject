@@ -147,7 +147,7 @@ def game_stats_opponent(opponent):
 		"completeHucks": other_stats_sum[0],
 		"incompleteHucks": other_stats_sum[1] + other_stats_sum[2] + other_stats_sum[3],
 		"endzoneScores": other_stats_sum[4],
-		"endzoneNotScores": other_stats_sum[5] + other_stats_sum[6] other_stats_sum[7],
+		"endzoneNotScores": other_stats_sum[5] + other_stats_sum[6] + other_stats_sum[7],
 		"blocksForced": other_stats_sum[8],
 		"blocksUnforced": other_stats_sum[9],
 		"turnoversForced": other_stats_sum[10],
