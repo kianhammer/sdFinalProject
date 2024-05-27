@@ -28,6 +28,8 @@ PLAYER_STATS_QUERIES = {
     "Blocks": "SELECT SUM(BlocksForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%player%';",
 }
 
+
+
 @app.route('/')
 def welcome():
 	conn = psycopg2.connect(
@@ -78,17 +80,14 @@ def separate_games(all_points):
 				game = []
 		previous_point = point
 	
-	#appends the points of the most recent game listed in the database	
+	# Appends the points of the most recent game listed in the database	
 	all_cut_games.append(game)
-
-def get_timestamp_date(timestamp):
-	return str(timestamp)[0:10]
 			
 def game_stats_generate_dropdown():
 	all_opponents_html = ""
 	all_opponents_html = all_opponents_html + f'<option value="Select A Game:">Select A Game:</option>' + '/n'
 	
-	#index i put in the value of the dropdown menu, so that the index of the game can be accessed easily later
+	# Index 'i' put in the value of the dropdown menu, so that the index of the game can be accessed easily later
 	i = 0
 	for game in all_cut_games:
 		opponent = game[0][1]
@@ -104,16 +103,55 @@ def game_stats_opponent(opponent):
 	if opponent == "Select A Game:":
 		return
 
-	#retrieves the points of the game selected by the user
+	# Retrieves the points of the game selected by the user
 	opponent_index = int(opponent[0:1])
 	game_points = all_cut_games[opponent_index]
 
-	score = ""
+	
+	cut_breaks = 0
+	opp_breaks = 0
+	cut_holds = 0
+	opp_holds = 0
+	
+	# List of all the miscellaneous stats that can be tallied
+	other_stats_sum = [0,0,0,0,0,0,0,0,0,0,0,0]
+	
 	for point in game_points:
-		score = point[2]
+		if point[4] == "TRUE":
+			if point[5] == "TRUE":
+				cut_breaks += 1
+			else:
+				opp_holds += 1
+		else:
+			if point[5] == "TRUE":
+				cut_holds += 1
+
+			else:
+				opp_breaks += 1
+
+		# Tallies to the list of miscellaneous stats
+		for i in range(len(other_stats_sum)):
+			# The stat values of each point that can be tallied start 6 elements into the point
+			other_stats_sum[i] += point[i+6]
+				
 
 	json_answer = {
-        	"score": score
+		
+        	"score": game_points[0][2],
+		"opponent": game_points[0][1],
+		"date": get_timestamp_date(game_points[0][0]),
+		"cutBreaks": cut_breaks,
+		"cutHolds": cut_holds,
+		"oppBreaks": opp_breaks,
+		"oppHolds": opp_holds,
+		"completeHucks": other_stats_sum[0],
+		"incompleteHucks": other_stats_sum[1] + other_stats_sum[2] + other_stats_sum[3],
+		"endzoneScores": other_stats_sum[4],
+		"endzoneNotScores": other_stats_sum[5] + other_stats_sum[6] other_stats_sum[7],
+		"blocksForced": other_stats_sum[8],
+		"blocksUnforced": other_stats_sum[9],
+		"turnoversForced": other_stats_sum[10],
+		"turnoversUnforced": other_stats_sum[11]	
         }
 	return json.dumps(json_answer)
 
@@ -152,6 +190,10 @@ def calc_player_stats(player):
         stats.append(query_fetch_one(PLAYER_STATS_QUERIES[category].replace("%player%", f"%{player}%")))
 
     return stats
+
+# Returns the date of an inputted timestamp
+def get_timestamp_date(timestamp):
+	return str(timestamp)[0:10]
 
 # Query the sql database with the given command
 # Returns only the first result
