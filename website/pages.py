@@ -63,7 +63,7 @@ def game_stats():
 	
 	return render_template("gamestats.html", DropdownOptions = all_opponents_html)
 
-#makes a separate list entry in all_cut_games of every game, each game entry consists of a list of the points of that game
+# Makes a separate list entry in all_cut_games of every game, each game entry consists of a list of the points of that game
 def separate_games(all_points):
 	game = []
 	previous_point = []
