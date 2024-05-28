@@ -1,7 +1,14 @@
 function updateGame(data) {
     the_json = data;
 
-
+    statsDisplay = "";
+    for (var i = 0; i < data.length; i++){
+      var obj = data[i];
+        for (var key in obj){
+            statsDisplay = statsDisplay + "The game " + key + ": " + obj[key] + "<br>";
+        }
+    }
+    
     score = the_json['score'];
     opponent = the_json['opponent'];
     date = the_json['date'];
@@ -17,15 +24,13 @@ function updateGame(data) {
     blocksUnforced = the_json['blocksUnforced'];
     turnoversForced = the_json['turnoversForced'];
     turnoversUnforced = the_json['turnoversUnforced'];
-
-
-    statsDisplay = "The game score: " + score + "<br>";
-    statsDisplay = statsDisplay + "The game opponent: " + opponent + "<br>";
     
     the_answer = document.getElementById("game_stats_display");
     the_answer.innerHTML = statsDisplay; 
 
 }
+
+
 
 
 
