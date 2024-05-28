@@ -1,8 +1,7 @@
 function updateGame(data) {
     the_json = data;
 
-    #theEntries = the_json.entries()
-    
+
     score = the_json['score'];
     opponent = the_json['opponent'];
     date = the_json['date'];
@@ -19,7 +18,6 @@ function updateGame(data) {
     turnoversForced = the_json['turnoversForced'];
     turnoversUnforced = the_json['turnoversUnforced'];
 
-    #opponent = the_json[theEntries[1]];
 
     statsDisplay = "The game score: " + score + "<br>";
     statsDisplay = statsDisplay + "The game opponent: " + opponent + "<br>";
