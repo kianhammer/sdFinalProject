@@ -2,11 +2,8 @@ function updateGame(data) {
     the_json = data;
     
     statsDisplay = "";
-    for (var i = 0; i < the_json.length; i++){
-        var obj = data[i];
-        for (var key in obj){
-            statsDisplay = statsDisplay + "The game " + key + ": " + obj[key] + "<br>";
-        }
+    for (var key in data){
+        statsDisplay = statsDisplay + "The game " + key + ": " + data[key] + "<br>";
     }
 
     the_answer = document.getElementById("game_stats_display");
