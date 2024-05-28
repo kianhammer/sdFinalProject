@@ -1,9 +1,12 @@
 function updateGame(data) {
     the_json = data;
 
+    the_answer = document.getElementById("game_stats_display");
+    the_answer.innerHTML = "hello"; 
+    
     statsDisplay = "";
-    for (var i = 0; i < data.length; i++){
-      var obj = data[i];
+    for (var i = 0; i < the_json.length; i++){
+        var obj = data[i];
         for (var key in obj){
             statsDisplay = statsDisplay + "The game " + key + ": " + obj[key] + "<br>";
         }
@@ -25,8 +28,7 @@ function updateGame(data) {
     turnoversForced = the_json['turnoversForced'];
     turnoversUnforced = the_json['turnoversUnforced'];
     
-    the_answer = document.getElementById("game_stats_display");
-    the_answer.innerHTML = statsDisplay; 
+    
 
 }
 
