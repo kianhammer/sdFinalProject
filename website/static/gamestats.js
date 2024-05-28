@@ -1,8 +1,5 @@
 function updateGame(data) {
     the_json = data;
-
-    the_answer = document.getElementById("game_stats_display");
-    the_answer.innerHTML = "hello"; 
     
     statsDisplay = "";
     for (var i = 0; i < the_json.length; i++){
@@ -11,6 +8,9 @@ function updateGame(data) {
             statsDisplay = statsDisplay + "The game " + key + ": " + obj[key] + "<br>";
         }
     }
+
+    the_answer = document.getElementById("game_stats_display");
+    the_answer.innerHTML = statsDisplay; 
     
     score = the_json['score'];
     opponent = the_json['opponent'];
