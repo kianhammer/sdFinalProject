@@ -66,7 +66,6 @@ def game_stats():
 # Makes a separate list entry in all_cut_games of every game, each game entry consists of a list of the points of that game
 def separate_games(all_points):
 	game = []
-	
 	for point in all_points:
 		if not game:
 			game.append(point)
@@ -90,7 +89,7 @@ def game_stats_generate_dropdown():
 	for game in all_cut_games:
 		opponent = game[0][1]
 		date = get_timestamp_date(game[0][0])
-		all_opponents_html = all_opponents_html + f'<option value="{i} {opponent}">{date} - {opponent}</option>' + '/n'
+		all_opponents_html = all_opponents_html + f'<option value="{i} {opponent}">{date} :  {opponent}</option>' + '/n'
 		i += 1
 		
 	return all_opponents_html
@@ -116,6 +115,7 @@ def game_stats_opponent(opponent):
 	other_stats_sum = [0,0,0,0,0,0,0,0,0,0,0,0]
 	
 	for point in game_points:
+		#checks to see if the point was a hold or a break, and of what team
 		if point[4] == "TRUE":
 			if point[5] == "TRUE":
 				cut_breaks += 1
