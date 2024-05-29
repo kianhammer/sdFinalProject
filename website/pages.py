@@ -71,7 +71,7 @@ def upload_file():
     # Save the file to the specified folder
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
     file.save(filepath)
-    return jsonify({'message': f'File {file.filename} uploaded successfully'}), 200
+    return jsonify({'message': f'File {file} uploaded successfully'}), 200
 
 @app.route('/stats/game')
 def game_stats():
