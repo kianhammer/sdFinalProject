@@ -3,7 +3,7 @@ from flask import render_template
 import psycopg2
 import json
 import os
-import csv
+import csv 
 
 app = Flask(__name__)
 
@@ -76,6 +76,12 @@ def upload_file():
     with open(filepath, newline='') as csvfile:
         reader = csv.reader(csvfile)
         data = [row for row in reader]
+
+    score = f"{data[2][0]} - {data[2][1]}"
+    for i in range(1, len(data[3])):
+        sql = f"INSERT INTO CUTStats VALUES ({data[0][1]}, {data[1][1]}, {score}, {data[3][i]}, {data[4][i]}, {data[5][i]}, {data[6][i]}, {data[7][i]}, {data[8][i]}, {data[9][i]}, {data[10][i]}, {data[11][i]}, {data[12][i]}, {data[13][i]}, {data[14][i]}, {data[15][i]}, {data[16][i]}, {data[17][i]}, {data[18][i]},)"
+        cur.execute( sql )
+        conn.commit()
 
     return jsonify({'message': f'File {file.filename} uploaded successfully {data}'}), 200
 
