@@ -3,6 +3,7 @@ from flask import render_template
 import psycopg2
 import json
 import os
+import csv
 
 app = Flask(__name__)
 
@@ -71,7 +72,12 @@ def upload_file():
     # Save the file to the specified folder
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
     file.save(filepath)
-    return jsonify({'message': f'File {file} uploaded successfully'}), 200
+
+    with open(filepath, newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        data = [row for row in reader]
+
+    return jsonify({'message': f'File {file.filename} uploaded successfully {data}'}), 200
 
 @app.route('/stats/game')
 def game_stats():
