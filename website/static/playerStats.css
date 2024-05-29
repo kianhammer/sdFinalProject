@@ -6,6 +6,7 @@ table {
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     width: 100%;
+    text-align: center;
 }
 
 th td {
@@ -15,7 +16,6 @@ th td {
 thead tr {
     background-color: #009879;
     color: #ffffff;
-    text-align: left;
 }
 
 /* This is a placeholder for an arrow*/
