@@ -58,7 +58,9 @@ def importpage():
 @app.route('/stats/game')
 def game_stats():
 	all_points = query_fetch_all("""SELECT * FROM cutstats ORDER BY Date;""")
-	separate_games(all_points)
+	if not all_cut_games:
+		separate_games(all_points)
+		
 	all_opponents_html = game_stats_generate_dropdown()
 	
 	return render_template("gamestats.html", DropdownOptions = all_opponents_html)
