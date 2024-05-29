@@ -66,19 +66,17 @@ def game_stats():
 # Makes a separate list entry in all_cut_games of every game, each game entry consists of a list of the points of that game
 def separate_games(all_points):
 	game = []
-	previous_point = []
 	
-	for point in all_points:	
+	for point in all_points:
 		if not game:
 			game.append(point)
+		#if the current point is listed as the first point of the game, the previous points appended to game were all of the previous game
+		else if point[3] == 1:
+			all_cut_games.append(game)
+			game = []
+			game.append(point)
 		else:
-			#check if each sequential point is of the same game as the previous point
-			if previous_point[1] == point[1] and get_timestamp_date(previous_point[0]) == get_timestamp_date(point[0]):
-				game.append(point)
-			else:
-				all_cut_games.append(game)
-				game = []
-		previous_point = point
+			game.append(point)
 	
 	# Appends the points of the most recent game listed in the database	
 	all_cut_games.append(game)
@@ -91,7 +89,8 @@ def game_stats_generate_dropdown():
 	i = 0
 	for game in all_cut_games:
 		opponent = game[0][1]
-		all_opponents_html = all_opponents_html + f'<option value="{i} {opponent}">{opponent}</option>' + '/n'
+		date = get_timestamp_date(game[0][0])
+		all_opponents_html = all_opponents_html + f'<option value="{i} {opponent}">{date} - {opponent}</option>' + '/n'
 		i += 1
 		
 	return all_opponents_html
