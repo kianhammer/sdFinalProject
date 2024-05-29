@@ -58,7 +58,7 @@ def welcome():
 def importpage():
 	return render_template("importgame.html")
 
-@app.route('/api')
+@app.route('/api', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
         return jsonify({'error': 'No file part in the request'}), 400
