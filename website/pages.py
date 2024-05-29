@@ -70,12 +70,14 @@ def separate_games(all_points):
 		if not game:
 			game.append(point)
 		#if the current point is listed as the first point of the game, the previous points appended to game were all of the previous game
-		elif point[3] == 1:
-			all_cut_games.append(game)
-			game = []
-			game.append(point)
 		else:
-			game.append(point)
+			if:
+				point[3] == 1:
+				all_cut_games.append(game)
+				game = []
+				game.append(point)
+			else:
+				game.append(point)
 	
 	# Appends the points of the most recent game listed in the database	
 	all_cut_games.append(game)
