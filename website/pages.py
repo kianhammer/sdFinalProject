@@ -1,9 +1,14 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 from flask import render_template
 import psycopg2
 import json
+import os
 
 app = Flask(__name__)
+
+UPLOAD_FOLDER = 'uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 conn = psycopg2.connect(
     host="localhost",
@@ -52,6 +57,21 @@ def welcome():
 @app.route('/import/')
 def importpage():
 	return render_template("importgame.html")
+
+@app.route('/api')
+def upload_file():
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file part in the request'}), 400
+
+    file = request.files['file']
+
+    if file.filename == '':
+        return jsonify({'error': 'No selected file'}), 400
+
+    # Save the file to the specified folder
+    filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+    file.save(filepath)
+    return jsonify({'message': f'File {file.filename} uploaded successfully'}), 200
 
 @app.route('/stats/game')
 def game_stats():
