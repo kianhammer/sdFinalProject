@@ -15,7 +15,6 @@
 }
 
 .bar-red {
-  width: 50%;
   background-color: red;
   float: left;
 }
@@ -27,12 +26,13 @@
 }
 
 .bar-lime {
-  height: 100%;
+  width: 10%;
   background-color: springgreen;
   float: left;
 }
 
 .bar-green {
+  width: 10%;
   background-color: green;
   float: left;
 }
