@@ -62,12 +62,12 @@ def importpage():
 @app.route('/api', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
-        return jsonify({'error': 'No file part in the request'}), 400
+        return render_template("upload_error.html", message = 'File upload error')
 
     file = request.files['file']
 
     if file.filename == '':
-        return jsonify({'error': 'No selected file'}), 400
+        return render_template("upload_error.html", message = 'File not found')
 
     # Save the file to the specified folder
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
@@ -83,7 +83,7 @@ def upload_file():
         cur.execute( sql )
         conn.commit()
 
-    return jsonify({'message': f'File {file.filename} uploaded successfully {data}'}), 200
+    return render_template("upload_success.html", opponent = data[1][1])
 
 @app.route('/stats/game')
 def game_stats():
