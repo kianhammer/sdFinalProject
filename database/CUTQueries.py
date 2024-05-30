@@ -28,7 +28,6 @@ def answer_query():
 
   cur = conn.cursor()
 
-  #search for Northfield
   sql_FloridaPoints = """SELECT * FROM cutstats WHERE Opponent = 'Florida' ORDER BY Point DESC;"""
 
   cur.execute(sql_FloridaPoints)
