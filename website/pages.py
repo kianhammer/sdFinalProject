@@ -69,7 +69,6 @@ def upload_file():
     if file.filename == '':
         return render_template("upload_error.html", message = 'File not found')
 
-    # Save the file to the specified folder
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
     file.save(filepath)
 
@@ -77,6 +76,10 @@ def upload_file():
         reader = csv.reader(csvfile)
         data = [row for row in reader]
 
+	# The data from an entry csv must be in a very specific format in order to enter it into the table. This is the
+	# reason for all of the seemingly arbitrary indices in the following sql insert statement. The following loops
+	# through each point in a given game's csv and takes the appropriate data entry for each column, then writing
+	# that data into the table.
     score = f"{data[2][0]} - {data[2][1]}"
     for i in range(1, len(data[3])):
         sql = f"INSERT INTO CUTStats VALUES ('{data[0][1]}', '{data[1][1]}', '{score}', {data[3][i]}, '{data[4][i].upper()}', '{data[5][i].upper()}', {data[6][i]}, {data[7][i]}, {data[8][i]}, {data[9][i]}, {data[10][i]}, {data[11][i]}, {data[12][i]}, {data[13][i]}, {data[14][i]}, {data[15][i]}, {data[16][i]}, {data[17][i]}, '{data[18][i]}')"
