@@ -1,3 +1,7 @@
+.game-stats-display{
+  font-weight: bold;
+}
+
 .bar {
   width: 100%;
   height: 30px;
