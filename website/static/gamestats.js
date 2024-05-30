@@ -8,7 +8,7 @@ function updateGame(data) {
     the_answer.innerHTML = statsDisplay;  
     
     test_bar = document.getElementById("test_bar");
-    test_bar.style = "width: " + 10 * data['oppHolds']/data['points'] + "%";
+    test_bar.style = "width: " + 10 * data['oppBreaks']/data['points'] + "%";
 }
 
 
