@@ -15,23 +15,27 @@
 }
 
 .bar-red {
+  height: 30px;
   background-color: red;
   float: left;
 }
 
 .bar-pink {
+  height: 30px;
   width: 25%;
   background-color: pink;
   float: left;
 }
 
 .bar-lime {
+  height: 30px;
   width: 10%;
   background-color: springgreen;
   float: left;
 }
 
 .bar-green {
+  height: 30px;
   width: 10%;
   background-color: green;
   float: left;
