@@ -6,6 +6,9 @@ function updateGame(data) {
 
     the_answer = document.getElementById("game_stats_display");
     the_answer.innerHTML = statsDisplay;  
+    
+    test_bar = document.getElementById("test_bar");
+    test_bar.style = "width: 10%";
 }
 
 
