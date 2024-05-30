@@ -141,6 +141,7 @@ def game_stats_opponent(opponent):
 		
         	"score": game_points[0][2],
 		"opponent": game_points[0][1],
+		"points": len(game_points),
 		"date": get_timestamp_date(game_points[0][0]),
 		"cutBreaks": cut_breaks,
 		"cutHolds": cut_holds,
