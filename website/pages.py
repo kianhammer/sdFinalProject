@@ -69,16 +69,15 @@ def upload_file():
     if file.filename == '':
         return render_template("upload_error.html", message = 'File not found')
 
+    if file.filename[-4:] != '.csv':
+        return render_template("upload_error.html", message = 'File must be a csv')
+
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
     file.save(filepath)
 
-    try:
-        with open(filepath, newline='') as csvfile:
-            reader = csv.reader(csvfile)
-            data = [row for row in reader]
-    except csv.Error:
-        return render_template("upload_error.html", message = 'File must be a CSV')
-
+    with open(filepath, newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        data = [row for row in reader]
 
 	# The data from an entry csv must be in a very specific format in order to enter it into the table. This is the
 	# reason for all of the seemingly arbitrary indices in the following sql insert statement. The following loops
