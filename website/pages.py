@@ -72,11 +72,14 @@ def upload_file():
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
     file.save(filepath)
 
-    with open(filepath, newline='') as csvfile:
-        reader = csv.reader(csvfile)
-        data = [row for row in reader]
+    try:
+        with open(filepath, newline='') as csvfile:
+            reader = csv.reader(csvfile)
+            data = [row for row in reader]
+    except csv.Error:
+        return render_template("upload_error.html", message = 'File must be a CSV')
 
-	
+
 	# The data from an entry csv must be in a very specific format in order to enter it into the table. This is the
 	# reason for all of the seemingly arbitrary indices in the following sql insert statement. The following loops
 	# through each point in a given game's csv and takes the appropriate data entry for each column, then writing
