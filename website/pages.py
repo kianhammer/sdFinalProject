@@ -76,6 +76,7 @@ def upload_file():
         reader = csv.reader(csvfile)
         data = [row for row in reader]
 
+	
 	# The data from an entry csv must be in a very specific format in order to enter it into the table. This is the
 	# reason for all of the seemingly arbitrary indices in the following sql insert statement. The following loops
 	# through each point in a given game's csv and takes the appropriate data entry for each column, then writing
