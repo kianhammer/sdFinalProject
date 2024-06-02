@@ -38,40 +38,40 @@ function populateStatsTableHeader(statCategories) {
     tableHeaderRow.appendChild(th);
   }
 
-  for (var i=0; i<statCategories.length; i++) {
-    var th = document.createElement("th");
-    th.setAttribute("class", "clickable");
-    th.setAttribute("onclick", "sortTable(" + (i+1) + ")");
-    /*
-    <div class="tooltip">Player
-      <span class="tooltiptext">
-        <p class="tooltiptext-title">Player Name</p>
-        <p class="tooltiptext-body">The name of the player</p>
-      </span>
-    </div>
-    */
-    var headerDiv = document.createElement("div");
-    headerDiv.setAttribute("class", "tooltip");
-    headerDiv.innerHTML = statCategories[i];
+  // for (var i=0; i<statCategories.length; i++) {
+  //   var th = document.createElement("th");
+  //   th.setAttribute("class", "clickable");
+  //   th.setAttribute("onclick", "sortTable(" + (i+1) + ")");
+  //   /*
+  //   <div class="tooltip">Player
+  //     <span class="tooltiptext">
+  //       <p class="tooltiptext-title">Player Name</p>
+  //       <p class="tooltiptext-body">The name of the player</p>
+  //     </span>
+  //   </div>
+  //   */
+  //   var headerDiv = document.createElement("div");
+  //   headerDiv.setAttribute("class", "tooltip");
+  //   headerDiv.innerHTML = statCategories[i];
 
-    var tooltipTextSpan = document.createElement("span");
-    tooltipTextSpan.setAttribute("class", "tooltiptext");
+  //   var tooltipTextSpan = document.createElement("span");
+  //   tooltipTextSpan.setAttribute("class", "tooltiptext");
 
-    var tooltipTitle = document.createElement("p");
-    tooltipTitle.setAttribute("class", "tooltiptext-title");
-    tooltipTitle.innerHTML = "Player Name";
+  //   var tooltipTitle = document.createElement("p");
+  //   tooltipTitle.setAttribute("class", "tooltiptext-title");
+  //   tooltipTitle.innerHTML = "Player Name";
 
-    var tooltipBody = document.createElement("p");
-    tooltipBody.setAttribute("class", "tooltiptext-body");
-    tooltipBody.innerHTML = "The name of the player";
+  //   var tooltipBody = document.createElement("p");
+  //   tooltipBody.setAttribute("class", "tooltiptext-body");
+  //   tooltipBody.innerHTML = "The name of the player";
 
-    tooltipTextSpan.appendChild(tooltipTitle);
-    tooltipTextSpan.appendChild(tooltipBody);
-    headerDiv.appendChild(tooltipTextSpan);
-    th.appendChild(headerDiv);
+  //   tooltipTextSpan.appendChild(tooltipTitle);
+  //   tooltipTextSpan.appendChild(tooltipBody);
+  //   headerDiv.appendChild(tooltipTextSpan);
+  //   th.appendChild(headerDiv);
 
-    tableHeaderRow.appendChild(th);
-  }
+  //   tableHeaderRow.appendChild(th);
+  // }
 }
 
 function createStatsTable(playerStats) {
@@ -97,7 +97,7 @@ function sortTable(columnIndex) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
   table = document.getElementById("statsTableBody");
   switching = true;
-  // Set the sorting direction to ascending:
+  // Set the sorting direction to descending:
   dir = "desc";
   /* Make a loop that will continue until
   no switching has been done: */

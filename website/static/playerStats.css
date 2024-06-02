@@ -83,11 +83,10 @@ tbody tr:last-of-type {
     background-color: black;
     color: #fff;
     text-align: left;
-    padding: 5px 0;
+    padding: 1em;
     border-radius: 6px;
 
     text-align:left;
-    padding-left: 1em;
 
     /* Position the tooltip text - see examples below! */
     width: 120px;
