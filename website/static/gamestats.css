@@ -2,7 +2,7 @@
   font-weight: bold;
 }
 
-.test-bar {
+.game-flow-bar {
   width: 100%;
   height: 30px;
   border: solid;
@@ -14,27 +14,27 @@
   text-align: center;
 }
 
-.bar-red {
+.bar-opp-breaks {
   height: 30px;
   background-color: red;
   float: left;
 }
 
-.bar-pink {
+.bar-opp-holds {
   height: 30px;
   width: 25%;
   background-color: pink;
   float: left;
 }
 
-.bar-lime {
+.bar-cut-holds {
   height: 30px;
   width: 10%;
   background-color: springgreen;
   float: left;
 }
 
-.bar-green {
+.bar-cut-breaks {
   height: 30px;
   width: 10%;
   background-color: green;
