@@ -13,7 +13,7 @@ function updateGame(data) {
 
 function updateGameFlow(data){
     gameFlowTitle = document.getElementById("gameFlowTitle");
-    gameFlowDescription = document.getElementById("gameFlowTitle");
+    gameFlowDescription = document.getElementById("gameFlowDescription");
 
     gameFlowTitle.innerHTML = "Game Flow:";
     gameFlowDescription.innerHTML = data['opponent'] + " Breaks: " + data['oppBreaks'] + "  |  " + data['opponent'] + " Holds: " + data['oppHolds'] + "  |  CUT Holds: " + data['cutHolds'] + "  |  CUT Breaks: " + data['cutBreaks'];
