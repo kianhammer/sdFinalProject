@@ -28,10 +28,10 @@ function updateGameFlow(data){
     oppHolds_bar = document.getElementById("oppHolds_bar");
     cutHolds_bar = document.getElementById("cutHolds_bar");
     cutBreaks_bar = document.getElementById("cutBreaks_bar");
-    oppBreaks_bar.style = "width: " + 80 * data['oppBreaks']/data['points'] + "%";
-    oppHolds_bar.style = "width: " + 80 * data['oppHolds']/data['points'] + "%";
-    cutHolds_bar.style = "width: " + 80 * data['cutHolds']/data['points'] + "%";
-    cutBreaks_bar.style = "width: " + 80 * data['cutBreaks']/data['points'] + "%";
+    oppBreaks_bar.style = "width: " + 100 * data['oppBreaks']/data['points'] + "%";
+    oppHolds_bar.style = "width: " + 100 * data['oppHolds']/data['points'] + "%";
+    cutHolds_bar.style = "width: " + 100 * data['cutHolds']/data['points'] + "%";
+    cutBreaks_bar.style = "width: " + 100 * data['cutBreaks']/data['points'] + "%";
 }
 
 function updateHucks(data){
@@ -50,8 +50,8 @@ function updateHucks(data){
     
     hucksIncomplete_bar = document.getElementById("hucksIncomplete_bar");
     hucksComplete_bar = document.getElementById("hucksComplete_bar");
-    hucksIncomplete_bar.style = "width: " + 80 * data['incompleteHucks']/totalHucks + "%";
-    hucksComplete_bar.style = "width: " + 80 * data['completeHucks']/totalHucks + "%";
+    hucksIncomplete_bar.style = "width: " + 100 * data['incompleteHucks']/totalHucks + "%";
+    hucksComplete_bar.style = "width: " + 100 * data['completeHucks']/totalHucks + "%";
 }
 
 function updateEndzone(data){
@@ -70,8 +70,8 @@ function updateEndzone(data){
     
     endzoneNotScores_bar = document.getElementById("endzoneNotScores_bar");
     endzoneScores_bar = document.getElementById("endzoneScores_bar");
-    endzoneNotScores_bar.style = "width: " + 80 * data['endzoneNotScores']/totalEndzoneChances + "%";
-    endzoneScores_bar.style = "width: " + 80 * data['endzoneScores']/totalEndzoneChances + "%";
+    endzoneNotScores_bar.style = "width: " + 100 * data['endzoneNotScores']/totalEndzoneChances + "%";
+    endzoneScores_bar.style = "width: " + 100 * data['endzoneScores']/totalEndzoneChances + "%";
 }
 
 function updateBlocks(data){
@@ -90,8 +90,8 @@ function updateBlocks(data){
     
     blocksUnforced_bar = document.getElementById("blocksUnforced_bar");
     blocksForced_bar = document.getElementById("blocksForced_bar");
-    blocksUnforced_bar.style = "width: " + 80 * data['blocksUnforced']/totalBlocks + "%";
-    blocksForced_bar.style = "width: " + 80 * data['blocksForced']/totalBlocks + "%";
+    blocksUnforced_bar.style = "width: " + 100 * data['blocksUnforced']/totalBlocks + "%";
+    blocksForced_bar.style = "width: " + 100 * data['blocksForced']/totalBlocks + "%";
 }
 
 function updateTurnovers(data){
@@ -110,8 +110,8 @@ function updateTurnovers(data){
     
     turnoversUnforced_bar = document.getElementById("turnoversUnforced_bar");
     turnoversForced_bar = document.getElementById("turnoversForced_bar");
-    turnoversUnforced_bar.style = "width: " + 80 * data['turnoversUnforced']/totalTurnovers + "%";
-    turnoversForced_bar.style = "width: " + 80 * data['turnoversForced']/totalTurnovers + "%";
+    turnoversUnforced_bar.style = "width: " + 100 * data['turnoversUnforced']/totalTurnovers + "%";
+    turnoversForced_bar.style = "width: " + 100 * data['turnoversForced']/totalTurnovers + "%";
 }
 
 function fetchGame() {
