@@ -83,7 +83,7 @@ tbody tr:last-of-type {
     background-color: black;
     color: #fff;
     text-align: left;
-    padding: 1em;
+    padding: 0.25em 1em 0;
     border-radius: 6px;
 
     text-align:left;
