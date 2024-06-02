@@ -1,6 +1,43 @@
 function populateStatsTableHeader(statCategories) {
   console.log(statCategories);
   var tableHeaderRow = document.getElementById("statsHeaderRow");
+
+  var index = 0;
+  for (const [category, description] of Object.entries(statCategories)) {
+    var th = document.createElement("th");
+    th.setAttribute("class", "clickable");
+    th.setAttribute("onclick", "sortTable(" + (i++) + ")");
+    /*
+    <div class="tooltip">Player
+      <span class="tooltiptext">
+        <p class="tooltiptext-title">Player Name</p>
+        <p class="tooltiptext-body">The name of the player</p>
+      </span>
+    </div>
+    */
+    var headerDiv = document.createElement("div");
+    headerDiv.setAttribute("class", "tooltip");
+    headerDiv.innerHTML = category;
+
+    var tooltipTextSpan = document.createElement("span");
+    tooltipTextSpan.setAttribute("class", "tooltiptext");
+
+    var tooltipTitle = document.createElement("p");
+    tooltipTitle.setAttribute("class", "tooltiptext-title");
+    tooltipTitle.innerHTML = category;
+
+    var tooltipBody = document.createElement("p");
+    tooltipBody.setAttribute("class", "tooltiptext-body");
+    tooltipBody.innerHTML = description;
+
+    tooltipTextSpan.appendChild(tooltipTitle);
+    tooltipTextSpan.appendChild(tooltipBody);
+    headerDiv.appendChild(tooltipTextSpan);
+    th.appendChild(headerDiv);
+
+    tableHeaderRow.appendChild(th);
+  }
+
   for (var i=0; i<statCategories.length; i++) {
     var th = document.createElement("th");
     th.setAttribute("class", "clickable");
@@ -38,14 +75,15 @@ function populateStatsTableHeader(statCategories) {
 }
 
 function createStatsTable(playerStats) {
-  console.log(playerStats);
   var tableBody = document.getElementById("statsTableBody");
   let rowIndex = 0;
   for (const [player, stats] of Object.entries(playerStats)) {
-    let row = tableBody.insertRow(rowIndex++);
-    for(var i = 0; i < stats.length; i++) {
-        var cell = row.insertCell(i);
-        cell.innerHTML = stats[i]
+    if(player != "") {
+      let row = tableBody.insertRow(rowIndex++);
+      for(var i = 0; i < stats.length; i++) {
+          var cell = row.insertCell(i);
+          cell.innerHTML = stats[i]
+      }
     }
   }
 }
