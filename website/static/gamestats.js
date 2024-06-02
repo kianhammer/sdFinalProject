@@ -17,7 +17,7 @@ function updateGameFlow(data){
     gameFlowDescription = document.getElementById("gameFlowDescription");
 
     gameFlowTitle.innerHTML = "Game Flow:";
-    gameFlowDescription.innerHTML = data['opponent'] + " Breaks: " + data['oppBreaks'] + "  |  " + data['opponent'] + " Holds: " + data['oppHolds'] + "  |  CUT Holds: " + data['cutHolds'] + "  |  CUT Breaks: " + data['cutBreaks'];
+    gameFlowDescription.innerHTML = data['opponent'] + " Breaks: " + data['oppBreaks'] + "  |  " + data['opponent'] + " Holds: " + data['oppHolds'] + "  |  CUT Holds: " + data['cutHolds'] + "  |  CUT Breaks: " + data['cutBreaks'] + "<br> <br>";
     
     oppBreaks_bar = document.getElementById("oppBreaks_bar");
     oppHolds_bar = document.getElementById("oppHolds_bar");
@@ -34,7 +34,7 @@ function updateHucks(data){
     hucksDescription = document.getElementById("hucksDescription");
 
     hucksTitle.innerHTML = "Hucks:";
-    hucksDescription.innerHTML = "Incomplete Hucks: " + data['incompleteHucks'] + "  |  Complete Hucks: " + data['completeHucks'];
+    hucksDescription.innerHTML = "Incomplete Hucks: " + data['incompleteHucks'] + "  |  Complete Hucks: " + data['completeHucks'] + "<br> <br>";
 
     totalHucks = data['incompleteHucks'] + data['completeHucks'];
     hucksIncomplete_bar = document.getElementById("hucksIncomplete_bar");
