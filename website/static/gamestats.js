@@ -50,7 +50,7 @@ function updateGameFlow(data){
     gameFlowDescription = document.getElementById("gameFlowDescription");
 
     gameFlowTitle.innerHTML = "Game Flow:";
-    gameFlowDescription.innerHTML = data['opponent'] + " Breaks: " + data['oppBreaks'] + "  |  " + data['opponent'] + " Holds: " + data['oppHolds'] + "  |  CUT Holds: " + data['cutHolds'] + "  |  CUT Breaks: " + data['cutBreaks'] + "<br> <br> <br>";
+    gameFlowDescription.innerHTML = data['opponent'] + " Breaks: " + data['oppBreaks'] + "  |  " + data['opponent'] + " Holds: " + data['oppHolds'] + "  |  CUT Holds: " + data['cutHolds'] + "  |  CUT Breaks: " + data['cutBreaks'] + "<br> <br> <br> <br>";
     
     oppBreaks_bar = document.getElementById("oppBreaks_bar");
     oppHolds_bar = document.getElementById("oppHolds_bar");
@@ -69,7 +69,7 @@ function updateHucks(data){
     hucksDescription = document.getElementById("hucksDescription");
 
     hucksTitle.innerHTML = "Hucks:";
-    hucksDescription.innerHTML = "Incomplete Hucks: " + data['incompleteHucks'] + "  |  Complete Hucks: " + data['completeHucks'] + "<br> <br> <br>";
+    hucksDescription.innerHTML = "Incomplete Hucks: " + data['incompleteHucks'] + "  |  Complete Hucks: " + data['completeHucks'] + "<br> <br> <br> <br>";
 
     totalHucks = data['incompleteHucks'] + data['completeHucks'];
     if(totalHucks == 0){
@@ -89,7 +89,7 @@ function updateEndzone(data){
     endzoneDescription = document.getElementById("endzoneDescription");
 
     endzoneTitle.innerHTML = "Endzone:";
-    endzoneDescription.innerHTML = "Endzones Not Scored: " + data['endzoneNotScores'] + "  |  Endzones Scores: " + data['endzoneScores'] + "<br> <br> <br>";
+    endzoneDescription.innerHTML = "Endzones Not Scored: " + data['endzoneNotScores'] + "  |  Endzones Scores: " + data['endzoneScores'] + "<br> <br> <br> <br>";
 
     totalEndzoneChances = data['endzoneNotScores'] + data['endzoneScores'];
     if(totalEndzoneChances == 0){
@@ -109,7 +109,7 @@ function updateBlocks(data){
     blocksDescription = document.getElementById("blocksDescription");
 
     blocksTitle.innerHTML = "Blocks:";
-    blocksDescription.innerHTML = "Unforced Blocks: " + data['blocksUnforced'] + "  |  Forced Blocks: " + data['blocksForced'] + "<br> <br> <br>";
+    blocksDescription.innerHTML = "Unforced Blocks: " + data['blocksUnforced'] + "  |  Forced Blocks: " + data['blocksForced'] + "<br> <br> <br> <br>";
 
     totalBlocks = data['blocksUnforced'] + data['blocksForced'];
     if(totalBlocks == 0){
@@ -129,7 +129,7 @@ function updateTurnovers(data){
     turnoversDescription = document.getElementById("turnoversDescription");
 
     turnoversTitle.innerHTML = "Turnovers:";
-    turnoversDescription.innerHTML = "Unforced Turnovers: " + data['turnoversUnforced'] + "  |  Forced Turnovers: " + data['turnoversForced'] + "<br> <br> <br>";
+    turnoversDescription.innerHTML = "Unforced Turnovers: " + data['turnoversUnforced'] + "  |  Forced Turnovers: " + data['turnoversForced'] + "<br> <br> <br> <br>";
 
     totalTurnovers = data['turnoversUnforced'] + data['turnoversForced'];
     if(totalTurnovers == 0){
