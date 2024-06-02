@@ -43,6 +43,20 @@ function updateHucks(data){
     hucksComplete_bar.style = "width: " + 100 * data['completeHucks']/totalHucks + "%";
 }
 
+function updateEndzone(data){
+    endzoneTitle = document.getElementById("endzoneTitle");
+    endzoneDescription = document.getElementById("endzoneDescription");
+
+    endzoneTitle.innerHTML = "Endzone:";
+    endzoneDescription.innerHTML = "Endzones Not Scored: " + data['endzoneNotScores'] + "  |  Endzones Scores: " + data['endzoneScores'] + "<br> <br>";
+
+    totalEndzoneChances = data['endzoneNotScores'] + data['endzoneScores'];
+    endzoneNotScores_bar = document.getElementById("endzoneNotScores_bar");
+    endzoneScores_bar = document.getElementById("endzoneScores_bar");
+    endzoneNotScores_bar.style = "width: " + 100 * data['endzoneNotScores']/totalEndzoneChances + "%";
+    endzoneScores_bar.style = "width: " + 100 * data['endzoneScores']/totalEndzoneChances + "%";
+}
+
 function fetchGame() {
     the_game = document.getElementById("change_game_input").value;
 
