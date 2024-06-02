@@ -8,6 +8,7 @@ function updateGame(data) {
     the_answer.innerHTML = statsDisplay;  
     
     updateGameFlow(data);
+    updateHucks(data);
 
 }
 
@@ -26,6 +27,20 @@ function updateGameFlow(data){
     oppHolds_bar.style = "width: " + 100 * data['oppHolds']/data['points'] + "%";
     cutHolds_bar.style = "width: " + 100 * data['cutHolds']/data['points'] + "%";
     cutBreaks_bar.style = "width: " + 100 * data['cutBreaks']/data['points'] + "%";
+}
+
+function updateHucks(data){
+    hucksTitle = document.getElementById("hucksTitle");
+    hucksDescription = document.getElementById("hucksDescription");
+
+    hucksTitle.innerHTML = "Hucks:";
+    hucksDescription.innerHTML = "Incomplete Hucks: " + data['incompleteHucks'] + "  |  Complete Hucks: " + data['completeHucks'];
+
+    totalHucks = data['incompleteHucks'] + data['completeHucks'];
+    hucksIncomplete_bar = document.getElementById("hucksIncomplete_bar");
+    hucksComplete_bar = document.getElementById("hucksComplete_bar");
+    hucksIncomplete_bar.style = "width: " + 100 * data['incompleteHucks']/totalHucks + "%";
+    hucksComplete_bar.style = "width: " + 100 * data['completeHucks']/totalHucks + "%";
 }
 
 function fetchGame() {
