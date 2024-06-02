@@ -44,7 +44,7 @@
   margin: auto;
   width: 80%;
   height: 30px;
-  background-color: #b3b3b3;
+  background-color: white;
 }
 
 .bar-opp-breaks {
@@ -92,7 +92,7 @@
   margin: auto;
   width: 80%;
   height: 30px;
-  background-color: #b3b3b3;
+  background-color: white;
 }
 
 .bar-hucks-incomplete {
@@ -126,7 +126,7 @@
   margin: auto;
   width: 80%;
   height: 30px;
-  background-color: #b3b3b3;
+  background-color: white;
 }
 
 .bar-endzone-not-scores {
@@ -160,7 +160,7 @@
   margin: auto;
   width: 80%;
   height: 30px;
-  background-color: #b3b3b3;
+  background-color: white;
 }
 
 .bar-blocks-unforced {
@@ -194,7 +194,7 @@
   margin: auto;
   width: 80%;
   height: 30px;
-  background-color: #b3b3b3;
+  background-color: white;
 }
 
 .bar-turnovers-unforced {
