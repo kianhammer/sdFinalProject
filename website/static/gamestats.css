@@ -160,13 +160,13 @@
 .bar-blocks-unforced {
   height: 30px;
   width: 10%;
-  background-color: red;
+  background-color: orange;
   float: left;
 }
 
 .bar-blocks-forced {
   height: 30px;
   width: 10%;
-  background-color: green;
+  background-color: purple;
   float: left;
 }
