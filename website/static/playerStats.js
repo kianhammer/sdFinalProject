@@ -38,7 +38,7 @@ function populateStatsTableHeader(statCategories) {
 }
 
 function createStatsTable(playerStats) {
-  console.log(statCategories);
+  console.log(playerStats);
   var tableBody = document.getElementById("statsTableBody");
   let rowIndex = 0;
   for (const [player, stats] of Object.entries(playerStats)) {
