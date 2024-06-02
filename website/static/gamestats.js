@@ -44,8 +44,6 @@ function updateGameHeader(data){
 }
 
 function updateGameFlow(data){
-    document.getElementById("gameFlowBar").style = "border: solid";
-    
     gameFlowTitle = document.getElementById("gameFlowTitle");
     gameFlowDescription = document.getElementById("gameFlowDescription");
 
@@ -63,8 +61,6 @@ function updateGameFlow(data){
 }
 
 function updateHucks(data){
-    document.getElementById("hucksBar").style = "border: solid";
-    
     hucksTitle = document.getElementById("hucksTitle");
     hucksDescription = document.getElementById("hucksDescription");
 
@@ -86,8 +82,6 @@ function updateHucks(data){
 }
 
 function updateEndzone(data){
-    document.getElementById("endzoneBar").style = "border: solid";
-    
     endzoneTitle = document.getElementById("endzoneTitle");
     endzoneDescription = document.getElementById("endzoneDescription");
 
@@ -109,8 +103,6 @@ function updateEndzone(data){
 }
 
 function updateBlocks(data){
-    document.getElementById("blocksBar").style = "border: solid";
-    
     blocksTitle = document.getElementById("blocksTitle");
     blocksDescription = document.getElementById("blocksDescription");
 
@@ -132,8 +124,6 @@ function updateBlocks(data){
 }
 
 function updateTurnovers(data){
-    document.getElementById("turnoversBar").style = "border: solid";
-    
     turnoversTitle = document.getElementById("turnoversTitle");
     turnoversDescription = document.getElementById("turnoversDescription");
 
