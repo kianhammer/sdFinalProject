@@ -166,14 +166,14 @@
 .bar-blocks-unforced {
   height: 30px;
   width: 10%;
-  background-color: orange;
+  background-color: #12CBE5;
   float: left;
 }
 
 .bar-blocks-forced {
   height: 30px;
   width: 10%;
-  background-color: purple;
+  background-color: #490DE0;
   float: left;
 }
 
@@ -200,14 +200,14 @@
 .bar-turnovers-unforced {
   height: 30px;
   width: 10%;
-  background-color: orange;
+  background-color: #12CBE5;
   float: left;
 }
 
 .bar-turnovers-forced {
   height: 30px;
   width: 10%;
-  background-color: purple;
+  background-color: #490DE0;
   float: left;
 }
 
