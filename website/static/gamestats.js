@@ -72,12 +72,15 @@ function updateHucks(data){
     hucksDescription.innerHTML = "Incomplete Hucks: " + data['incompleteHucks'] + "  |  Complete Hucks: " + data['completeHucks'] + "<br> <br> <br> <br>";
 
     totalHucks = data['incompleteHucks'] + data['completeHucks'];
+    hucksIncomplete_bar = document.getElementById("hucksIncomplete_bar");
+    hucksComplete_bar = document.getElementById("hucksComplete_bar");
+    
     if(totalHucks == 0){
+        hucksIncomplete_bar.style = "width: 0%";
+        hucksComplete_bar.style = "width: 0%";
         return;
     }
     
-    hucksIncomplete_bar = document.getElementById("hucksIncomplete_bar");
-    hucksComplete_bar = document.getElementById("hucksComplete_bar");
     hucksIncomplete_bar.style = "width: " + 100 * data['incompleteHucks']/totalHucks + "%";
     hucksComplete_bar.style = "width: " + 100 * data['completeHucks']/totalHucks + "%";
 }
@@ -92,12 +95,15 @@ function updateEndzone(data){
     endzoneDescription.innerHTML = "Endzones Not Scored: " + data['endzoneNotScores'] + "  |  Endzones Scores: " + data['endzoneScores'] + "<br> <br> <br> <br>";
 
     totalEndzoneChances = data['endzoneNotScores'] + data['endzoneScores'];
+    endzoneNotScores_bar = document.getElementById("endzoneNotScores_bar");
+    endzoneScores_bar = document.getElementById("endzoneScores_bar");
+    
     if(totalEndzoneChances == 0){
+        endzoneNotScores_bar.style = "width: 0%";
+        endzoneScores_bar.style = "width: 0%";
         return;
     }
     
-    endzoneNotScores_bar = document.getElementById("endzoneNotScores_bar");
-    endzoneScores_bar = document.getElementById("endzoneScores_bar");
     endzoneNotScores_bar.style = "width: " + 100 * data['endzoneNotScores']/totalEndzoneChances + "%";
     endzoneScores_bar.style = "width: " + 100 * data['endzoneScores']/totalEndzoneChances + "%";
 }
@@ -112,12 +118,15 @@ function updateBlocks(data){
     blocksDescription.innerHTML = "Unforced Blocks: " + data['blocksUnforced'] + "  |  Forced Blocks: " + data['blocksForced'] + "<br> <br> <br> <br>";
 
     totalBlocks = data['blocksUnforced'] + data['blocksForced'];
+    blocksUnforced_bar = document.getElementById("blocksUnforced_bar");
+    blocksForced_bar = document.getElementById("blocksForced_bar");
+    
     if(totalBlocks == 0){
+        blocksUnforced_bar.style = "width: 0%";
+        blocksForced_bar.style = "width: 0%";
         return;
     }
     
-    blocksUnforced_bar = document.getElementById("blocksUnforced_bar");
-    blocksForced_bar = document.getElementById("blocksForced_bar");
     blocksUnforced_bar.style = "width: " + 100 * data['blocksUnforced']/totalBlocks + "%";
     blocksForced_bar.style = "width: " + 100 * data['blocksForced']/totalBlocks + "%";
 }
@@ -132,12 +141,15 @@ function updateTurnovers(data){
     turnoversDescription.innerHTML = "Unforced Turnovers: " + data['turnoversUnforced'] + "  |  Forced Turnovers: " + data['turnoversForced'] + "<br> <br> <br> <br>";
 
     totalTurnovers = data['turnoversUnforced'] + data['turnoversForced'];
+    turnoversUnforced_bar = document.getElementById("turnoversUnforced_bar");
+    turnoversForced_bar = document.getElementById("turnoversForced_bar");
+    
     if(totalTurnovers == 0){
+        turnoversUnforced_bar.style = "width: 0%";
+        turnoversForced_bar.style = "width: 0%";
         return;
     }
     
-    turnoversUnforced_bar = document.getElementById("turnoversUnforced_bar");
-    turnoversForced_bar = document.getElementById("turnoversForced_bar");
     turnoversUnforced_bar.style = "width: " + 100 * data['turnoversUnforced']/totalTurnovers + "%";
     turnoversForced_bar.style = "width: " + 100 * data['turnoversForced']/totalTurnovers + "%";
 }
