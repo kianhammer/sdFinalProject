@@ -9,6 +9,7 @@ function updateGame(data) {
     
     updateGameFlow(data);
     updateHucks(data);
+    updateBlocks(data);
 
 }
 
@@ -55,6 +56,20 @@ function updateEndzone(data){
     endzoneScores_bar = document.getElementById("endzoneScores_bar");
     endzoneNotScores_bar.style = "width: " + 100 * data['endzoneNotScores']/totalEndzoneChances + "%";
     endzoneScores_bar.style = "width: " + 100 * data['endzoneScores']/totalEndzoneChances + "%";
+}
+
+function updateBlocks(data){
+    blocksTitle = document.getElementById("blocksTitle");
+    blocksDescription = document.getElementById("blocksDescription");
+
+    blocksTitle.innerHTML = "Blocks:";
+    blocksDescription.innerHTML = "Unforced Blocks: " + data['blocksUnforced'] + "  |  Forced Blocks: " + data['blocksForced'] + "<br> <br>";
+
+    totalBlocks = data['blocksUnforced'] + data['blocksForced'];
+    blocksUnforced_bar = document.getElementById("blocksUnforced_bar");
+    blocksForced_bar = document.getElementById("blocksForced_bar");
+    blocksUnforced_bar.style = "width: " + 100 * data['blocksUnforced']/totalBlocks + "%";
+    blocksForced_bar.style = "width: " + 100 * data['blocksForced']/totalBlocks + "%";
 }
 
 function fetchGame() {
