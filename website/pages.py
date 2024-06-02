@@ -23,34 +23,36 @@ cur = conn.cursor()
 all_cut_games = []
 
 PLAYER_STATS_QUERIES = {
+    "G": "SELECT COUNT(DISTINCT YEAR(Date), MONTH(Date), DAY(Date), opponent) FROM cutstats WHERE players LIKE '%player%';",
     "PP": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%';",
     "OPP": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'FALSE';",
     "DPP": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'TRUE';",
     "Holds": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND scored LIKE 'TRUE' AND pulled LIKE 'FALSE';",
-    "Hold %" : "SELECT CAST(COUNT(*) FILTER (WHERE scored LIKE 'TRUE') AS DOUBLE) / NULLIF(COUNT(*), 0) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'FALSE';",
+    "Hold %" : "SELECT CAST(COUNT(*) FILTER (WHERE scored LIKE 'TRUE') AS FLOAT) / NULLIF(COUNT(*), 0) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'FALSE';",
     "Breaks": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND scored LIKE 'TRUE' AND pulled LIKE 'TRUE';",
-    "Break %" : "SELECT CAST(COUNT(*) FILTER (WHERE scored LIKE 'TRUE') AS DOUBLE) / NULLIF(COUNT(*), 0) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'TRUE';",
+    "Break %" : "SELECT CAST(COUNT(*) FILTER (WHERE scored LIKE 'TRUE') AS FLOAT) / NULLIF(COUNT(*), 0) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'TRUE';",
     "RZ att": "SELECT SUM(EndzoneScored) + SUM(EndzoneNotScoredForced) + SUM(EndzoneNotScoredUnforced) + SUM(EndzoneNotScoredUnknown) FROM cutstats WHERE players LIKE '%player%';",
-    "RZ%": "SELECT SUM(EndzoneScored) / NULLIF((SUM(EndzoneScored) + SUM(EndzoneNotScoredForced) + SUM(EndzoneNotScoredUnforced) + SUM(EndzoneNotScoredUnknown)), 0) FROM cutstats WHERE players LIKE '%player%';",
+    "RZC %": "SELECT SUM(EndzoneScored) / NULLIF((SUM(EndzoneScored) + SUM(EndzoneNotScoredForced) + SUM(EndzoneNotScoredUnforced) + SUM(EndzoneNotScoredUnknown)), 0) FROM cutstats WHERE players LIKE '%player%';",
     "Turns": "SELECT SUM(TurnoversForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%player%';",
     "Blocks": "SELECT SUM(BlocksForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%player%';",
     "Huck att": "SELECT SUM(HucksCompleted) + SUM(HucksIncompleteForced) + SUM(HucksIncompleteUnforced) + SUM(HucksIncompleteOther) FROM cutstats WHERE players LIKE '%player%';",
-    "Huck%": "SELECT SUM(HucksCompleted) / NULLIF((SUM(HucksCompleted) + SUM(HucksIncompleteForced) + SUM(HucksIncompleteUnforced) + SUM(HucksIncompleteOther)), 0) FROM cutstats WHERE players LIKE '%player%';",
+    "Huck %": "SELECT SUM(HucksCompleted) / NULLIF((SUM(HucksCompleted) + SUM(HucksIncompleteForced) + SUM(HucksIncompleteUnforced) + SUM(HucksIncompleteOther)), 0) FROM cutstats WHERE players LIKE '%player%';",
 }
 PLAYER_STATS_CATEGORIES = {
+    "Games Played": "Games in which a player has appeared",
     "Points Played": "Points in which the player has been on the field",
     "Offensive Points Played": "Points in which the player was on the field while starting on offense",
     "Defensive Points Played": "Points in which the player was on the field while starting on defense",
     "Holds": "When a player is on the field for an Offensive Point and his team scores",
-    "Hold Percentage": "holds/offensive points",
+    "Hold %": "holds/offensive points",
     "Breaks": "When a player is on the field for a Defensive Point and his team scores",
-    "Break Percentage": "holds/offensive points",
+    "Break %": "breaks/defensive points",
     "Red Zone Attempts": "Possessions when the disc is within 20 yards of the end zone",
-    "Red Zone Conversion Rate": "Rate of success on possessions when the disc is withing 20 yards of the end zone",
+    "Red Zone Conversion %": "Rate of success on possessions when the disc is withing 20 yards of the end zone",
     "Turnovers": "When a player is on the field and his team loses possession of the disc",
     "Blocks": "When a player is on the field and his team takes possession away from the other team",
     "Huck Attempts": "When a player is on the field while his team attempts a throw of more than 40 yards",
-    "Huck Completion Rate": "Rate of completed hucks per attempt while on the field",
+    "Huck Completion %": "Rate of completed hucks per attempt while on the field",
     
 }
 
