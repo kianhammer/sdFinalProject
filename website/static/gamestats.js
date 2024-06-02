@@ -1,3 +1,18 @@
+function fetchGame() {
+    the_game = document.getElementById("change_game_input").value;
+
+    console.log(the_game);
+    
+    URL = "/stats/game/" + the_game;
+
+    fetch(URL).then( response => response.json()).then( data => updateGame(data) );
+
+    console.log("hello");
+    
+    console.log(URL);
+   
+}
+
 function updateGame(data) {      
     statsDisplay = "";
     for (var key in data){
@@ -112,19 +127,4 @@ function updateTurnovers(data){
     turnoversForced_bar = document.getElementById("turnoversForced_bar");
     turnoversUnforced_bar.style = "width: " + 100 * data['turnoversUnforced']/totalTurnovers + "%";
     turnoversForced_bar.style = "width: " + 100 * data['turnoversForced']/totalTurnovers + "%";
-}
-
-function fetchGame() {
-    the_game = document.getElementById("change_game_input").value;
-
-    console.log(the_game);
-    
-    URL = "/stats/game/" + the_game;
-
-    fetch(URL).then( response => response.json()).then( data => updateGame(data) );
-
-    console.log("hello");
-    
-    console.log(URL);
-   
 }
