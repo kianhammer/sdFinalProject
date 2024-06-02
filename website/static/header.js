@@ -36,7 +36,7 @@ class Header extends HTMLElement {
           padding: 14px 16px;
         }
         .img {
-          padding: 11px 16px;
+          padding: 8px 16px;
         }
         
         /* Change the link color to #111 (black) on hover */
@@ -47,7 +47,7 @@ class Header extends HTMLElement {
       <header>
         <ul>
           <li><a class="img" href="/">
-            <img src="https://cdn.carleton.edu/uploads/sites/378/2023/09/perfect-cut-logo.png?resize=20,20" alt="CUTRULES">
+            <img src="https://cdn.carleton.edu/uploads/sites/378/2023/09/perfect-cut-logo.png?resize=25,25" alt="CUTRULES">
           </a></li>
           <li><a class="txt" href="/stats/players">Player Stats</a></li>
           <li><a class="txt" href="/stats/game">Game Stats</a></li>
