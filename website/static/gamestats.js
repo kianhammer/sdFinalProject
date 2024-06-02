@@ -7,16 +7,9 @@ function updateGame(data) {
     the_answer = document.getElementById("game_stats_display");
     the_answer.innerHTML = statsDisplay;  
     
-    oppBreaks_bar = document.getElementById("oppBreaks_bar");
-    oppHolds_bar = document.getElementById("oppHolds_bar");
-    cutHolds_bar = document.getElementById("cutHolds_bar");
-    cutBreaks_bar = document.getElementById("cutBreaks_bar");
-    oppBreaks_bar.style = "width: " + 100 * data['oppBreaks']/data['points'] + "%";
-    oppHolds_bar.style = "width: " + 100 * data['oppHolds']/data['points'] + "%";
-    cutHolds_bar.style = "width: " + 100 * data['cutHolds']/data['points'] + "%";
-    cutBreaks_bar.style = "width: " + 100 * data['cutBreaks']/data['points'] + "%";
-}
+    updateGameFlow(data);
 
+}
 
 function updateGameFlow(data){
     gameFlowTitle = document.getElementById("gameFlowTitle");
