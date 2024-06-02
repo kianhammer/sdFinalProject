@@ -80,6 +80,22 @@ function updateBlocks(data){
     blocksForced_bar.style = "width: " + 100 * data['blocksForced']/totalBlocks + "%";
 }
 
+function updateTurnovers(data){
+    document.getElementById("turnoversBar").style = "border: solid";
+    
+    turnoversTitle = document.getElementById("turnoversTitle");
+    turnoversDescription = document.getElementById("turnoversDescription");
+
+    turnoversTitle.innerHTML = "Turnovers:";
+    turnoversDescription.innerHTML = "Unforced Turnovers: " + data['turnoversUnforced'] + "  |  Forced Turnovers: " + data['turnoversForced'] + "<br> <br>";
+
+    totalTurnovers = data['turnoversUnforced'] + data['turnoversForced'];
+    turnoversUnforced_bar = document.getElementById("turnoversUnforced_bar");
+    turnoversForced_bar = document.getElementById("turnoversForced_bar");
+    turnoversUnforced_bar.style = "width: " + 100 * data['turnoversUnforced']/totalTurnovers + "%";
+    turnoversForced_bar.style = "width: " + 100 * data['turnoversForced']/totalTurnovers + "%";
+}
+
 function fetchGame() {
     the_game = document.getElementById("change_game_input").value;
 
