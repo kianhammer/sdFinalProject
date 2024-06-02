@@ -32,6 +32,8 @@ PLAYER_STATS_QUERIES = {
     "EZ Scores": "SELECT SUM(EndzoneScored) FROM cutstats WHERE players LIKE '%player%';",
     "Turnovers": "SELECT SUM(TurnoversForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%player%';",
     "Blocks": "SELECT SUM(BlocksForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%player%';",
+    "Huck Attempts": "SELECT SUM(HucksCompleted) + SUM(HucksIncompleteForced) + SUM(HucksIncompleteUnforced) + SUM(HucksIncompleteOther) FROM cutstats WHERE players LIKE '%player%';",
+    "Huck Completed": "SELECT SUM(HucksCompleted) FROM cutstats WHERE players LIKE '%player%';",
 }
 PLAYER_STATS_CATEGORIES = {
     "Points": "The total number of points played",
