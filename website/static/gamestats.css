@@ -52,3 +52,29 @@
   background-color: green;
   float: left;
 }
+
+.hucks-bar {
+  width: 100%;
+  height: 30px;
+  border: solid;
+  border-width: 5px;
+  border-color: black;
+  border-radius: 5px;
+  background-color: #b3b3b3;
+  color: white;
+  text-align: center;
+}
+
+.bar-hucks-incomplete {
+  height: 30px;
+  width: 10%;
+  background-color: red;
+  float: left;
+}
+
+.bar-hucks-complete {
+  height: 30px;
+  width: 10%;
+  background-color: green;
+  float: left;
+}
