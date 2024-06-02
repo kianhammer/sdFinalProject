@@ -92,3 +92,29 @@
   background-color: green;
   float: left;
 }
+
+.endzone-bar {
+  width: 100%;
+  height: 30px;
+  border: solid;
+  border-width: 5px;
+  border-color: black;
+  border-radius: 5px;
+  background-color: #b3b3b3;
+  color: white;
+  text-align: center;
+}
+
+.bar-endzone-not-scores {
+  height: 30px;
+  width: 10%;
+  background-color: red;
+  float: left;
+}
+
+.bar-endzone-scores {
+  height: 30px;
+  width: 10%;
+  background-color: green;
+  float: left;
+}
