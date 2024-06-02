@@ -18,8 +18,22 @@ function updateGame(data) {
 }
 
 
+function updateGameFlow(data){
+    gameFlowTitle = document.getElementById("gameFlowTitle");
+    gameFlowDescription = document.getElementById("gameFlowTitle");
 
-
+    gameFlowTitle.innerHTML = "Game Flow:";
+    gameFlowDescription.innerHTML = data['opponent'] + " Breaks: " + data['oppBreaks'] + "  |  " + data['opponent'] + " Holds: " + data['oppHolds'] + "  |  CUT Holds: " + data['cutHolds'] + "  |  CUT Breaks: " + data['cutBreaks'];
+    
+    oppBreaks_bar = document.getElementById("oppBreaks_bar");
+    oppHolds_bar = document.getElementById("oppHolds_bar");
+    cutHolds_bar = document.getElementById("cutHolds_bar");
+    cutBreaks_bar = document.getElementById("cutBreaks_bar");
+    oppBreaks_bar.style = "width: " + 100 * data['oppBreaks']/data['points'] + "%";
+    oppHolds_bar.style = "width: " + 100 * data['oppHolds']/data['points'] + "%";
+    cutHolds_bar.style = "width: " + 100 * data['cutHolds']/data['points'] + "%";
+    cutBreaks_bar.style = "width: " + 100 * data['cutBreaks']/data['points'] + "%";
+}
 
 function fetchGame() {
     the_game = document.getElementById("change_game_input").value;
