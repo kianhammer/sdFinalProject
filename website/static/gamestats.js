@@ -21,13 +21,25 @@ function updateGame(data) {
 
     the_answer = document.getElementById("game_stats_display");
     the_answer.innerHTML = statsDisplay;  
-    
+
+    updateGameHeader(data);
     updateGameFlow(data);
     updateHucks(data);
     updateEndzone(data);
     updateBlocks(data);
     updateTurnovers(data);
 
+}
+
+function updateGameHeader(data){
+    inputGameDescription = document.getElementById("inputGameDescription");
+    gameHeader = document.getElementById("gameHeader");
+
+    inputGameDescription.innerHTML = "Pick A Different Game To See Its Statistics";
+
+    gameHeaderText = "<br><br> Carleton vs " + data['opponent'];
+    gameHeaderText = gameHeaderText + "<br> " + data['date'];
+    gameHeaderText = gameHeaderText + "<br><br> Final Score: <br>" + data['score'] + "<br><br>";
 }
 
 function updateGameFlow(data){
