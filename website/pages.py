@@ -23,28 +23,33 @@ cur = conn.cursor()
 all_cut_games = []
 
 PLAYER_STATS_QUERIES = {
-    "Points": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%';",
-    "O Points": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'FALSE';",
-    "D Points": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'TRUE';",
+    "PP": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%';",
+    "OPP": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'FALSE';",
+    "DPP": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'TRUE';",
     "Holds": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND scored LIKE 'TRUE' AND pulled LIKE 'FALSE';",
     "Breaks": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND scored LIKE 'TRUE' AND pulled LIKE 'TRUE';",
-    "EZ Chances": "SELECT SUM(EndzoneScored) + SUM(EndzoneNotScoredForced) + SUM(EndzoneNotScoredUnforced) + SUM(EndzoneNotScoredUnknown) FROM cutstats WHERE players LIKE '%player%';",
-    "EZ Scores": "SELECT SUM(EndzoneScored) FROM cutstats WHERE players LIKE '%player%';",
+    "RZ Attempts": "SELECT SUM(EndzoneScored) + SUM(EndzoneNotScoredForced) + SUM(EndzoneNotScoredUnforced) + SUM(EndzoneNotScoredUnknown) FROM cutstats WHERE players LIKE '%player%';",
+    "RZ Scores": "SELECT SUM(EndzoneScored) FROM cutstats WHERE players LIKE '%player%';",
     "Turnovers": "SELECT SUM(TurnoversForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%player%';",
     "Blocks": "SELECT SUM(BlocksForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%player%';",
-    "Huck Attempts": "SELECT SUM(HucksCompleted) + SUM(HucksIncompleteForced) + SUM(HucksIncompleteUnforced) + SUM(HucksIncompleteOther) FROM cutstats WHERE players LIKE '%player%';",
-    "Huck Completed": "SELECT SUM(HucksCompleted) FROM cutstats WHERE players LIKE '%player%';",
+    "HA": "SELECT SUM(HucksCompleted) + SUM(HucksIncompleteForced) + SUM(HucksIncompleteUnforced) + SUM(HucksIncompleteOther) FROM cutstats WHERE players LIKE '%player%';",
+    "HC": "SELECT SUM(HucksCompleted) FROM cutstats WHERE players LIKE '%player%';",
+    "HCR": "SELECT SUM(HucksCompleted) + SUM(HucksIncompleteForced) + SUM(HucksIncompleteUnforced) + SUM(HucksIncompleteOther) FROM cutstats WHERE players LIKE '%player%' / SELECT SUM(HucksCompleted) FROM cutstats WHERE players LIKE '%player%';",
 }
 PLAYER_STATS_CATEGORIES = {
-    "Points": "The total number of points played",
-    "O Points": "The number of points when starting on offense",
-    "D Points": "The number of points when starting on defense",
-    "Holds": "The number of points scored when starting on offense",
-    "Breaks": "The number of points scored when starting on defense",
-    "EZ Chances": "The number of possessions where the disc was within 20 yards of the endzone",
-    "EZ Scores": "The number of possesions where the disc was within 20 yards of the endzone that ended with a score",
-    "Turnovers": "The number of possessions when this player was on the field that ended with a turnover",
-    "Blocks": "The number of opposing possessions when this player was on the field that ended with a block",
+    "Points Played": "Points in which the player has been on the field",
+    "Offensive Points Played": "Points in which the player was on the field while starting on offense",
+    "Defensive Points Played": "Points in which the player was on the field while starting on defense",
+    "Holds": "When a player is on the field for an Offensive Point and his team scores",
+    "Breaks": "When a player is on the field for a Defensive Point and his team scores",
+    "Red Zone Attempts": "When a player is on offense while the disc is within 20 yards of the endzone",
+    "Red Zone Scores": "When the team scores while this player is on offense and the disc is within 20 yards of the endzone",
+    "Turnovers": "When a player is on the field and his team loses possession of the disc",
+    "Blocks": "When a player is on the field and his team takes possession away from the other team",
+    "Huck Attempts": "When a player attempts a throw of more than 40 yards",
+    "Huck Completed": "When a player completes a throw of more than 40 yards",
+    "Huck Conversion Rate": "When a player completes a throw of more than 40 yards",
+    
 }
 
 @app.route('/')
