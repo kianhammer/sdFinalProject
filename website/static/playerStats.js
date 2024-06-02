@@ -2,7 +2,7 @@ function populateStatsTableHeader(statCategories) {
   console.log(statCategories);
   var tableHeaderRow = document.getElementById("statsHeaderRow");
 
-  var index = 0;
+  var index = 1;
   for (const [category, description] of Object.entries(statCategories)) {
     var th = document.createElement("th");
     th.setAttribute("class", "clickable");
@@ -37,41 +37,6 @@ function populateStatsTableHeader(statCategories) {
 
     tableHeaderRow.appendChild(th);
   }
-
-  // for (var i=0; i<statCategories.length; i++) {
-  //   var th = document.createElement("th");
-  //   th.setAttribute("class", "clickable");
-  //   th.setAttribute("onclick", "sortTable(" + (i+1) + ")");
-  //   /*
-  //   <div class="tooltip">Player
-  //     <span class="tooltiptext">
-  //       <p class="tooltiptext-title">Player Name</p>
-  //       <p class="tooltiptext-body">The name of the player</p>
-  //     </span>
-  //   </div>
-  //   */
-  //   var headerDiv = document.createElement("div");
-  //   headerDiv.setAttribute("class", "tooltip");
-  //   headerDiv.innerHTML = statCategories[i];
-
-  //   var tooltipTextSpan = document.createElement("span");
-  //   tooltipTextSpan.setAttribute("class", "tooltiptext");
-
-  //   var tooltipTitle = document.createElement("p");
-  //   tooltipTitle.setAttribute("class", "tooltiptext-title");
-  //   tooltipTitle.innerHTML = "Player Name";
-
-  //   var tooltipBody = document.createElement("p");
-  //   tooltipBody.setAttribute("class", "tooltiptext-body");
-  //   tooltipBody.innerHTML = "The name of the player";
-
-  //   tooltipTextSpan.appendChild(tooltipTitle);
-  //   tooltipTextSpan.appendChild(tooltipBody);
-  //   headerDiv.appendChild(tooltipTextSpan);
-  //   th.appendChild(headerDiv);
-
-  //   tableHeaderRow.appendChild(th);
-  // }
 }
 
 function createStatsTable(playerStats) {
