@@ -4,7 +4,35 @@ function populateStatsTableHeader(statCategories) {
     var th = document.createElement("th");
     th.innerHTML = statCategories[i];
     th.setAttribute("class", "clickable");
-    th.setAttribute('onclick', "sortTable(" + (i+1) + ")");
+    th.setAttribute("onclick", "sortTable(" + (i+1) + ")");
+    /*
+    <div class="tooltip">Player
+      <span class="tooltiptext">
+        <p class="tooltiptext-title">Player Name</p>
+        <p class="tooltiptext-body">The name of the player</p>
+      </span>
+    </div>
+    */
+    var headerDiv = document.createElement("div");
+    headerDiv.setAttribute("class", "tooltip");
+    headerDiv.innerHTML = "Player";
+
+    var tooltipTextSpan = document.createElement("span");
+    tooltipTextSpan.setAttribute("class", "tooltiptext");
+
+    var tooltipTitle = document.createElement("p");
+    tooltipTitle.setAttribute("class", "tooltiptext-title");
+    tooltipTitle.innerHTML = "Player Name";
+
+    var tooltipBody = document.createElement("p");
+    tooltipBody.setAttribute("class", "tooltiptext-body");
+    tooltipBody.innerHTML = "The name of the player";
+
+    tooltipTextSpan.appendChild(tooltipTitle);
+    tooltipTextSpan.appendChild(tooltipBody);
+    headerDiv.appendChild(tooltipTextSpan);
+    th.appendChild(headerDiv);
+
     tableHeaderRow.appendChild(th);
   }
 }
