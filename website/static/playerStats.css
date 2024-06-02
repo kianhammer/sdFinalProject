@@ -1,6 +1,6 @@
 table {
     border-collapse: collapse;
-    margin: 75px 0;
+    margin-top: 75px;
     font-size: 0.9em;
     font-family: sans-serif;
     min-width: 400px;
@@ -8,11 +8,9 @@ table {
     width: 100%;
     text-align: center;
 }
-
 th td {
     padding: 12px 15px;
 }
-
 thead tr {
     background-color: #009879;
     color: #ffffff;
@@ -32,13 +30,11 @@ thead th::before {
     margin-left: 5px;
     margin-right: 5px;
 }
-
 .arrow-down::before {
     vertical-align: bottom;
     border-top: 8px solid;
     border-bottom: 3px solid transparent;
 }
-
 .arrow-up::before {
     vertical-align: top;
     border-bottom: 8px solid;
@@ -48,11 +44,9 @@ thead th::before {
 tbody tr {
     border-bottom: 1px solid #dddddd;
 }
-
 tbody tr:hover {
     background-color: #f3f3f3;
 }
-
 tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
 }
@@ -60,7 +54,6 @@ tbody tr:last-of-type {
 .selected-td {
     background-color: #ededed;
 }
-
 .selected-th {
     background-color: #02755e;
 }
@@ -75,7 +68,6 @@ tbody tr:last-of-type {
     display: inline-block;
     border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
 }
-
 /* Tooltip text */
 .tooltip .tooltiptext {
     visibility: hidden;
@@ -96,12 +88,10 @@ tbody tr:last-of-type {
     position: absolute;
     z-index: 1;
 }
-
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
-
 .tooltip .tooltiptext::after {
     content: " ";
     position: absolute;
@@ -112,7 +102,6 @@ tbody tr:last-of-type {
     border-style: solid;
     border-color: black transparent transparent transparent;
 }
-
 .tooltiptext-title {
     font-size: 0.75em;
     font-weight: bold;

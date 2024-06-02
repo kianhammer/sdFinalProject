@@ -148,7 +148,7 @@ def get_all_players():
     player_list = []
 
     for point in query_fetch_all("SELECT players FROM cutstats"):
-        for player in point[0].split("|"):
+        for player in point[0].split("|"): # players are in the format "player1|player2|player3|..."
             if player not in player_list:
                 player_list.append(player)
                 

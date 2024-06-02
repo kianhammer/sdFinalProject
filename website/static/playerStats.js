@@ -1,5 +1,4 @@
 function populateStatsTableHeader(statCategories) {
-  console.log(statCategories);
   var tableHeaderRow = document.getElementById("statsHeaderRow");
 
   var index = 1;
@@ -7,14 +6,7 @@ function populateStatsTableHeader(statCategories) {
     var th = document.createElement("th");
     th.setAttribute("class", "clickable");
     th.setAttribute("onclick", "sortTable(" + (index++) + ")");
-    /*
-    <div class="tooltip">Player
-      <span class="tooltiptext">
-        <p class="tooltiptext-title">Player Name</p>
-        <p class="tooltiptext-body">The name of the player</p>
-      </span>
-    </div>
-    */
+    
     var headerDiv = document.createElement("div");
     headerDiv.setAttribute("class", "tooltip");
     headerDiv.innerHTML = category;
