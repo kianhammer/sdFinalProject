@@ -34,7 +34,7 @@ PLAYER_STATS_QUERIES = {
     "Blocks": "SELECT SUM(BlocksForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%player%';",
     "HA": "SELECT SUM(HucksCompleted) + SUM(HucksIncompleteForced) + SUM(HucksIncompleteUnforced) + SUM(HucksIncompleteOther) FROM cutstats WHERE players LIKE '%player%';",
     "HC": "SELECT SUM(HucksCompleted) FROM cutstats WHERE players LIKE '%player%';",
-    "HCR": "SELECT ROUND((SUM(HucksCompleted) + SUM(HucksIncompleteForced) + SUM(HucksIncompleteUnforced) + SUM(HucksIncompleteOther)) / NULLIF(SUM(HucksCompleted), 0), 2) FROM cutstats WHERE players LIKE '%player%';",
+    "HCR": "SELECT ROUND(((SUM(HucksCompleted) + SUM(HucksIncompleteForced) + SUM(HucksIncompleteUnforced) + SUM(HucksIncompleteOther)) / NULLIF(SUM(HucksCompleted), 0))::numeric, 2) FROM cutstats WHERE players LIKE '%player%';",
 }
 PLAYER_STATS_CATEGORIES = {
     "Points Played": "Points in which the player has been on the field",
