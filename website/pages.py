@@ -33,6 +33,17 @@ PLAYER_STATS_QUERIES = {
     "Turnovers": "SELECT SUM(TurnoversForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%player%';",
     "Blocks": "SELECT SUM(BlocksForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%player%';",
 }
+PLAYER_STATS_CATEGORIES = {
+    "Points": "The total number of points played",
+    "O Points": "The number of points when starting on offense",
+    "D Points": "The number of points when starting on defense",
+    "Holds": "The number of points scored when starting on offense",
+    "Breaks": "The number of points scored when starting on defense",
+    "EZ Chances": "The number of possessions where the disc was within 20 yards of the endzone",
+    "EZ Scores": "The number of possesions where the disc was within 20 yards of the endzone that ended with a score",
+    "Turnovers": "The number of possessions when this player was on the field that ended with a turnover",
+    "Blocks": "The number of opposing possessions when this player was on the field that ended with a block",
+}
 
 @app.route('/')
 def welcome():
@@ -159,7 +170,7 @@ def game_stats_opponent(opponent):
 @app.route('/stats/players')
 def player_stats_page():
     player_stats = fetch_player_stats()
-    stats_categories = json.dumps(list(PLAYER_STATS_QUERIES.keys()))
+    stats_categories = json.dumps(PLAYER_STATS_CATEGORIES)
     return render_template("playerStats.html", header=stats_categories, stats=player_stats)
 
 def fetch_player_stats():
@@ -175,7 +186,7 @@ def get_all_players():
     player_list = []
 
     for point in query_fetch_all("SELECT players FROM cutstats"):
-        for player in point[0].split("|"):
+        for player in point[0].split("|"): # players are in the format "player1|player2|player3|..."
             if player not in player_list:
                 player_list.append(player)
                 

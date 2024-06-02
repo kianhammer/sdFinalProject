@@ -1,10 +1,32 @@
 function populateStatsTableHeader(statCategories) {
   var tableHeaderRow = document.getElementById("statsHeaderRow");
-  for (var i=0; i<statCategories.length; i++) {
+
+  var index = 1;
+  for (const [category, description] of Object.entries(statCategories)) {
     var th = document.createElement("th");
-    th.innerHTML = statCategories[i];
     th.setAttribute("class", "clickable");
-    th.setAttribute('onclick', "sortTable(" + (i+1) + ")");
+    th.setAttribute("onclick", "sortTable(" + (index++) + ")");
+    
+    var headerDiv = document.createElement("div");
+    headerDiv.setAttribute("class", "tooltip");
+    headerDiv.innerHTML = category;
+
+    var tooltipTextSpan = document.createElement("span");
+    tooltipTextSpan.setAttribute("class", "tooltiptext");
+
+    var tooltipTitle = document.createElement("p");
+    tooltipTitle.setAttribute("class", "tooltiptext-title");
+    tooltipTitle.innerHTML = category;
+
+    var tooltipBody = document.createElement("p");
+    tooltipBody.setAttribute("class", "tooltiptext-body");
+    tooltipBody.innerHTML = description;
+
+    tooltipTextSpan.appendChild(tooltipTitle);
+    tooltipTextSpan.appendChild(tooltipBody);
+    headerDiv.appendChild(tooltipTextSpan);
+    th.appendChild(headerDiv);
+
     tableHeaderRow.appendChild(th);
   }
 }
@@ -13,10 +35,12 @@ function createStatsTable(playerStats) {
   var tableBody = document.getElementById("statsTableBody");
   let rowIndex = 0;
   for (const [player, stats] of Object.entries(playerStats)) {
-    let row = tableBody.insertRow(rowIndex++);
-    for(var i = 0; i < stats.length; i++) {
-        var cell = row.insertCell(i);
-        cell.innerHTML = stats[i]
+    if(player != "") {
+      let row = tableBody.insertRow(rowIndex++);
+      for(var i = 0; i < stats.length; i++) {
+          var cell = row.insertCell(i);
+          cell.innerHTML = stats[i]
+      }
     }
   }
 }
@@ -30,7 +54,7 @@ function sortTable(columnIndex) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
   table = document.getElementById("statsTableBody");
   switching = true;
-  // Set the sorting direction to ascending:
+  // Set the sorting direction to descending:
   dir = "desc";
   /* Make a loop that will continue until
   no switching has been done: */
