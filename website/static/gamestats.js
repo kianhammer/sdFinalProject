@@ -9,7 +9,9 @@ function updateGame(data) {
     
     updateGameFlow(data);
     updateHucks(data);
+    updateEndzone(data);
     updateBlocks(data);
+    updateTurnovers(data);
 
 }
 
