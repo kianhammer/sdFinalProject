@@ -44,6 +44,10 @@ function updateHucks(data){
     hucksDescription.innerHTML = "Incomplete Hucks: " + data['incompleteHucks'] + "  |  Complete Hucks: " + data['completeHucks'] + "<br> <br>";
 
     totalHucks = data['incompleteHucks'] + data['completeHucks'];
+    if(totalHucks == 0){
+        return;
+    }
+    
     hucksIncomplete_bar = document.getElementById("hucksIncomplete_bar");
     hucksComplete_bar = document.getElementById("hucksComplete_bar");
     hucksIncomplete_bar.style = "width: " + 100 * data['incompleteHucks']/totalHucks + "%";
@@ -60,6 +64,10 @@ function updateEndzone(data){
     endzoneDescription.innerHTML = "Endzones Not Scored: " + data['endzoneNotScores'] + "  |  Endzones Scores: " + data['endzoneScores'] + "<br> <br>";
 
     totalEndzoneChances = data['endzoneNotScores'] + data['endzoneScores'];
+    if(totalEndzoneChances == 0){
+        return;
+    }
+    
     endzoneNotScores_bar = document.getElementById("endzoneNotScores_bar");
     endzoneScores_bar = document.getElementById("endzoneScores_bar");
     endzoneNotScores_bar.style = "width: " + 100 * data['endzoneNotScores']/totalEndzoneChances + "%";
@@ -76,6 +84,10 @@ function updateBlocks(data){
     blocksDescription.innerHTML = "Unforced Blocks: " + data['blocksUnforced'] + "  |  Forced Blocks: " + data['blocksForced'] + "<br> <br>";
 
     totalBlocks = data['blocksUnforced'] + data['blocksForced'];
+    if(totalBlocks == 0){
+        return;
+    }
+    
     blocksUnforced_bar = document.getElementById("blocksUnforced_bar");
     blocksForced_bar = document.getElementById("blocksForced_bar");
     blocksUnforced_bar.style = "width: " + 100 * data['blocksUnforced']/totalBlocks + "%";
@@ -92,6 +104,10 @@ function updateTurnovers(data){
     turnoversDescription.innerHTML = "Unforced Turnovers: " + data['turnoversUnforced'] + "  |  Forced Turnovers: " + data['turnoversForced'] + "<br> <br>";
 
     totalTurnovers = data['turnoversUnforced'] + data['turnoversForced'];
+    if(totalTurnovers == 0){
+        return;
+    }
+    
     turnoversUnforced_bar = document.getElementById("turnoversUnforced_bar");
     turnoversForced_bar = document.getElementById("turnoversForced_bar");
     turnoversUnforced_bar.style = "width: " + 100 * data['turnoversUnforced']/totalTurnovers + "%";
