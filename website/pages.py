@@ -47,24 +47,11 @@ PLAYER_STATS_CATEGORIES = {
 
 @app.route('/')
 def welcome():
-	conn = psycopg2.connect(
-	host="localhost",
-	port=5432,   
-	database="chend2",
-	user="chend2",
-	password="plad242books")
-
-	cur = conn.cursor()
-
-	sql = f"SELECT Opponent FROM CUTStats"
+    rows = query_fetch_all("SELECT Opponent FROM CUTStats")
     
-	cur.execute( sql )
-
-	rows = cur.fetchall()
-
-	gameset = set(rows)
-
-	return render_template("homepage.html", gamenumber = len(gameset))
+    gameset = set(rows)
+    
+    return render_template("homepage.html", gamenumber = len(gameset))
 
 @app.route('/import/')
 def importpage():
