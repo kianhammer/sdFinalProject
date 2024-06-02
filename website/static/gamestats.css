@@ -55,28 +55,28 @@
 
 .bar-opp-breaks {
   height: 30px;
-  background-color: red;
+  background-color: #CF0B28;
   float: left;
 }
 
 .bar-opp-holds {
   height: 30px;
   width: 25%;
-  background-color: pink;
+  background-color: #FF4C69;
   float: left;
 }
 
 .bar-cut-holds {
   height: 30px;
   width: 10%;
-  background-color: springgreen;
+  background-color: #39DF6E;
   float: left;
 }
 
 .bar-cut-breaks {
   height: 30px;
   width: 10%;
-  background-color: green;
+  background-color: #08A63B;
   float: left;
 }
 
@@ -110,14 +110,14 @@
 .bar-hucks-incomplete {
   height: 30px;
   width: 10%;
-  background-color: red;
+  background-color: #CF0B28;
   float: left;
 }
 
 .bar-hucks-complete {
   height: 30px;
   width: 10%;
-  background-color: green;
+  background-color: #08A63B;
   float: left;
 }
 
@@ -150,14 +150,14 @@
 .bar-endzone-not-scores {
   height: 30px;
   width: 10%;
-  background-color: red;
+  background-color: #CF0B28;
   float: left;
 }
 
 .bar-endzone-scores {
   height: 30px;
   width: 10%;
-  background-color: green;
+  background-color: #08A63B;
   float: left;
 }
 
