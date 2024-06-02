@@ -15,7 +15,7 @@
 }
 
 .game-flow-bar {
-  width: 100%;
+  width: 80%;
   height: 30px;
   border: none;
   border-width: 5px;
@@ -68,7 +68,7 @@
 }
 
 .hucks-bar {
-  width: 100%;
+  width: 80%;
   height: 30px;
   border: none;
   border-width: 5px;
@@ -107,7 +107,7 @@
 }
 
 .endzone-bar {
-  width: 100%;
+  width: 80%;
   height: 30px;
   border: none;
   border-width: 5px;
@@ -146,7 +146,7 @@
 }
 
 .blocks-bar {
-  width: 100%;
+  width: 80%;
   height: 30px;
   border: none;
   border-width: 5px;
@@ -185,7 +185,7 @@
 }
 
 .turnovers-bar {
-  width: 100%;
+  width: 80%;
   height: 30px;
   border: none;
   border-width: 5px;
