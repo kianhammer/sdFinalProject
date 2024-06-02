@@ -14,14 +14,7 @@ function fetchGame() {
 }
 
 function updateGame(data) {      
-    statsDisplay = "";
-    for (var key in data){
-        statsDisplay = statsDisplay + "The game " + key + ": " + data[key] + "<br>";
-    }
-
-    the_answer = document.getElementById("game_stats_display");
-    the_answer.innerHTML = statsDisplay;  
-
+    
     updateGameHeader(data);
     updateGameFlow(data);
     updateHucks(data);
