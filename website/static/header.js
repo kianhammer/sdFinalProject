@@ -36,7 +36,7 @@ class Header extends HTMLElement {
           padding: 14px 16px;
         }
         .img {
-          padding: 10px 16px;
+          padding: 11px 16px;
         }
         
         /* Change the link color to #111 (black) on hover */
