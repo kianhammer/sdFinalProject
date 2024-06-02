@@ -1,4 +1,5 @@
 function populateStatsTableHeader(statCategories) {
+  console.log(statCategories);
   var tableHeaderRow = document.getElementById("statsHeaderRow");
   for (var i=0; i<statCategories.length; i++) {
     var th = document.createElement("th");
@@ -37,6 +38,7 @@ function populateStatsTableHeader(statCategories) {
 }
 
 function createStatsTable(playerStats) {
+  console.log(statCategories);
   var tableBody = document.getElementById("statsTableBody");
   let rowIndex = 0;
   for (const [player, stats] of Object.entries(playerStats)) {
