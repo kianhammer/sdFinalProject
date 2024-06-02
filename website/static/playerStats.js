@@ -6,7 +6,7 @@ function populateStatsTableHeader(statCategories) {
   for (const [category, description] of Object.entries(statCategories)) {
     var th = document.createElement("th");
     th.setAttribute("class", "clickable");
-    th.setAttribute("onclick", "sortTable(" + (i++) + ")");
+    th.setAttribute("onclick", "sortTable(" + (index++) + ")");
     /*
     <div class="tooltip">Player
       <span class="tooltiptext">
