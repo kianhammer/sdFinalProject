@@ -37,7 +37,7 @@ function updateGameHeader(data){
 
     inputGameDescription.innerHTML = "Pick A Different Game To See Its Statistics";
 
-    gameHeaderText = "<br><br> Carleton vs " + data['opponent'];
+    gameHeaderText = "<br> Carleton vs " + data['opponent'];
     gameHeaderText = gameHeaderText + "<br> " + data['date'];
     gameHeaderText = gameHeaderText + "<br><br> Final Score: <br>" + data['score'] + "<br><br>";
     gameHeader.innerHTML = gameHeaderText;
