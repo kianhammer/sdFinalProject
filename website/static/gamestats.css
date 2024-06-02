@@ -2,6 +2,25 @@
   font-weight: bold;
 }
 
+.input-game-description{
+  font-weight: bold;
+  text-align: center;
+  font-size: 30px;
+}
+
+.input-game{
+  font-weight: bold;
+  text-align: center;
+  margin: auto;
+}
+
+.game-header{
+  font-weight: bold;
+  text-align: center;
+  font-size: 30px;
+}
+
+
 .game-flow-title{
   font-weight: bold;
   text-align: center;
