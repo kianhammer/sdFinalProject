@@ -40,7 +40,6 @@ function createStatsTable(playerStats) {
       let row = tableBody.insertRow(rowIndex++);
       for(var i = 0; i < stats.length; i++) {
           var cell = row.insertCell(i);
-          console.log("stats[i].toFixed(2)" + stats[i] + " --> " + parseFloat(stats[i]).toFixed(2))
           if (stats[i] != null && stats[i].toString().indexOf('.') != -1) {
             //string a decimal point
             cell.innerHTML = parseFloat(stats[i]).toFixed(2);
