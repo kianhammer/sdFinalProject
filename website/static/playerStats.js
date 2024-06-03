@@ -1,3 +1,4 @@
+/* File contributers: Julian */
 function populateStatsTableHeader(statCategories, tooltips) {
   var tableHeaderRow = document.getElementById("statsHeaderRow");
 
