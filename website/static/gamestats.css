@@ -1,1 +1,209 @@
+.input-game-description{
+  font-weight: bold;
+  text-align: center;
+  font-size: 30px;
+}
+
+.input-game{
+  font-weight: bold;
+  text-align: center;
+  margin: auto;
+  font-size: 30px;
+}
+
+.change-game-input{
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.game-header{
+  font-weight: bold;
+  text-align: center;
+  font-size: 30px;
+}
+
+
+.game-flow-title{
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+}
+
+.game-flow-description{
+  font-weight: bold;
+  text-align: center;
+  font-size: 15px;
+}
+
+.game-flow-bar {
+  margin: auto;
+  width: 80%;
+  height: 30px;
+  background-color: white;
+}
+
+.bar-opp-breaks {
+  height: 30px;
+  background-color: #D6122F;
+  float: left;
+}
+
+.bar-opp-holds {
+  height: 30px;
+  width: 25%;
+  background-color: #FF5E78;
+  float: left;
+}
+
+.bar-cut-holds {
+  height: 30px;
+  width: 10%;
+  background-color: #39DF6E;
+  float: left;
+}
+
+.bar-cut-breaks {
+  height: 30px;
+  width: 10%;
+  background-color: #08A63B;
+  float: left;
+}
+
+
+
+.hucks-title{
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+}
+
+.hucks-description{
+  font-weight: bold;
+  text-align: center;
+  font-size: 15px;
+}
+
+.hucks-bar {
+  margin: auto;
+  width: 80%;
+  height: 30px;
+  background-color: white;
+}
+
+.bar-hucks-incomplete {
+  height: 30px;
+  width: 10%;
+  background-color: #D6122F;
+  float: left;
+}
+
+.bar-hucks-complete {
+  height: 30px;
+  width: 10%;
+  background-color: #08A63B;
+  float: left;
+}
+
+
+.endzone-title{
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+}
+
+.endzone-description{
+  font-weight: bold;
+  text-align: center;
+  font-size: 15px;
+}
+
+.endzone-bar {
+  margin: auto;
+  width: 80%;
+  height: 30px;
+  background-color: white;
+}
+
+.bar-endzone-not-scores {
+  height: 30px;
+  width: 10%;
+  background-color: #D6122F;
+  float: left;
+}
+
+.bar-endzone-scores {
+  height: 30px;
+  width: 10%;
+  background-color: #08A63B;
+  float: left;
+}
+
+
+.blocks-title{
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+}
+
+.blocks-description{
+  font-weight: bold;
+  text-align: center;
+  font-size: 15px;
+}
+
+.blocks-bar {
+  margin: auto;
+  width: 80%;
+  height: 30px;
+  background-color: white;
+}
+
+.bar-blocks-unforced {
+  height: 30px;
+  width: 10%;
+  background-color: #12CBE5;
+  float: left;
+}
+
+.bar-blocks-forced {
+  height: 30px;
+  width: 10%;
+  background-color: #490DE0;
+  float: left;
+}
+
+
+.turnovers-title{
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+}
+
+.turnovers-description{
+  font-weight: bold;
+  text-align: center;
+  font-size: 15px;
+}
+
+.turnovers-bar {
+  margin: auto;
+  width: 80%;
+  height: 30px;
+  background-color: white;
+}
+
+.bar-turnovers-unforced {
+  height: 30px;
+  width: 10%;
+  background-color: #12CBE5;
+  float: left;
+}
+
+.bar-turnovers-forced {
+  height: 30px;
+  width: 10%;
+  background-color: #490DE0;
+  float: left;
+}
 

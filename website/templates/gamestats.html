@@ -1,24 +1,90 @@
+<!DOCTYPE html>
 <head>
+    <title>Game Stats| CUT Stats</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn.carleton.edu/uploads/sites/378/2023/09/perfect-cut-logo.png?resize=1024,1024">
+
     <link rel="stylesheet" href="/static/gamestats.css">
-  
+    <script src="/static/header.js" type="text/javascript" defer></script>
     <script src="/static/gamestats.js"></script>
 </head>
   
-<h1 class="title" id="title">
-    <a href="/">
-        CUT Game Stats!
-    </a>
-</h1>
+<body>
+    <header-component></header-component>
+</body>
+
+<p class="input-game-description", id="inputGameDescription">
+    Pick A Game, Then See The Statistics!
+</p>
 
 <p class="input-game">
-    <br> <br> <br>
-    <select id="change_game_input" onchange="fetchGame()">
+    ----------
+    <select class="change-game-input", id="change_game_input" onchange="fetchGame()">
         {{DropdownOptions|safe}} 
     </select>
-    &nbsp &nbsp &nbsp &nbsp &nbsp
+    ----------
 </p>
 
-<p class="game-stats-display", id="game_stats_display">
-    <br> <br> <br>
-    Some game stats will display here
+<p class="game-header", id="gameHeader">
 </p>
+
+<p class="game-flow-title", id="gameFlowTitle">
+</p>
+
+<div class="game-flow-bar", id="gameFlowBar">
+    <div class="bar-opp-breaks", id="oppBreaks_bar", style="width: 0%"> </div>
+    <div class="bar-opp-holds", id="oppHolds_bar", style="width: 0%"> </div>
+    <div class="bar-cut-holds", id="cutHolds_bar", style="width: 0%"> </div>
+    <div class="bar-cut-breaks", id="cutBreaks_bar", style="width: 0%"> </div>
+</div>
+
+<p class="game-flow-description", id="gameFlowDescription">
+</p>
+
+
+<p class="hucks-title", id="hucksTitle">
+</p>
+
+<div class="hucks-bar", id="hucksBar">
+    <div class="bar-hucks-incomplete", id="hucksIncomplete_bar", style="width: 0%"> </div>
+    <div class="bar-hucks-complete", id="hucksComplete_bar", style="width: 0%"> </div>
+</div>
+
+<p class="hucks-description", id="hucksDescription">
+</p>
+
+
+<p class="endzone-title", id="endzoneTitle">
+</p>
+
+<div class="endzone-bar", id="endzoneBar">
+    <div class="bar-endzone-not-scores", id="endzoneNotScores_bar", style="width: 0%"> </div>
+    <div class="bar-endzone-scores", id="endzoneScores_bar", style="width: 0%"> </div>
+</div>
+
+<p class="endzone-description", id="endzoneDescription">
+</p>
+
+
+<p class="blocks-title", id="blocksTitle">
+</p>
+
+<div class="blocks-bar", id="blocksBar">
+    <div class="bar-blocks-unforced", id="blocksUnforced_bar", style="width: 0%"> </div>
+    <div class="bar-blocks-forced", id="blocksForced_bar", style="width: 0%"> </div>
+</div>
+
+<p class="blocks-description", id="blocksDescription">
+</p>
+
+
+<p class="turnovers-title", id="turnoversTitle">
+</p>
+
+<div class="turnovers-bar", id="turnoversBar">
+    <div class="bar-turnovers-unforced", id="turnoversUnforced_bar", style="width: 0%"> </div>
+    <div class="bar-turnovers-forced", id="turnoversForced_bar", style="width: 0%"> </div>
+</div>
+
+<p class="turnovers-description", id="turnoversDescription">
+</p>
+
