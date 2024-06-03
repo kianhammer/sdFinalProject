@@ -1,15 +1,15 @@
-function populateStatsTableHeader(statCategories) {
+function populateStatsTableHeader(statCategories, tooltips) {
   var tableHeaderRow = document.getElementById("statsHeaderRow");
 
-  var index = 1;
-  for (const [category, description] of Object.entries(statCategories)) {
+  var index = 0;
+  for (const [category, description] of Object.entries(tooltips)) {
     var th = document.createElement("th");
     th.setAttribute("class", "clickable");
-    th.setAttribute("onclick", "sortTable(" + (index++) + ")");
+    th.setAttribute("onclick", "sortTable(" + (index + 1) + ")");
     
     var headerDiv = document.createElement("div");
     headerDiv.setAttribute("class", "tooltip");
-    headerDiv.innerHTML = category;
+    headerDiv.innerHTML = statCategories[i];
 
     var tooltipTextSpan = document.createElement("span");
     tooltipTextSpan.setAttribute("class", "tooltiptext");
@@ -28,6 +28,7 @@ function populateStatsTableHeader(statCategories) {
     th.appendChild(headerDiv);
 
     tableHeaderRow.appendChild(th);
+    i++;
   }
 }
 
