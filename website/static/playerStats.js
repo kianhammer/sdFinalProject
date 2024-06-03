@@ -80,8 +80,8 @@ function sortTable(columnIndex) {
       y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
       /* Check if the two rows should switch place,
       based on the direction, asc or desc: */
+      xValue, yValue = 0;
       if (dir == "asc") {
-        xValue, yValue = 0;
         if (x.innerHTML != "") {
           xValue = parseFloat(x.innerHTML);
         }
