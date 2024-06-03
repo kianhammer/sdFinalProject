@@ -72,7 +72,7 @@ tbody tr:last-of-type {
 }
 /* Tooltip text */
 .tooltip .tooltiptext {
-    visibility: hidden;
+    /* visibility: hidden; */
     width: 120px;
     background-color: black;
     color: #fff;
@@ -89,10 +89,14 @@ tbody tr:last-of-type {
     margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
     position: absolute;
     z-index: 1;
+
+    opacity: 0;
+    transition: opacity 1s;
 }
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
-    visibility: visible;
+    /* visibility: visible; */
+    opacity: 1;
 }
 .tooltip .tooltiptext::after {
     content: " ";
