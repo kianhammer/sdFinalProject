@@ -41,7 +41,7 @@ function createStatsTable(playerStats) {
       for(var i = 0; i < stats.length; i++) {
           var cell = row.insertCell(i);
           console.log("stats[i].toFixed(2)" + stats[i] + " --> " + parseFloat(stats[i]).toFixed(2))
-          cell.innerHTML = stats[i];
+          cell.innerHTML = parseFloat(stats[i]).toFixed(2);
       }
     }
   }
