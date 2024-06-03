@@ -90,12 +90,12 @@ tbody tr:last-of-type {
     z-index: 1;
 
     opacity: 0;
-    transition: none;
+    transition: opacity 0.5s ease-in 0.5s;
 }
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:active .tooltiptext {
     opacity: 1;
-    transition: opacity 0.5s linear 0.5s;
+    transition: none;
 }
 .tooltip .tooltiptext::after {
     content: " ";
