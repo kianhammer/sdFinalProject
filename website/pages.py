@@ -172,7 +172,7 @@ def player_stats_page():
     player_stats = fetch_player_stats()
     tooltips = json.dumps(PLAYER_STATS_CATEGORIES)
     stats_categories = json.dumps(list(PLAYER_STATS_QUERIES.keys()))
-    return render_template("playerStats.html", tooltips=tooltips, statCategories=stats_categories, stats=player_stats)
+    return render_template("playerstats.html", tooltips=tooltips, statCategories=stats_categories, stats=player_stats)
 
 def fetch_player_stats():
     all_player_stats = {}
