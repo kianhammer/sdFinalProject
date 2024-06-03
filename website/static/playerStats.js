@@ -30,9 +30,9 @@ function populateStatsTableHeader(statCategories, tooltips) {
     tableHeaderRow.appendChild(th);
     index++;
   }
-  tableHeaderRow.getElementsByTagName("TH")[index]; // the last th
-  console.log("span: " + x.getElementsByTagName("SPAN")[0]);
-  x.getElementsByTagName("SPAN")[0].classList.add("left: -50%; margin: 0 60px 0 0;");
+  var th = tableHeaderRow.getElementsByTagName("TH")[index]; // the last th
+  console.log("span: " + th.getElementsByTagName("SPAN")[0]);
+  th.getElementsByTagName("SPAN")[0].classList.add("left: -50%; margin: 0 60px 0 0;");
 }
 
 function createStatsTable(playerStats) {
