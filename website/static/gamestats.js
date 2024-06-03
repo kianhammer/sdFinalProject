@@ -87,7 +87,7 @@ function updateEndzone(data){
     endzoneDescription = document.getElementById("endzoneDescription");
 
     endzoneTitle.innerHTML = "Endzone:";
-    endzoneDescription.innerHTML = "Endzones Not Scored: " + data['endzoneNotScores'] + "  |  Endzones Scores: " + data['endzoneScores'] + "<br> <br> <br> <br>";
+    endzoneDescription.innerHTML = "Endzones Not Scored: " + data['endzoneNotScores'] + "  |  Endzones Scored: " + data['endzoneScores'] + "<br> <br> <br> <br>";
 
     totalEndzoneChances = data['endzoneNotScores'] + data['endzoneScores'];
     endzoneNotScores_bar = document.getElementById("endzoneNotScores_bar");
