@@ -37,7 +37,8 @@ function updateGameHeader(data){
 }
 
 function updateGameFlow(data){
-    document.getElementById("gameFlowBar").style = "background-color: #b3b3b3;";
+    // Make the bar visible
+    document.getElementById("gameFlowBar").style = "width: 80%;";
     
     gameFlowTitle = document.getElementById("gameFlowTitle");
     gameFlowDescription = document.getElementById("gameFlowDescription");
@@ -49,6 +50,7 @@ function updateGameFlow(data){
     oppHolds_bar = document.getElementById("oppHolds_bar");
     cutHolds_bar = document.getElementById("cutHolds_bar");
     cutBreaks_bar = document.getElementById("cutBreaks_bar");
+    // Set the lengths of the inner bars for each stat
     oppBreaks_bar.style = "width: " + 100 * data['oppBreaks']/data['points'] + "%";
     oppHolds_bar.style = "width: " + 100 * data['oppHolds']/data['points'] + "%";
     cutHolds_bar.style = "width: " + 100 * data['cutHolds']/data['points'] + "%";
@@ -56,7 +58,7 @@ function updateGameFlow(data){
 }
 
 function updateHucks(data){
-    document.getElementById("hucksBar").style = "background-color: #b3b3b3;";
+    document.getElementById("hucksBar").style = "width: 80%;";
     
     hucksTitle = document.getElementById("hucksTitle");
     hucksDescription = document.getElementById("hucksDescription");
@@ -79,7 +81,7 @@ function updateHucks(data){
 }
 
 function updateEndzone(data){
-    document.getElementById("endzoneBar").style = "background-color: #b3b3b3;";
+    document.getElementById("endzoneBar").style = "width: 80%;";
     
     endzoneTitle = document.getElementById("endzoneTitle");
     endzoneDescription = document.getElementById("endzoneDescription");
@@ -102,7 +104,7 @@ function updateEndzone(data){
 }
 
 function updateBlocks(data){
-    document.getElementById("blocksBar").style = "background-color: #b3b3b3;";
+    document.getElementById("blocksBar").style = "width: 80%;";
     
     blocksTitle = document.getElementById("blocksTitle");
     blocksDescription = document.getElementById("blocksDescription");
@@ -125,7 +127,7 @@ function updateBlocks(data){
 }
 
 function updateTurnovers(data){
-    document.getElementById("turnoversBar").style = "background-color: #b3b3b3;";
+    document.getElementById("turnoversBar").style = "width: 80%;";
     
     turnoversTitle = document.getElementById("turnoversTitle");
     turnoversDescription = document.getElementById("turnoversDescription");
