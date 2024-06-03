@@ -31,8 +31,10 @@ function populateStatsTableHeader(statCategories, tooltips) {
     index++;
   }
   var th = tableHeaderRow.getElementsByTagName("TH")[index]; // the last th
-  console.log("span: " + th.getElementsByTagName("SPAN")[0]);
-  th.getElementsByTagName("SPAN")[0].classList.add("left-align-tooltip");
+  console.log("span: " + th.getElementsByTagName("p")[0].innerHTML);
+  span = th.getElementsByTagName("SPAN")[0];
+  span.style.left = "-50";
+  span.style.margin = "0 60px 0 0";
 }
 
 function createStatsTable(playerStats) {
