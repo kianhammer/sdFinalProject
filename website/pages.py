@@ -1,3 +1,5 @@
+# file contributers: Nathan, Daniel, Kian, Julian
+
 from flask import Flask, request
 from flask import render_template
 import psycopg2
