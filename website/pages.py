@@ -136,7 +136,6 @@ def separate_games(all_points):
 			#if the current point is listed as the first point of the game, the previous points appended to game were all of the previous game
 			if point[3] == 1:
 				all_cut_games.append(game)
-				print(game)
 				game = []
 				game.append(point)
 			else:
@@ -156,6 +155,8 @@ def game_stats_generate_dropdown():
 		date = get_timestamp_date(game[0][0])
 		all_opponents_html = all_opponents_html + f'<option value="{i} {opponent}">{date} :  {opponent}</option>' + '/n'
 		i += 1
+		print(game)
+		print(i)
 		
 	return all_opponents_html
 	
