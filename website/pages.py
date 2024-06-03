@@ -97,7 +97,14 @@ def upload_file():
 	# that data into the table.
     score = f"{data[2][0]} - {data[2][1]}"
     for i in range(1, len(data[3])):
-        sql = f"INSERT INTO CUTStats VALUES ('{data[0][1]}', '{data[1][1]}', '{score}', {data[3][i]}, '{data[4][i].upper()}', '{data[5][i].upper()}', {data[6][i]}, {data[7][i]}, {data[8][i]}, {data[9][i]}, {data[10][i]}, {data[11][i]}, {data[12][i]}, {data[13][i]}, {data[14][i]}, {data[15][i]}, {data[16][i]}, {data[17][i]}, '{data[18][i]}')"
+        date = data[0][1][0:24]
+        point = data[3][i]
+        if point < 10:
+            string = f"0{point}"
+        else:
+            string = point
+        date = date + string
+        sql = f"INSERT INTO CUTStats VALUES ('{date}', '{data[1][1]}', '{score}', {point}, '{data[4][i].upper()}', '{data[5][i].upper()}', {data[6][i]}, {data[7][i]}, {data[8][i]}, {data[9][i]}, {data[10][i]}, {data[11][i]}, {data[12][i]}, {data[13][i]}, {data[14][i]}, {data[15][i]}, {data[16][i]}, {data[17][i]}, '{data[18][i]}')"
         cur.execute( sql )
         conn.commit()
 
