@@ -102,7 +102,7 @@ def upload_file():
         if point < 10:
             string = f"0{point}"
         else:
-            string = point
+            string = f"{point}"
         date = date + string
         sql = f"INSERT INTO CUTStats VALUES ('{date}', '{data[1][1]}', '{score}', {point}, '{data[4][i].upper()}', '{data[5][i].upper()}', {data[6][i]}, {data[7][i]}, {data[8][i]}, {data[9][i]}, {data[10][i]}, {data[11][i]}, {data[12][i]}, {data[13][i]}, {data[14][i]}, {data[15][i]}, {data[16][i]}, {data[17][i]}, '{data[18][i]}')"
         cur.execute( sql )
