@@ -50,7 +50,7 @@ body{
   margin: auto;
   width: 80%;
   height: 30px;
-  background-color: white;
+  background-color: #b3b3b3;
 }
 
 .bar-opp-breaks {
@@ -98,7 +98,7 @@ body{
   margin: auto;
   width: 80%;
   height: 30px;
-  background-color: white;
+  background-color: #b3b3b3;
 }
 
 .bar-hucks-incomplete {
@@ -132,7 +132,7 @@ body{
   margin: auto;
   width: 80%;
   height: 30px;
-  background-color: white;
+  background-color: #b3b3b3;
 }
 
 .bar-endzone-not-scores {
@@ -166,7 +166,7 @@ body{
   margin: auto;
   width: 80%;
   height: 30px;
-  background-color: white;
+  background-color: #b3b3b3;
 }
 
 .bar-blocks-unforced {
@@ -200,7 +200,7 @@ body{
   margin: auto;
   width: 80%;
   height: 30px;
-  background-color: white;
+  background-color: #b3b3b3;
 }
 
 .bar-turnovers-unforced {
