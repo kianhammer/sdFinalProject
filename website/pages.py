@@ -23,25 +23,23 @@ cur = conn.cursor()
 all_cut_games = []
 
 PLAYER_STATS_QUERIES = {
-    # TODO - I want to do a games played, but cant convert timestamp to date :(
-    # "G": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND point LIKE '1';", 
-    "PP": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%';",
-    "OPP": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'FALSE';",
-    "DPP": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'TRUE';",
-    "Holds": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND scored LIKE 'TRUE' AND pulled LIKE 'FALSE';",
-    "Hold %" : "SELECT CAST(COUNT(*) FILTER (WHERE scored LIKE 'TRUE') AS FLOAT) / NULLIF(COUNT(*), 0) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'FALSE';",
-    "Breaks": "SELECT COUNT(*) FROM cutstats WHERE players LIKE '%player%' AND scored LIKE 'TRUE' AND pulled LIKE 'TRUE';",
-    "Break %" : "SELECT CAST(COUNT(*) FILTER (WHERE scored LIKE 'TRUE') AS FLOAT) / NULLIF(COUNT(*), 0) FROM cutstats WHERE players LIKE '%player%' AND pulled LIKE 'TRUE';",
-    "RZ att": "SELECT SUM(EndzoneScored) + SUM(EndzoneNotScoredForced) + SUM(EndzoneNotScoredUnforced) + SUM(EndzoneNotScoredUnknown) FROM cutstats WHERE players LIKE '%player%';",
-    "RZC %": "SELECT SUM(EndzoneScored) / NULLIF((SUM(EndzoneScored) + SUM(EndzoneNotScoredForced) + SUM(EndzoneNotScoredUnforced) + SUM(EndzoneNotScoredUnknown)), 0) FROM cutstats WHERE players LIKE '%player%';",
-    "Turns": "SELECT SUM(TurnoversForced) + SUM(TurnoversUnforced) FROM cutstats WHERE players LIKE '%player%';",
-    "Blocks": "SELECT SUM(BlocksForced) + SUM(BlocksUnforced) FROM cutstats WHERE players LIKE '%player%';",
-    "Huck att": "SELECT SUM(HucksCompleted) + SUM(HucksIncompleteForced) + SUM(HucksIncompleteUnforced) + SUM(HucksIncompleteOther) FROM cutstats WHERE players LIKE '%player%';",
-    "Huck %": "SELECT SUM(HucksCompleted) / NULLIF((SUM(HucksCompleted) + SUM(HucksIncompleteForced) + SUM(HucksIncompleteUnforced) + SUM(HucksIncompleteOther)), 0) FROM cutstats WHERE players LIKE '%player%';",
-    "OEFF": "SELECT (COUNT(*) FILTER (WHERE scored LIKE 'TRUE')) / NULLIF((SUM(BlocksForced) + SUM(BlocksUnforced) + COUNT(*) FILTER (WHERE pulled LIKE 'FALSE')), 0) FROM cutstats WHERE players LIKE '%player%';",
+    "PP": "SELECT COUNT(*)",
+    "OPP": "SELECT COUNT(*) FILTER (WHERE pulled LIKE 'FALSE')",
+    "DPP": "SELECT COUNT(*) FILTER (WHERE pulled LIKE 'TRUE')",
+    "Holds": "SELECT COUNT(*) FILTER (scored LIKE 'TRUE' AND pulled LIKE 'FALSE')",
+    "Hold %" : "SELECT CAST(COUNT(*) FILTER (WHERE scored LIKE 'TRUE' AND pulled LIKE 'FALSE') AS FLOAT) / NULLIF(COUNT(*) FILTER (WHERE pulled LIKE 'FALSE'), 0)",
+    "Breaks": "SELECT COUNT(*) FILTER (scored LIKE 'TRUE' AND pulled LIKE 'TRUE')",
+    "Break %" : "SELECT CAST(COUNT(*) FILTER (WHERE scored LIKE 'TRUE' AND pulled LIKE 'TRUE') AS FLOAT) / NULLIF(COUNT(*) FILTER (WHERE pulled LIKE 'TRUE'), 0)",
+    "RZ Attemps": "SELECT SUM(EndzoneScored) + SUM(EndzoneNotScoredForced) + SUM(EndzoneNotScoredUnforced) + SUM(EndzoneNotScoredUnknown)",
+    "RZC %": "SELECT SUM(EndzoneScored) / NULLIF((SUM(EndzoneScored) + SUM(EndzoneNotScoredForced) + SUM(EndzoneNotScoredUnforced) + SUM(EndzoneNotScoredUnknown)), 0)",
+    "Turns": "SELECT SUM(TurnoversForced) + SUM(TurnoversUnforced)",
+    "Turns/PP": "SELECT (SUM(TurnoversForced) + SUM(TurnoversUnforced)) / COUNT(*)",
+    "Blocks": "SELECT SUM(BlocksForced) + SUM(BlocksUnforced)",
+    "Huck Attempts": "SELECT SUM(HucksCompleted) + SUM(HucksIncompleteForced) + SUM(HucksIncompleteUnforced) + SUM(HucksIncompleteOther)",
+    "Huck %": "SELECT SUM(HucksCompleted) / NULLIF((SUM(HucksCompleted) + SUM(HucksIncompleteForced) + SUM(HucksIncompleteUnforced) + SUM(HucksIncompleteOther)), 0)",
+    "OEFF": "SELECT (COUNT(*) FILTER (WHERE scored LIKE 'TRUE')) / NULLIF((SUM(BlocksForced) + SUM(BlocksUnforced) + COUNT(*) FILTER (WHERE pulled LIKE 'FALSE')), 0)",
 }
 PLAYER_STATS_CATEGORIES = {
-    # "Games Played": "Games in which a player has appeared",
     "Points Played": "Points in which the player has been on the field",
     "Offensive Points Played": "Points in which the player was on the field while starting on offense",
     "Defensive Points Played": "Points in which the player was on the field while starting on defense",
@@ -49,7 +47,7 @@ PLAYER_STATS_CATEGORIES = {
     "Hold %": "holds/offensive points",
     "Breaks": "When a player is on the field for a Defensive Point and his team scores",
     "Break %": "breaks/defensive points",
-    "Red Zone Attempts": "Possessions when the disc is within 20 yards of the end zone",
+    "Red Zone Possessions": "Possessions when the disc is within 20 yards of the end zone",
     "Red Zone Conversion %": "Rate of success on possessions when the disc is withing 20 yards of the end zone",
     "Turnovers": "When a player is on the field and his team loses possession of the disc",
     "Blocks": "When a player is on the field and his team takes possession away from the other team",
@@ -199,7 +197,8 @@ def calc_player_stats(player):
     stats = [player]
 
     for category in PLAYER_STATS_QUERIES:
-        stats.append(query_fetch_one(PLAYER_STATS_QUERIES[category].replace("%player%", f"%{player}%")))
+        query = PLAYER_STATS_QUERIES[category] + f" FROM cutstats WHERE players LIKE '%{player}%';"
+        stats.append(query_fetch_one(query))
 
     return stats
 
