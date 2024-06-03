@@ -30,11 +30,6 @@ function populateStatsTableHeader(statCategories, tooltips) {
     tableHeaderRow.appendChild(th);
     index++;
   }
-  var th = tableHeaderRow.getElementsByTagName("TH")[index]; // the last th
-  console.log("span: " + th.getElementsByTagName("p")[0].innerHTML);
-  span = th.getElementsByTagName("SPAN")[0];
-  span.style.left = "-50px";
-  span.style.margin = "0 60px 0 0";
 }
 
 function createStatsTable(playerStats) {
