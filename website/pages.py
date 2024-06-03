@@ -99,7 +99,7 @@ def upload_file():
     for i in range(1, len(data[3])):
         date = data[0][1][0:24]
         point = data[3][i]
-        if point < 10:
+        if int(point) < 10:
             string = f"0{point}"
         else:
             string = f"{point}"
