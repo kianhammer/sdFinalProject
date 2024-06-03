@@ -58,7 +58,7 @@ function createStatsTable(playerStats) {
  * @param columnIndex the column index to sort by
  */
 function sortTable(columnIndex) {
-  var table, rows, switching, i, x, y, xValue, yValue, shouldSwitch, dir, switchcount = 0;
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
   table = document.getElementById("statsTableBody");
   switching = true;
   // Set the sorting direction to descending:
@@ -80,6 +80,7 @@ function sortTable(columnIndex) {
       y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
       /* Check if the two rows should switch place,
       based on the direction, asc or desc: */
+      var xValue, yValue = 0;
       if (dir == "asc") {
         console.log("x.innerHTML = '" + x.innerHTML+"'");
         if (x.innerHTML != "") {
@@ -88,6 +89,7 @@ function sortTable(columnIndex) {
         if (y.innerHTML != "") {
           yValue = parseFloat(y.innerHTML);
         }
+
         if (xValue > yValue) {
           // If so, mark as a switch and break the loop:
           shouldSwitch = true;
