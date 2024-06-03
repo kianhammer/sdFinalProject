@@ -118,7 +118,7 @@ def upload_file():
 @app.route('/stats/game')
 def game_stats():
 	all_points = query_fetch_all("""SELECT * FROM cutstats ORDER BY Date;""")
-	print(all_points)
+	
 	if not all_cut_games:
 		separate_games(all_points)
 		
@@ -130,6 +130,7 @@ def game_stats():
 def separate_games(all_points):
 	game = []
 	for point in all_points:
+		print(point)
 		if not game:
 			game.append(point)
 		else:
