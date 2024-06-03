@@ -267,5 +267,5 @@ def query_fetch_all(sql):
 
 
 if __name__ == '__main__':
-	my_port = 5202
+	my_port = 5122
 	app.run(host='0.0.0.0', port = my_port) 
