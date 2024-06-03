@@ -22,7 +22,7 @@
 </body>
 <script>
     // Initialize player stats page
-    populateStatsTableHeader(JSON.parse({{header|tojson}}));
+    populateStatsTableHeader(JSON.parse({{statCategories|tojson}}), JSON.parse({{tooltips|tojson}}));
     createStatsTable(JSON.parse({{stats|tojson}}));
     sortTable(1);
 </script>
