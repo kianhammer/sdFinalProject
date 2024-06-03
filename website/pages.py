@@ -50,6 +50,7 @@ PLAYER_STATS_CATEGORIES = {
     "Red Zone Possessions": "Possessions when the disc is within 20 yards of the end zone",
     "Red Zone Conversion %": "Rate of success on possessions when the disc is withing 20 yards of the end zone",
     "Turnovers": "When a player is on the field and his team loses possession of the disc",
+    "Turnovers Per Point Played": "Average turnovers per point in which the player was on the field",
     "Blocks": "When a player is on the field and his team takes possession away from the other team",
     "Huck Attempts": "When a player is on the field while his team attempts a throw of more than 40 yards",
     "Huck Completion %": "Rate of completed hucks per attempt while on the field",
