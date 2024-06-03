@@ -109,3 +109,8 @@ tbody tr:last-of-type {
 .tooltiptext-body {
     font-size: 0.5em;
 }
+
+.left-align-tooltip {
+    left: -50%; 
+    margin: 0 60px 0 0;
+}

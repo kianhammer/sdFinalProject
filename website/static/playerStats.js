@@ -32,7 +32,7 @@ function populateStatsTableHeader(statCategories, tooltips) {
   }
   var th = tableHeaderRow.getElementsByTagName("TH")[index]; // the last th
   console.log("span: " + th.getElementsByTagName("SPAN")[0]);
-  th.getElementsByTagName("SPAN")[0].classList.add("left: -50%; margin: 0 60px 0 0;");
+  th.getElementsByTagName("SPAN")[0].classList.add("left-align-tooltip");
 }
 
 function createStatsTable(playerStats) {
