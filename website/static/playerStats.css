@@ -91,6 +91,7 @@ tbody tr:last-of-type {
 
     opacity: 0;
     transition: opacity 0.5s;
+    transition-delay: 1s;
 }
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
