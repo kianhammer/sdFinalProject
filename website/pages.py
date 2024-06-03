@@ -153,9 +153,6 @@ def game_stats_generate_dropdown():
 	for game in all_cut_games:
 		opponent = game[0][1]
 		date = get_timestamp_date(game[0][0])
-		
-		if i < 10:
-			index = "0" + i
 		all_opponents_html = all_opponents_html + f'<option value="{i} {opponent}">{date} :  {opponent}</option>' + '/n'
 		i += 1
 		
