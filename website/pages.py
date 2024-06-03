@@ -130,13 +130,13 @@ def game_stats():
 def separate_games(all_points):
 	game = []
 	for point in all_points:
-		print(point)
 		if not game:
 			game.append(point)
 		else:
 			#if the current point is listed as the first point of the game, the previous points appended to game were all of the previous game
 			if point[3] == 1:
 				all_cut_games.append(game)
+				print(game)
 				game = []
 				game.append(point)
 			else:
