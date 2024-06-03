@@ -153,10 +153,11 @@ def game_stats_generate_dropdown():
 	for game in all_cut_games:
 		opponent = game[0][1]
 		date = get_timestamp_date(game[0][0])
+		
+		if i < 10:
+			index = "0" + i
 		all_opponents_html = all_opponents_html + f'<option value="{i} {opponent}">{date} :  {opponent}</option>' + '/n'
 		i += 1
-		print(game)
-		print(i)
 		
 	return all_opponents_html
 	
@@ -168,7 +169,7 @@ def game_stats_opponent(opponent):
 		return
 
 	# Retrieves the points of the game selected by the user
-	opponent_index = int(opponent[0:1])
+	opponent_index = int(opponent.partition(' ')[0])
 	game_points = all_cut_games[opponent_index]
 
 	
