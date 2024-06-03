@@ -9,7 +9,7 @@ function populateStatsTableHeader(statCategories, tooltips) {
     
     var headerDiv = document.createElement("div");
     headerDiv.setAttribute("class", "tooltip");
-    headerDiv.innerHTML = statCategories[i];
+    headerDiv.innerHTML = statCategories[index];
 
     var tooltipTextSpan = document.createElement("span");
     tooltipTextSpan.setAttribute("class", "tooltiptext");
@@ -28,7 +28,7 @@ function populateStatsTableHeader(statCategories, tooltips) {
     th.appendChild(headerDiv);
 
     tableHeaderRow.appendChild(th);
-    i++;
+    index++;
   }
 }
 
