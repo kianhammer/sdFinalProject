@@ -41,7 +41,9 @@ function createStatsTable(playerStats) {
       let row = tableBody.insertRow(rowIndex++);
       for(var i = 0; i < stats.length; i++) {
           var cell = row.insertCell(i);
-          if (stats[i] != null && stats[i].toString().indexOf('.') != -1) {
+          if (stats[i] == null) {
+            cell.innerHTML = 0;
+          } else if (stats[i].toString().indexOf('.') != -1) {
             //string a decimal point
             cell.innerHTML = parseFloat(stats[i]).toFixed(2);
           } else {
@@ -80,24 +82,14 @@ function sortTable(columnIndex) {
       y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
       /* Check if the two rows should switch place,
       based on the direction, asc or desc: */
-      var xValue, yValue = 0;
       if (dir == "asc") {
-        console.log("x.innerHTML = '" + x.innerHTML+"'");
-        if (x.innerHTML != "") {
-          xValue = parseFloat(x.innerHTML);
-        }
-        if (y.innerHTML != "") {
-          yValue = parseFloat(y.innerHTML);
-        }
-        console.log("xValue = " + xValue + ", yValue = " + yValue);
-
-        if (xValue > yValue) {
+        if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
           // If so, mark as a switch and break the loop:
           shouldSwitch = true;
           break;
         }
       } else if (dir == "desc") {
-        if (xValue < yValue) {
+        if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
           // If so, mark as a switch and break the loop:
           shouldSwitch = true;
           break;
