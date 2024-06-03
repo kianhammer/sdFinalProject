@@ -89,6 +89,7 @@ function sortTable(columnIndex) {
         if (y.innerHTML != "") {
           yValue = parseFloat(y.innerHTML);
         }
+        console.log("xValue = " + xValue + ", yValue = " + yValue);
 
         if (xValue > yValue) {
           // If so, mark as a switch and break the loop:
