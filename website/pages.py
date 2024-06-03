@@ -165,7 +165,7 @@ def game_stats_opponent(opponent):
 	if opponent == "Select A Game:":
 		return
 
-	# Retrieves the points of the game selected by the user
+	# Retrieves the points of the game selected by the user, takes the partition until the first space to accoount for multiple digit indexes
 	opponent_index = int(opponent.partition(' ')[0])
 	game_points = all_cut_games[opponent_index]
 
