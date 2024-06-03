@@ -81,7 +81,7 @@ function sortTable(columnIndex) {
       /* Check if the two rows should switch place,
       based on the direction, asc or desc: */
       if (dir == "asc") {
-        console.log("x.innerHTML = " + x.innerHTML);
+        console.log("x.innerHTML = '" + x.innerHTML+"'");
         if (x.innerHTML != "") {
           xValue = parseFloat(x.innerHTML);
         }
