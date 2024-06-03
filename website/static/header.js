@@ -3,6 +3,8 @@
  * This is where I got this framework
  * 
  * has useful info if we also add footer (and want different styles)
+ *
+ * File contributers: Julian 
  */
 
 class Header extends HTMLElement {
