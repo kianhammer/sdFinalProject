@@ -1,3 +1,4 @@
+/* File contributers: Kian */
 function fetchGame() {
     the_game = document.getElementById("change_game_input").value;
 
