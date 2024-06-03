@@ -27,7 +27,7 @@ PLAYER_STATS_QUERIES = {
     "OPP": "SELECT COUNT(*) FILTER (WHERE pulled LIKE 'FALSE')",
     "DPP": "SELECT COUNT(*) FILTER (WHERE pulled LIKE 'TRUE')",
     "Holds": "SELECT COUNT(*) FILTER (WHERE scored LIKE 'TRUE' AND pulled LIKE 'FALSE')",
-    "Hold %" : "SELECT CAST(ROUND((CAST(COUNT(*) FILTER (WHERE scored LIKE 'TRUE' AND pulled LIKE 'FALSE') AS FLOAT) / NULLIF(COUNT(*) FILTER (WHERE pulled LIKE 'FALSE'), 0))::numeric, 2) AS FLOAT)",
+    "Hold %" : "SELECT CAST(COUNT(*) FILTER (WHERE scored LIKE 'TRUE' AND pulled LIKE 'FALSE') AS FLOAT) / NULLIF(COUNT(*) FILTER (WHERE pulled LIKE 'FALSE'), 0)",
     "Breaks": "SELECT COUNT(*) FILTER (WHERE scored LIKE 'TRUE' AND pulled LIKE 'TRUE')",
     "Break %" : "SELECT CAST(COUNT(*) FILTER (WHERE scored LIKE 'TRUE' AND pulled LIKE 'TRUE') AS FLOAT) / NULLIF(COUNT(*) FILTER (WHERE pulled LIKE 'TRUE'), 0)",
     "RZ Attempts": "SELECT SUM(EndzoneScored) + SUM(EndzoneNotScoredForced) + SUM(EndzoneNotScoredUnforced) + SUM(EndzoneNotScoredUnknown)",

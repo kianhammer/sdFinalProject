@@ -40,7 +40,7 @@ function createStatsTable(playerStats) {
       let row = tableBody.insertRow(rowIndex++);
       for(var i = 0; i < stats.length; i++) {
           var cell = row.insertCell(i);
-          cell.innerHTML = stats[i]
+          cell.innerHTML = stats[i].toFixed(2);
       }
     }
   }
