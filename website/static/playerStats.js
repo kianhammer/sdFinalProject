@@ -81,13 +81,20 @@ function sortTable(columnIndex) {
       /* Check if the two rows should switch place,
       based on the direction, asc or desc: */
       if (dir == "asc") {
-        if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
+        xValue, yValue = 0;
+        if (x.innerHTML != "") {
+          xValue = parseFloat(x.innerHTML);
+        }
+        if (y.innerHTML != "") {
+          yValue = parseFloat(y.innerHTML);
+        }
+        if (xValue > yValue) {
           // If so, mark as a switch and break the loop:
           shouldSwitch = true;
           break;
         }
       } else if (dir == "desc") {
-        if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
+        if (xValue < yValue) {
           // If so, mark as a switch and break the loop:
           shouldSwitch = true;
           break;
