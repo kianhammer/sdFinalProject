@@ -63,7 +63,7 @@ PLAYER_STATS_CATEGORIES = {
 
 @app.route('/')
 def welcome():
-    rows = query_fetch_all("SELECT Opponent FROM CUTStats")
+    rows = query_fetch_all("SELECT Date FROM CUTStats")
     
     gameset = set(rows)
     
